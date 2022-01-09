@@ -1,0 +1,506 @@
+2022-01-09 20:30:03.321 [       background-preinit] INFO  org.hibernate.validator.internal.util.Version[21] - HV000001: Hibernate Validator 6.2.0.Final
+2022-01-09 20:30:03.336 [                     main] INFO  com.caveup.barcode.BarcodeApplication[55] - Starting BarcodeApplication using Java 1.8.0_171 on LAPTOP-EAVDT40L with PID 24972 (D:\java_workspace\bar_code_bird\target\classes started by xw80329 in D:\java_workspace\bar_code_bird)
+2022-01-09 20:30:03.337 [                     main] INFO  com.caveup.barcode.BarcodeApplication[639] - The following profiles are active: local
+2022-01-09 20:30:03.992 [                     main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner[44] - No MyBatis mapper was found in '[com.caveup.barcode]' package. Please check your configuration.
+2022-01-09 20:30:04.076 [                     main] INFO  c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor[48] - Post-processing PropertySource instances
+2022-01-09 20:30:04.116 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+2022-01-09 20:30:04.117 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:30:04.117 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:30:04.117 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:30:04.117 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2022-01-09 20:30:04.118 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:30:04.118 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application-local.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:30:04.118 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:30:04.143 [                     main] INFO  c.u.j.filter.DefaultLazyPropertyFilter[34] - Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2022-01-09 20:30:04.298 [                     main] INFO  c.u.j.resolver.DefaultLazyPropertyResolver[35] - Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2022-01-09 20:30:04.301 [                     main] INFO  c.u.j.detector.DefaultLazyPropertyDetector[33] - Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2022-01-09 20:30:04.367 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[108] - Tomcat initialized with port(s): 8080 (http)
+2022-01-09 20:30:04.372 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Initializing ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:30:04.374 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Starting service [Tomcat]
+2022-01-09 20:30:04.374 [                     main] INFO  org.apache.catalina.core.StandardEngine[173] - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-09 20:30:04.413 [                     main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/][173] - Initializing Spring embedded WebApplicationContext
+2022-01-09 20:30:04.414 [                     main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext[290] - Root WebApplicationContext: initialization completed in 1046 ms
+2022-01-09 20:30:04.658 [                     main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping[69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-09 20:30:04.793 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[37] - String Encryptor custom Bean not found with name 'jasyptStringEncryptor'. Initializing Default String Encryptor
+2022-01-09 20:30:04.796 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.algorithm, using default value: PBEWithMD5AndDES
+2022-01-09 20:30:04.796 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.key-obtention-iterations, using default value: 1000
+2022-01-09 20:30:04.797 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.pool-size, using default value: 1
+2022-01-09 20:30:04.797 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-name, using default value: null
+2022-01-09 20:30:04.797 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-class-name, using default value: null
+2022-01-09 20:30:04.797 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.salt-generator-classname, using default value: org.jasypt.salt.RandomSaltGenerator
+2022-01-09 20:30:04.798 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.iv-generator-classname, using default value: org.jasypt.iv.NoIvGenerator
+2022-01-09 20:30:04.798 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.string-output-type, using default value: base64
+2022-01-09 20:30:05.307 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Starting ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:30:05.316 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[220] - Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-09 20:30:05.316 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[160] - Context refreshed
+2022-01-09 20:30:05.325 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[163] - Found 1 custom documentation plugin(s)
+2022-01-09 20:30:05.326 [                     main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext[591] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+2022-01-09 20:30:05.420 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Pausing ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:30:05.420 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Stopping service [Tomcat]
+2022-01-09 20:30:05.422 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Stopping ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:30:05.423 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Destroying ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:30:05.428 [                     main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener[136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-01-09 20:30:05.438 [                     main] ERROR org.springframework.boot.SpringApplication[819] - Application run failed
+org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:181)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:356)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:155)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:123)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:935)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at com.caveup.barcode.BarcodeApplication.main(BarcodeApplication.java:13)
+Caused by: java.lang.NullPointerException: null
+	at springfox.documentation.spi.service.contexts.Orderings$8.compare(Orderings.java:112)
+	at springfox.documentation.spi.service.contexts.Orderings$8.compare(Orderings.java:109)
+	at com.google.common.collect.ComparatorOrdering.compare(ComparatorOrdering.java:37)
+	at java.util.TimSort.countRunAndMakeAscending(TimSort.java:355)
+	at java.util.TimSort.sort(TimSort.java:220)
+	at java.util.Arrays.sort(Arrays.java:1438)
+	at com.google.common.collect.Ordering.sortedCopy(Ordering.java:855)
+	at springfox.documentation.spring.web.plugins.WebMvcRequestHandlerProvider.requestHandlers(WebMvcRequestHandlerProvider.java:57)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper$2.apply(DocumentationPluginsBootstrapper.java:138)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper$2.apply(DocumentationPluginsBootstrapper.java:135)
+	at com.google.common.collect.Iterators$7.transform(Iterators.java:750)
+	at com.google.common.collect.TransformedIterator.next(TransformedIterator.java:47)
+	at com.google.common.collect.TransformedIterator.next(TransformedIterator.java:47)
+	at com.google.common.collect.MultitransformedIterator.hasNext(MultitransformedIterator.java:52)
+	at com.google.common.collect.MultitransformedIterator.hasNext(MultitransformedIterator.java:50)
+	at com.google.common.collect.ImmutableList.copyOf(ImmutableList.java:249)
+	at com.google.common.collect.ImmutableList.copyOf(ImmutableList.java:209)
+	at com.google.common.collect.FluentIterable.toList(FluentIterable.java:614)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.defaultContextBuilder(DocumentationPluginsBootstrapper.java:111)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.buildContext(DocumentationPluginsBootstrapper.java:96)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.start(DocumentationPluginsBootstrapper.java:167)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:178)
+	... 14 common frames omitted
+2022-01-09 20:34:49.375 [       background-preinit] INFO  org.hibernate.validator.internal.util.Version[21] - HV000001: Hibernate Validator 6.2.0.Final
+2022-01-09 20:34:49.388 [                     main] INFO  com.caveup.barcode.BarcodeApplication[55] - Starting BarcodeApplication using Java 1.8.0_171 on LAPTOP-EAVDT40L with PID 17460 (D:\java_workspace\bar_code_bird\target\classes started by xw80329 in D:\java_workspace\bar_code_bird)
+2022-01-09 20:34:49.388 [                     main] INFO  com.caveup.barcode.BarcodeApplication[639] - The following profiles are active: local
+2022-01-09 20:34:50.083 [                     main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner[44] - No MyBatis mapper was found in '[com.caveup.barcode]' package. Please check your configuration.
+2022-01-09 20:34:50.153 [                     main] INFO  c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor[48] - Post-processing PropertySource instances
+2022-01-09 20:34:50.187 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+2022-01-09 20:34:50.187 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:34:50.187 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:34:50.188 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:34:50.189 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2022-01-09 20:34:50.189 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:34:50.189 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application-local.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:34:50.189 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:34:50.215 [                     main] INFO  c.u.j.filter.DefaultLazyPropertyFilter[34] - Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2022-01-09 20:34:50.334 [                     main] INFO  c.u.j.resolver.DefaultLazyPropertyResolver[35] - Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2022-01-09 20:34:50.337 [                     main] INFO  c.u.j.detector.DefaultLazyPropertyDetector[33] - Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2022-01-09 20:34:50.407 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[108] - Tomcat initialized with port(s): 8080 (http)
+2022-01-09 20:34:50.412 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Initializing ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:34:50.412 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Starting service [Tomcat]
+2022-01-09 20:34:50.413 [                     main] INFO  org.apache.catalina.core.StandardEngine[173] - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-09 20:34:50.470 [                     main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/][173] - Initializing Spring embedded WebApplicationContext
+2022-01-09 20:34:50.470 [                     main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext[290] - Root WebApplicationContext: initialization completed in 1059 ms
+2022-01-09 20:34:50.728 [                     main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping[69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-09 20:34:50.874 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[37] - String Encryptor custom Bean not found with name 'jasyptStringEncryptor'. Initializing Default String Encryptor
+2022-01-09 20:34:50.878 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.algorithm, using default value: PBEWithMD5AndDES
+2022-01-09 20:34:50.878 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.key-obtention-iterations, using default value: 1000
+2022-01-09 20:34:50.879 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.pool-size, using default value: 1
+2022-01-09 20:34:50.879 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-name, using default value: null
+2022-01-09 20:34:50.879 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-class-name, using default value: null
+2022-01-09 20:34:50.879 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.salt-generator-classname, using default value: org.jasypt.salt.RandomSaltGenerator
+2022-01-09 20:34:50.880 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.iv-generator-classname, using default value: org.jasypt.iv.NoIvGenerator
+2022-01-09 20:34:50.880 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.string-output-type, using default value: base64
+2022-01-09 20:34:51.428 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Starting ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:34:51.441 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[220] - Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-09 20:34:51.441 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[160] - Context refreshed
+2022-01-09 20:34:51.460 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[163] - Found 1 custom documentation plugin(s)
+2022-01-09 20:34:51.461 [                     main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext[591] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+2022-01-09 20:34:51.555 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Pausing ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:34:51.556 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Stopping service [Tomcat]
+2022-01-09 20:34:51.558 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Stopping ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:34:51.559 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Destroying ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:34:51.563 [                     main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener[136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-01-09 20:34:51.576 [                     main] ERROR org.springframework.boot.SpringApplication[819] - Application run failed
+org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:181)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:356)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:155)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:123)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:935)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at com.caveup.barcode.BarcodeApplication.main(BarcodeApplication.java:13)
+Caused by: java.lang.NullPointerException: null
+	at springfox.documentation.spi.service.contexts.Orderings$8.compare(Orderings.java:112)
+	at springfox.documentation.spi.service.contexts.Orderings$8.compare(Orderings.java:109)
+	at com.google.common.collect.ComparatorOrdering.compare(ComparatorOrdering.java:37)
+	at java.util.TimSort.countRunAndMakeAscending(TimSort.java:355)
+	at java.util.TimSort.sort(TimSort.java:220)
+	at java.util.Arrays.sort(Arrays.java:1438)
+	at com.google.common.collect.Ordering.sortedCopy(Ordering.java:855)
+	at springfox.documentation.spring.web.plugins.WebMvcRequestHandlerProvider.requestHandlers(WebMvcRequestHandlerProvider.java:57)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper$2.apply(DocumentationPluginsBootstrapper.java:138)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper$2.apply(DocumentationPluginsBootstrapper.java:135)
+	at com.google.common.collect.Iterators$7.transform(Iterators.java:750)
+	at com.google.common.collect.TransformedIterator.next(TransformedIterator.java:47)
+	at com.google.common.collect.TransformedIterator.next(TransformedIterator.java:47)
+	at com.google.common.collect.MultitransformedIterator.hasNext(MultitransformedIterator.java:52)
+	at com.google.common.collect.MultitransformedIterator.hasNext(MultitransformedIterator.java:50)
+	at com.google.common.collect.ImmutableList.copyOf(ImmutableList.java:249)
+	at com.google.common.collect.ImmutableList.copyOf(ImmutableList.java:209)
+	at com.google.common.collect.FluentIterable.toList(FluentIterable.java:614)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.defaultContextBuilder(DocumentationPluginsBootstrapper.java:111)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.buildContext(DocumentationPluginsBootstrapper.java:96)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.start(DocumentationPluginsBootstrapper.java:167)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:178)
+	... 14 common frames omitted
+2022-01-09 20:37:09.180 [       background-preinit] INFO  org.hibernate.validator.internal.util.Version[21] - HV000001: Hibernate Validator 6.2.0.Final
+2022-01-09 20:37:09.196 [                     main] INFO  com.caveup.barcode.BarcodeApplication[55] - Starting BarcodeApplication using Java 1.8.0_171 on LAPTOP-EAVDT40L with PID 2880 (D:\java_workspace\bar_code_bird\target\classes started by xw80329 in D:\java_workspace\bar_code_bird)
+2022-01-09 20:37:09.196 [                     main] INFO  com.caveup.barcode.BarcodeApplication[639] - The following profiles are active: local
+2022-01-09 20:37:09.790 [                     main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner[44] - No MyBatis mapper was found in '[com.caveup.barcode]' package. Please check your configuration.
+2022-01-09 20:37:09.861 [                     main] INFO  c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor[48] - Post-processing PropertySource instances
+2022-01-09 20:37:09.896 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+2022-01-09 20:37:09.897 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:37:09.897 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:37:09.897 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:37:09.898 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2022-01-09 20:37:09.898 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:37:09.898 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application-local.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:37:09.898 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:37:09.924 [                     main] INFO  c.u.j.filter.DefaultLazyPropertyFilter[34] - Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2022-01-09 20:37:10.051 [                     main] INFO  c.u.j.resolver.DefaultLazyPropertyResolver[35] - Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2022-01-09 20:37:10.053 [                     main] INFO  c.u.j.detector.DefaultLazyPropertyDetector[33] - Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2022-01-09 20:37:10.113 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[108] - Tomcat initialized with port(s): 8080 (http)
+2022-01-09 20:37:10.117 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Initializing ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:37:10.118 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Starting service [Tomcat]
+2022-01-09 20:37:10.118 [                     main] INFO  org.apache.catalina.core.StandardEngine[173] - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-09 20:37:10.160 [                     main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/][173] - Initializing Spring embedded WebApplicationContext
+2022-01-09 20:37:10.160 [                     main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext[290] - Root WebApplicationContext: initialization completed in 940 ms
+2022-01-09 20:37:10.418 [                     main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping[69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-09 20:37:10.563 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[37] - String Encryptor custom Bean not found with name 'jasyptStringEncryptor'. Initializing Default String Encryptor
+2022-01-09 20:37:10.567 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.algorithm, using default value: PBEWithMD5AndDES
+2022-01-09 20:37:10.567 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.key-obtention-iterations, using default value: 1000
+2022-01-09 20:37:10.568 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.pool-size, using default value: 1
+2022-01-09 20:37:10.568 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-name, using default value: null
+2022-01-09 20:37:10.568 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-class-name, using default value: null
+2022-01-09 20:37:10.568 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.salt-generator-classname, using default value: org.jasypt.salt.RandomSaltGenerator
+2022-01-09 20:37:10.569 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.iv-generator-classname, using default value: org.jasypt.iv.NoIvGenerator
+2022-01-09 20:37:10.569 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.string-output-type, using default value: base64
+2022-01-09 20:37:11.101 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Starting ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:37:11.111 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[220] - Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-09 20:37:11.111 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[160] - Context refreshed
+2022-01-09 20:37:11.124 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[163] - Found 1 custom documentation plugin(s)
+2022-01-09 20:37:11.127 [                     main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext[591] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+2022-01-09 20:37:11.243 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Pausing ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:37:11.243 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Stopping service [Tomcat]
+2022-01-09 20:37:11.246 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Stopping ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:37:11.248 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Destroying ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:37:11.255 [                     main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener[136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-01-09 20:37:11.268 [                     main] ERROR org.springframework.boot.SpringApplication[819] - Application run failed
+org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:181)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:356)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:155)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:123)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:935)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at com.caveup.barcode.BarcodeApplication.main(BarcodeApplication.java:13)
+Caused by: java.lang.NullPointerException: null
+	at springfox.documentation.spi.service.contexts.Orderings$8.compare(Orderings.java:112)
+	at springfox.documentation.spi.service.contexts.Orderings$8.compare(Orderings.java:109)
+	at com.google.common.collect.ComparatorOrdering.compare(ComparatorOrdering.java:37)
+	at java.util.TimSort.countRunAndMakeAscending(TimSort.java:355)
+	at java.util.TimSort.sort(TimSort.java:220)
+	at java.util.Arrays.sort(Arrays.java:1438)
+	at com.google.common.collect.Ordering.sortedCopy(Ordering.java:855)
+	at springfox.documentation.spring.web.plugins.WebMvcRequestHandlerProvider.requestHandlers(WebMvcRequestHandlerProvider.java:57)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper$2.apply(DocumentationPluginsBootstrapper.java:138)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper$2.apply(DocumentationPluginsBootstrapper.java:135)
+	at com.google.common.collect.Iterators$7.transform(Iterators.java:750)
+	at com.google.common.collect.TransformedIterator.next(TransformedIterator.java:47)
+	at com.google.common.collect.TransformedIterator.next(TransformedIterator.java:47)
+	at com.google.common.collect.MultitransformedIterator.hasNext(MultitransformedIterator.java:52)
+	at com.google.common.collect.MultitransformedIterator.hasNext(MultitransformedIterator.java:50)
+	at com.google.common.collect.ImmutableList.copyOf(ImmutableList.java:249)
+	at com.google.common.collect.ImmutableList.copyOf(ImmutableList.java:209)
+	at com.google.common.collect.FluentIterable.toList(FluentIterable.java:614)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.defaultContextBuilder(DocumentationPluginsBootstrapper.java:111)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.buildContext(DocumentationPluginsBootstrapper.java:96)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.start(DocumentationPluginsBootstrapper.java:167)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:178)
+	... 14 common frames omitted
+2022-01-09 20:39:37.759 [       background-preinit] INFO  org.hibernate.validator.internal.util.Version[21] - HV000001: Hibernate Validator 6.2.0.Final
+2022-01-09 20:39:37.768 [                     main] INFO  com.caveup.barcode.BarcodeApplication[55] - Starting BarcodeApplication using Java 1.8.0_171 on LAPTOP-EAVDT40L with PID 28156 (D:\java_workspace\bar_code_bird\target\classes started by xw80329 in D:\java_workspace\bar_code_bird)
+2022-01-09 20:39:37.769 [                     main] INFO  com.caveup.barcode.BarcodeApplication[639] - The following profiles are active: local
+2022-01-09 20:39:38.306 [                     main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner[44] - No MyBatis mapper was found in '[com.caveup.barcode]' package. Please check your configuration.
+2022-01-09 20:39:38.386 [                     main] INFO  c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor[48] - Post-processing PropertySource instances
+2022-01-09 20:39:38.421 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+2022-01-09 20:39:38.421 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:39:38.422 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:39:38.422 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:39:38.422 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2022-01-09 20:39:38.422 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:39:38.422 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application-local.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:39:38.422 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:39:38.450 [                     main] INFO  c.u.j.filter.DefaultLazyPropertyFilter[34] - Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2022-01-09 20:39:38.563 [                     main] INFO  c.u.j.resolver.DefaultLazyPropertyResolver[35] - Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2022-01-09 20:39:38.566 [                     main] INFO  c.u.j.detector.DefaultLazyPropertyDetector[33] - Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2022-01-09 20:39:38.632 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[108] - Tomcat initialized with port(s): 8080 (http)
+2022-01-09 20:39:38.638 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Initializing ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:39:38.639 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Starting service [Tomcat]
+2022-01-09 20:39:38.639 [                     main] INFO  org.apache.catalina.core.StandardEngine[173] - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-09 20:39:38.678 [                     main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/][173] - Initializing Spring embedded WebApplicationContext
+2022-01-09 20:39:38.679 [                     main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext[290] - Root WebApplicationContext: initialization completed in 886 ms
+2022-01-09 20:39:38.936 [                     main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping[69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-09 20:39:39.066 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[37] - String Encryptor custom Bean not found with name 'jasyptStringEncryptor'. Initializing Default String Encryptor
+2022-01-09 20:39:39.069 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.algorithm, using default value: PBEWithMD5AndDES
+2022-01-09 20:39:39.070 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.key-obtention-iterations, using default value: 1000
+2022-01-09 20:39:39.070 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.pool-size, using default value: 1
+2022-01-09 20:39:39.070 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-name, using default value: null
+2022-01-09 20:39:39.070 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-class-name, using default value: null
+2022-01-09 20:39:39.070 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.salt-generator-classname, using default value: org.jasypt.salt.RandomSaltGenerator
+2022-01-09 20:39:39.071 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.iv-generator-classname, using default value: org.jasypt.iv.NoIvGenerator
+2022-01-09 20:39:39.071 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.string-output-type, using default value: base64
+2022-01-09 20:39:39.589 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Starting ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:39:39.598 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[220] - Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-09 20:39:39.599 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[160] - Context refreshed
+2022-01-09 20:39:39.606 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[163] - Found 1 custom documentation plugin(s)
+2022-01-09 20:39:39.608 [                     main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext[591] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+2022-01-09 20:39:39.698 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Pausing ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:39:39.698 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Stopping service [Tomcat]
+2022-01-09 20:39:39.700 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Stopping ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:39:39.701 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Destroying ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:39:39.705 [                     main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener[136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-01-09 20:39:39.715 [                     main] ERROR org.springframework.boot.SpringApplication[819] - Application run failed
+org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:181)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:356)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:155)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:123)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:935)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at com.caveup.barcode.BarcodeApplication.main(BarcodeApplication.java:13)
+Caused by: java.lang.NullPointerException: null
+	at springfox.documentation.spi.service.contexts.Orderings$8.compare(Orderings.java:112)
+	at springfox.documentation.spi.service.contexts.Orderings$8.compare(Orderings.java:109)
+	at com.google.common.collect.ComparatorOrdering.compare(ComparatorOrdering.java:37)
+	at java.util.TimSort.countRunAndMakeAscending(TimSort.java:355)
+	at java.util.TimSort.sort(TimSort.java:220)
+	at java.util.Arrays.sort(Arrays.java:1438)
+	at com.google.common.collect.Ordering.sortedCopy(Ordering.java:855)
+	at springfox.documentation.spring.web.plugins.WebMvcRequestHandlerProvider.requestHandlers(WebMvcRequestHandlerProvider.java:57)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper$2.apply(DocumentationPluginsBootstrapper.java:138)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper$2.apply(DocumentationPluginsBootstrapper.java:135)
+	at com.google.common.collect.Iterators$7.transform(Iterators.java:750)
+	at com.google.common.collect.TransformedIterator.next(TransformedIterator.java:47)
+	at com.google.common.collect.TransformedIterator.next(TransformedIterator.java:47)
+	at com.google.common.collect.MultitransformedIterator.hasNext(MultitransformedIterator.java:52)
+	at com.google.common.collect.MultitransformedIterator.hasNext(MultitransformedIterator.java:50)
+	at com.google.common.collect.ImmutableList.copyOf(ImmutableList.java:249)
+	at com.google.common.collect.ImmutableList.copyOf(ImmutableList.java:209)
+	at com.google.common.collect.FluentIterable.toList(FluentIterable.java:614)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.defaultContextBuilder(DocumentationPluginsBootstrapper.java:111)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.buildContext(DocumentationPluginsBootstrapper.java:96)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.start(DocumentationPluginsBootstrapper.java:167)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:178)
+	... 14 common frames omitted
+2022-01-09 20:40:57.523 [       background-preinit] INFO  org.hibernate.validator.internal.util.Version[21] - HV000001: Hibernate Validator 6.2.0.Final
+2022-01-09 20:40:57.540 [                     main] INFO  com.caveup.barcode.BarcodeApplication[55] - Starting BarcodeApplication using Java 1.8.0_171 on LAPTOP-EAVDT40L with PID 23184 (D:\java_workspace\bar_code_bird\target\classes started by xw80329 in D:\java_workspace\bar_code_bird)
+2022-01-09 20:40:57.541 [                     main] INFO  com.caveup.barcode.BarcodeApplication[639] - The following profiles are active: local
+2022-01-09 20:40:58.110 [                     main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner[44] - No MyBatis mapper was found in '[com.caveup.barcode]' package. Please check your configuration.
+2022-01-09 20:40:58.175 [                     main] INFO  c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor[48] - Post-processing PropertySource instances
+2022-01-09 20:40:58.204 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+2022-01-09 20:40:58.204 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:40:58.205 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:40:58.205 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:40:58.205 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2022-01-09 20:40:58.205 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:40:58.205 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application-local.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:40:58.205 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:40:58.228 [                     main] INFO  c.u.j.filter.DefaultLazyPropertyFilter[34] - Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2022-01-09 20:40:58.330 [                     main] INFO  c.u.j.resolver.DefaultLazyPropertyResolver[35] - Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2022-01-09 20:40:58.333 [                     main] INFO  c.u.j.detector.DefaultLazyPropertyDetector[33] - Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2022-01-09 20:40:58.392 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[108] - Tomcat initialized with port(s): 8080 (http)
+2022-01-09 20:40:58.398 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Initializing ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:40:58.399 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Starting service [Tomcat]
+2022-01-09 20:40:58.399 [                     main] INFO  org.apache.catalina.core.StandardEngine[173] - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-09 20:40:58.444 [                     main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/][173] - Initializing Spring embedded WebApplicationContext
+2022-01-09 20:40:58.444 [                     main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext[290] - Root WebApplicationContext: initialization completed in 878 ms
+2022-01-09 20:40:58.703 [                     main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping[69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-09 20:40:58.835 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[37] - String Encryptor custom Bean not found with name 'jasyptStringEncryptor'. Initializing Default String Encryptor
+2022-01-09 20:40:58.839 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.algorithm, using default value: PBEWithMD5AndDES
+2022-01-09 20:40:58.839 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.key-obtention-iterations, using default value: 1000
+2022-01-09 20:40:58.839 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.pool-size, using default value: 1
+2022-01-09 20:40:58.839 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-name, using default value: null
+2022-01-09 20:40:58.839 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-class-name, using default value: null
+2022-01-09 20:40:58.840 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.salt-generator-classname, using default value: org.jasypt.salt.RandomSaltGenerator
+2022-01-09 20:40:58.840 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.iv-generator-classname, using default value: org.jasypt.iv.NoIvGenerator
+2022-01-09 20:40:58.840 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.string-output-type, using default value: base64
+2022-01-09 20:40:59.365 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Starting ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:40:59.375 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[220] - Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-09 20:40:59.376 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[160] - Context refreshed
+2022-01-09 20:40:59.384 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[163] - Found 1 custom documentation plugin(s)
+2022-01-09 20:40:59.386 [                     main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext[591] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+2022-01-09 20:40:59.479 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Pausing ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:40:59.480 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Stopping service [Tomcat]
+2022-01-09 20:40:59.482 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Stopping ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:40:59.482 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Destroying ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:40:59.486 [                     main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener[136] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-01-09 20:40:59.497 [                     main] ERROR org.springframework.boot.SpringApplication[819] - Application run failed
+org.springframework.context.ApplicationContextException: Failed to start bean 'documentationPluginsBootstrapper'; nested exception is java.lang.NullPointerException
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:181)
+	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:54)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:356)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:155)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:123)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:935)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at com.caveup.barcode.BarcodeApplication.main(BarcodeApplication.java:13)
+Caused by: java.lang.NullPointerException: null
+	at springfox.documentation.spi.service.contexts.Orderings$8.compare(Orderings.java:112)
+	at springfox.documentation.spi.service.contexts.Orderings$8.compare(Orderings.java:109)
+	at com.google.common.collect.ComparatorOrdering.compare(ComparatorOrdering.java:37)
+	at java.util.TimSort.countRunAndMakeAscending(TimSort.java:355)
+	at java.util.TimSort.sort(TimSort.java:220)
+	at java.util.Arrays.sort(Arrays.java:1438)
+	at com.google.common.collect.Ordering.sortedCopy(Ordering.java:855)
+	at springfox.documentation.spring.web.plugins.WebMvcRequestHandlerProvider.requestHandlers(WebMvcRequestHandlerProvider.java:57)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper$2.apply(DocumentationPluginsBootstrapper.java:138)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper$2.apply(DocumentationPluginsBootstrapper.java:135)
+	at com.google.common.collect.Iterators$7.transform(Iterators.java:750)
+	at com.google.common.collect.TransformedIterator.next(TransformedIterator.java:47)
+	at com.google.common.collect.TransformedIterator.next(TransformedIterator.java:47)
+	at com.google.common.collect.MultitransformedIterator.hasNext(MultitransformedIterator.java:52)
+	at com.google.common.collect.MultitransformedIterator.hasNext(MultitransformedIterator.java:50)
+	at com.google.common.collect.ImmutableList.copyOf(ImmutableList.java:249)
+	at com.google.common.collect.ImmutableList.copyOf(ImmutableList.java:209)
+	at com.google.common.collect.FluentIterable.toList(FluentIterable.java:614)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.defaultContextBuilder(DocumentationPluginsBootstrapper.java:111)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.buildContext(DocumentationPluginsBootstrapper.java:96)
+	at springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.start(DocumentationPluginsBootstrapper.java:167)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:178)
+	... 14 common frames omitted
+2022-01-09 20:45:48.090 [       background-preinit] INFO  org.hibernate.validator.internal.util.Version[21] - HV000001: Hibernate Validator 6.2.0.Final
+2022-01-09 20:45:48.105 [                     main] INFO  com.caveup.barcode.BarcodeApplication[55] - Starting BarcodeApplication using Java 1.8.0_171 on LAPTOP-EAVDT40L with PID 12304 (D:\java_workspace\bar_code_bird\target\classes started by xw80329 in D:\java_workspace\bar_code_bird)
+2022-01-09 20:45:48.106 [                     main] INFO  com.caveup.barcode.BarcodeApplication[639] - The following profiles are active: local
+2022-01-09 20:45:48.726 [                     main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner[44] - No MyBatis mapper was found in '[com.caveup.barcode]' package. Please check your configuration.
+2022-01-09 20:45:48.805 [                     main] INFO  c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor[48] - Post-processing PropertySource instances
+2022-01-09 20:45:48.840 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+2022-01-09 20:45:48.841 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:45:48.841 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:45:48.841 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:45:48.841 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2022-01-09 20:45:48.841 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:45:48.841 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application-local.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:45:48.841 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:45:48.867 [                     main] INFO  c.u.j.filter.DefaultLazyPropertyFilter[34] - Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2022-01-09 20:45:48.980 [                     main] INFO  c.u.j.resolver.DefaultLazyPropertyResolver[35] - Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2022-01-09 20:45:48.982 [                     main] INFO  c.u.j.detector.DefaultLazyPropertyDetector[33] - Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2022-01-09 20:45:49.051 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[108] - Tomcat initialized with port(s): 8080 (http)
+2022-01-09 20:45:49.059 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Initializing ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:45:49.059 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Starting service [Tomcat]
+2022-01-09 20:45:49.060 [                     main] INFO  org.apache.catalina.core.StandardEngine[173] - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-09 20:45:49.108 [                     main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/][173] - Initializing Spring embedded WebApplicationContext
+2022-01-09 20:45:49.108 [                     main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext[290] - Root WebApplicationContext: initialization completed in 979 ms
+2022-01-09 20:45:49.390 [                     main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping[69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-09 20:45:49.506 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[37] - String Encryptor custom Bean not found with name 'jasyptStringEncryptor'. Initializing Default String Encryptor
+2022-01-09 20:45:49.513 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.algorithm, using default value: PBEWithMD5AndDES
+2022-01-09 20:45:49.513 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.key-obtention-iterations, using default value: 1000
+2022-01-09 20:45:49.513 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.pool-size, using default value: 1
+2022-01-09 20:45:49.513 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-name, using default value: null
+2022-01-09 20:45:49.514 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-class-name, using default value: null
+2022-01-09 20:45:49.514 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.salt-generator-classname, using default value: org.jasypt.salt.RandomSaltGenerator
+2022-01-09 20:45:49.515 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.iv-generator-classname, using default value: org.jasypt.iv.NoIvGenerator
+2022-01-09 20:45:49.515 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.string-output-type, using default value: base64
+2022-01-09 20:45:50.160 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Starting ProtocolHandler ["http-nio-8080"]
+2022-01-09 20:45:50.172 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[220] - Tomcat started on port(s): 8080 (http) with context path ''
+2022-01-09 20:45:50.173 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[160] - Context refreshed
+2022-01-09 20:45:50.184 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[163] - Found 1 custom documentation plugin(s)
+2022-01-09 20:45:50.206 [                     main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner[41] - Scanning for api listing references
+2022-01-09 20:45:50.271 [                     main] INFO  com.caveup.barcode.BarcodeApplication[61] - Started BarcodeApplication in 2.48 seconds (JVM running for 3.092)
+2022-01-09 20:45:50.272 [                     main] INFO  com.caveup.barcode.StartupRunner[16] - >>>>>>>>>>>>>>>服务启动完成<<<<<<<<<<<<<
+2022-01-09 20:46:35.977 [       background-preinit] INFO  org.hibernate.validator.internal.util.Version[21] - HV000001: Hibernate Validator 6.2.0.Final
+2022-01-09 20:46:35.991 [                     main] INFO  com.caveup.barcode.BarcodeApplication[55] - Starting BarcodeApplication using Java 1.8.0_171 on LAPTOP-EAVDT40L with PID 17832 (D:\java_workspace\bar_code_bird\target\classes started by xw80329 in D:\java_workspace\bar_code_bird)
+2022-01-09 20:46:35.992 [                     main] INFO  com.caveup.barcode.BarcodeApplication[639] - The following profiles are active: local
+2022-01-09 20:46:36.564 [                     main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner[44] - No MyBatis mapper was found in '[com.caveup.barcode]' package. Please check your configuration.
+2022-01-09 20:46:36.636 [                     main] INFO  c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor[48] - Post-processing PropertySource instances
+2022-01-09 20:46:36.671 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+2022-01-09 20:46:36.671 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:46:36.671 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:46:36.672 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:46:36.672 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2022-01-09 20:46:36.672 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2022-01-09 20:46:36.672 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application-local.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:46:36.672 [                     main] INFO  c.u.j.EncryptablePropertySourceConverter[41] - Converting PropertySource Config resource 'class path resource [application.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-01-09 20:46:36.699 [                     main] INFO  c.u.j.filter.DefaultLazyPropertyFilter[34] - Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2022-01-09 20:46:36.839 [                     main] INFO  c.u.j.resolver.DefaultLazyPropertyResolver[35] - Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2022-01-09 20:46:36.841 [                     main] INFO  c.u.j.detector.DefaultLazyPropertyDetector[33] - Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2022-01-09 20:46:36.898 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[108] - Tomcat initialized with port(s): 8888 (http)
+2022-01-09 20:46:36.905 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Initializing ProtocolHandler ["http-nio-8888"]
+2022-01-09 20:46:36.905 [                     main] INFO  org.apache.catalina.core.StandardService[173] - Starting service [Tomcat]
+2022-01-09 20:46:36.905 [                     main] INFO  org.apache.catalina.core.StandardEngine[173] - Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-01-09 20:46:36.946 [                     main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/][173] - Initializing Spring embedded WebApplicationContext
+2022-01-09 20:46:36.947 [                     main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext[290] - Root WebApplicationContext: initialization completed in 932 ms
+2022-01-09 20:46:37.187 [                     main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping[69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-01-09 20:46:37.275 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[37] - String Encryptor custom Bean not found with name 'jasyptStringEncryptor'. Initializing Default String Encryptor
+2022-01-09 20:46:37.279 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.algorithm, using default value: PBEWithMD5AndDES
+2022-01-09 20:46:37.280 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.key-obtention-iterations, using default value: 1000
+2022-01-09 20:46:37.280 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.pool-size, using default value: 1
+2022-01-09 20:46:37.280 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-name, using default value: null
+2022-01-09 20:46:37.280 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.provider-class-name, using default value: null
+2022-01-09 20:46:37.280 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.salt-generator-classname, using default value: org.jasypt.salt.RandomSaltGenerator
+2022-01-09 20:46:37.281 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.iv-generator-classname, using default value: org.jasypt.iv.NoIvGenerator
+2022-01-09 20:46:37.283 [                     main] INFO  c.u.j.encryptor.DefaultLazyEncryptor[91] - Encryptor config not found for property jasypt.encryptor.string-output-type, using default value: base64
+2022-01-09 20:46:37.908 [                     main] INFO  org.apache.coyote.http11.Http11NioProtocol[173] - Starting ProtocolHandler ["http-nio-8888"]
+2022-01-09 20:46:37.919 [                     main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer[220] - Tomcat started on port(s): 8888 (http) with context path ''
+2022-01-09 20:46:37.919 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[160] - Context refreshed
+2022-01-09 20:46:37.930 [                     main] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper[163] - Found 1 custom documentation plugin(s)
+2022-01-09 20:46:37.947 [                     main] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner[41] - Scanning for api listing references
+2022-01-09 20:46:37.988 [                     main] INFO  com.caveup.barcode.BarcodeApplication[61] - Started BarcodeApplication in 2.308 seconds (JVM running for 2.96)
+2022-01-09 20:46:37.990 [                     main] INFO  com.caveup.barcode.StartupRunner[16] - >>>>>>>>>>>>>>>服务启动完成<<<<<<<<<<<<<
+2022-01-09 20:46:40.514 [     http-nio-8888-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/][173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-01-09 20:46:40.514 [     http-nio-8888-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet[525] - Initializing Servlet 'dispatcherServlet'
+2022-01-09 20:46:40.515 [     http-nio-8888-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet[547] - Completed initialization in 1 ms

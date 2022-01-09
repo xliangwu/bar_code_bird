@@ -1,0 +1,21 @@
+#Defualt Profile is dev, should be overwrite by: -Dspring.profiles.active=***
+spring:
+  profiles:
+    active: local
+  servlet:
+    multipart:
+      max-request-size: 1024MB
+      max-file-size: 1024MB
+      enabled: true
+  main:
+    allow-bean-definition-overriding: true
+  autoconfigure:
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+server:
+  compression:
+    enabled: true
+  tomcat:
+    accept-count: 1000
+    threads:
+      max: 400
+  port: 8888

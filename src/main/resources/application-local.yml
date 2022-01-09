@@ -1,0 +1,31 @@
+spring:
+  ########## MySql
+  datasource:
+    url: jdbc:log4jdbc:mysql://localhost:3306/bar_code?characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true&zeroDateTimeBehavior=CONVERT_TO_NULL
+    username: root
+    password: ENC(A6b4KeImIjSg2oyEZNdZ/ubIAxmLQmb4)
+    # 使用druid数据源
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+    druid:
+      filters: wall,stat,log4j
+      maxActive: 50
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+  jpa:
+    show-sql: false
+mapper:
+  not-empty: false
+  identity: MYSQL
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+cors_allowed_origins: null
