@@ -25,6 +25,27 @@ import java.util.Optional;
 @EnableSwagger2
 public class SwaggerConfigure {
 
+    public static Predicate<RequestHandler> basePackage(final String basePackage) {
+        return input -> declaringClass(input).map(handlerPackage(basePackage)::apply).orElse(true);
+    }
+
+    private static Function<Class<?>, Boolean> handlerPackage(final String basePackage) {
+        return input -> {
+            // 循环判断匹配
+            for (String strPackage : basePackage.split(";")) {
+                boolean isMatch = input.getPackage().getName().startsWith(strPackage);
+                if (isMatch) {
+                    return true;
+                }
+            }
+            return false;
+        };
+    }
+
+    private static Optional<Class<?>> declaringClass(RequestHandler input) {
+        return Optional.ofNullable(input.declaringClass());
+    }
+
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -47,27 +68,6 @@ public class SwaggerConfigure {
                 .license("MIT-License")
                 .licenseUrl("https://mit-license.org/")
                 .build();
-    }
-
-    public static Predicate<RequestHandler> basePackage(final String basePackage) {
-        return input -> declaringClass(input).map(handlerPackage(basePackage)::apply).orElse(true);
-    }
-
-    private static Function<Class<?>, Boolean> handlerPackage(final String basePackage) {
-        return input -> {
-            // 循环判断匹配
-            for (String strPackage : basePackage.split(";")) {
-                boolean isMatch = input.getPackage().getName().startsWith(strPackage);
-                if (isMatch) {
-                    return true;
-                }
-            }
-            return false;
-        };
-    }
-
-    private static Optional<Class<?>> declaringClass(RequestHandler input) {
-        return Optional.ofNullable(input.declaringClass());
     }
 
     private List<ApiKey> securitySchemes() {
