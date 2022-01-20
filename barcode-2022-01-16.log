@@ -1,0 +1,291 @@
+2022-01-16 15:22:17.096 [                     main] INFO  com.caveup.barcode.helper.JsoupHelperTest[62] - htmlTable:com.caveup.barcode.entity.HtmlTable@77a57272
+2022-01-16 15:23:44.606 [                     main] INFO  com.caveup.barcode.helper.JsoupHelperTest[62] - htmlTable:Table(rows=[TableRow(cells=[]), TableRow(cells=[TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=2, rowSpan=1, text=, bold=false, fontSize=0)]), TableRow(cells=[TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=2, rowSpan=2, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0)]), TableRow(cells=[TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0)]), TableRow(cells=[TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0)])])
+2022-01-16 15:26:07.047 [                     main] INFO  com.caveup.barcode.helper.JsoupHelperTest[62] - htmlTable:Table(rows=[TableRow(cells=[TableCell(colSpan=1, rowSpan=1, text=test, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=test, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=test, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=test, bold=false, fontSize=0)]), TableRow(cells=[TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=2, rowSpan=1, text=, bold=false, fontSize=0)]), TableRow(cells=[TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=2, rowSpan=2, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0)]), TableRow(cells=[TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0)]), TableRow(cells=[TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0), TableCell(colSpan=1, rowSpan=1, text=, bold=false, fontSize=0)])])
+2022-01-16 20:45:09.651 [                     main] ERROR com.caveup.barcode.helper.PdfHelper[83] - The document has no pages.
+2022-01-16 20:46:26.186 [                     main] ERROR com.caveup.barcode.helper.PdfHelper[83] - The document has no pages.
+2022-01-16 20:47:07.049 [                     main] ERROR com.caveup.barcode.helper.PdfHelper[83] - The document has no pages.
+2022-01-16 20:48:36.298 [                     main] ERROR com.caveup.barcode.helper.PdfHelper[83] - The document has no pages.
+2022-01-16 20:50:01.417 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_2122516152983530682.pdf
+2022-01-16 21:12:32.016 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:4
+2022-01-16 21:12:32.019 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:8
+2022-01-16 21:12:32.026 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_7135775798535852736.pdf
+2022-01-16 21:13:32.833 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:3
+2022-01-16 21:13:32.836 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:7
+2022-01-16 21:13:32.871 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_4749717198294469718.pdf
+2022-01-16 21:14:24.218 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:4
+2022-01-16 21:14:24.221 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:8
+2022-01-16 21:14:24.222 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[79] - add last htmlTable,index:11
+2022-01-16 21:14:24.250 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_2163573313176979934.pdf
+2022-01-16 21:16:43.851 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:4
+2022-01-16 21:16:43.854 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:8
+2022-01-16 21:16:43.855 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last htmlTable,index:11
+2022-01-16 21:16:43.881 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_1186935557683498303.pdf
+2022-01-16 21:20:55.182 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:4
+2022-01-16 21:20:55.185 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:8
+2022-01-16 21:20:55.186 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last htmlTable,index:11
+2022-01-16 21:20:55.211 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_8836922573803513207.pdf
+2022-01-16 21:22:53.900 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:4
+2022-01-16 21:22:53.906 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:8
+2022-01-16 21:22:53.907 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last htmlTable,index:11
+2022-01-16 21:24:07.898 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:4
+2022-01-16 21:24:07.902 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:8
+2022-01-16 21:24:07.902 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last htmlTable,index:11
+2022-01-16 21:24:07.950 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_9176526718694675206.pdf
+2022-01-16 21:26:38.935 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[71] - add new htmlTable,index:4
+2022-01-16 21:26:38.939 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[71] - add new htmlTable,index:8
+2022-01-16 21:26:38.940 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[77] - add last htmlTable,index:11
+2022-01-16 21:26:38.992 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_5373318304247013554.pdf
+2022-01-16 21:27:34.193 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[72] - add new htmlTable,index:4
+2022-01-16 21:27:34.197 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[72] - add new htmlTable,index:8
+2022-01-16 21:27:34.197 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[78] - add last htmlTable,index:11
+2022-01-16 21:27:34.238 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_6368233886903494086.pdf
+2022-01-16 21:28:45.860 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[72] - add new htmlTable,index:4
+2022-01-16 21:28:45.864 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[72] - add new htmlTable,index:8
+2022-01-16 21:28:45.864 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[78] - add last htmlTable,index:11
+2022-01-16 21:28:45.915 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_8370124381983489927.pdf
+2022-01-16 21:29:37.842 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:4
+2022-01-16 21:29:37.846 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:8
+2022-01-16 21:29:37.846 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[79] - add last htmlTable,index:11
+2022-01-16 21:29:37.895 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_5314039688082173933.pdf
+2022-01-16 21:40:15.027 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:4
+2022-01-16 21:40:15.030 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:8
+2022-01-16 21:40:15.031 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[79] - add last htmlTable,index:11
+2022-01-16 21:40:15.077 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_5375249179923707172.pdf
+2022-01-16 21:43:14.771 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:4
+2022-01-16 21:43:14.774 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:8
+2022-01-16 21:43:14.774 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[79] - add last htmlTable,index:11
+2022-01-16 21:43:14.822 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_7457223462276146163.pdf
+2022-01-16 21:43:47.935 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:4
+2022-01-16 21:43:47.939 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:8
+2022-01-16 21:43:47.943 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_7948235385055754121.pdf
+2022-01-16 21:44:48.759 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #0
+2022-01-16 21:44:48.762 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #1
+2022-01-16 21:44:48.763 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #2
+2022-01-16 21:44:48.763 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #3
+2022-01-16 21:44:48.766 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:4
+2022-01-16 21:44:48.766 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #4
+2022-01-16 21:44:48.767 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #5
+2022-01-16 21:44:48.767 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #6
+2022-01-16 21:44:48.767 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #7
+2022-01-16 21:44:48.767 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:8
+2022-01-16 21:44:48.767 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #8
+2022-01-16 21:44:48.767 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #9
+2022-01-16 21:44:48.767 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #10
+2022-01-16 21:44:48.771 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_4424103463462389431.pdf
+2022-01-16 21:44:58.094 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #0
+2022-01-16 21:44:58.098 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #1
+2022-01-16 21:44:58.098 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #2
+2022-01-16 21:44:58.099 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #3
+2022-01-16 21:44:58.102 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:4
+2022-01-16 21:44:58.103 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #4
+2022-01-16 21:44:58.104 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #5
+2022-01-16 21:44:58.104 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #6
+2022-01-16 21:44:58.104 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #7
+2022-01-16 21:44:58.104 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new htmlTable,index:8
+2022-01-16 21:44:58.105 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #8
+2022-01-16 21:44:58.105 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process htmlTable #9
+2022-01-16 21:44:58.105 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last htmlTable,index:11
+2022-01-16 21:44:58.154 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_707531006282356170.pdf
+2022-01-16 21:45:49.000 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 htmlTable
+2022-01-16 21:45:49.003 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 htmlTable
+2022-01-16 21:45:49.003 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 htmlTable
+2022-01-16 21:45:49.003 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 htmlTable
+2022-01-16 21:45:49.003 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:4
+2022-01-16 21:45:49.004 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #4 htmlTable
+2022-01-16 21:45:49.004 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #5 htmlTable
+2022-01-16 21:45:49.004 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #6 htmlTable
+2022-01-16 21:45:49.005 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #7 htmlTable
+2022-01-16 21:45:49.005 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[73] - add new htmlTable,index:8
+2022-01-16 21:45:49.005 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #8 htmlTable
+2022-01-16 21:45:49.005 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #9 htmlTable
+2022-01-16 21:45:49.005 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[79] - add last htmlTable,index:11
+2022-01-16 21:45:49.055 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_863894433440203057.pdf
+2022-01-16 22:13:09.688 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #0 table
+2022-01-16 22:13:09.692 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #1 table
+2022-01-16 22:13:09.692 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #2 table
+2022-01-16 22:13:09.692 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #3 table
+2022-01-16 22:13:09.714 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[71] - add new table,index:4
+2022-01-16 22:13:09.715 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #4 table
+2022-01-16 22:13:09.715 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #5 table
+2022-01-16 22:13:09.715 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #6 table
+2022-01-16 22:13:09.715 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #7 table
+2022-01-16 22:13:09.716 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[71] - add new table,index:8
+2022-01-16 22:13:09.716 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #8 table
+2022-01-16 22:13:09.716 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #9 table
+2022-01-16 22:13:09.716 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[77] - add last table,index:11
+2022-01-16 22:13:09.824 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:13:09.845 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_7225443197090843199.pdf
+2022-01-16 22:15:01.672 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #0 table
+2022-01-16 22:15:01.679 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #1 table
+2022-01-16 22:15:01.681 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #2 table
+2022-01-16 22:15:01.681 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #3 table
+2022-01-16 22:15:01.699 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[72] - add new table,index:4
+2022-01-16 22:15:01.700 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #4 table
+2022-01-16 22:15:01.700 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #5 table
+2022-01-16 22:15:01.700 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #6 table
+2022-01-16 22:15:01.700 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #7 table
+2022-01-16 22:15:01.701 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[72] - add new table,index:8
+2022-01-16 22:15:01.701 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #8 table
+2022-01-16 22:15:01.701 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #9 table
+2022-01-16 22:15:01.701 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[78] - add last table,index:11
+2022-01-16 22:15:01.785 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:15:01.803 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_5273162829006233658.pdf
+2022-01-16 22:16:48.440 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:16:48.442 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:16:48.443 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:16:48.443 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:16:48.450 [                     main] ERROR com.caveup.barcode.helper.PdfHelper[88] - Document was closed. It is impossible to execute action.
+2022-01-16 22:17:33.222 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:17:33.225 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:17:33.226 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:17:33.226 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:17:33.231 [                     main] ERROR com.caveup.barcode.helper.PdfHelper[89] - Document was closed. It is impossible to execute action.
+2022-01-16 22:18:10.674 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:18:10.677 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:18:10.678 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:18:10.678 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:18:10.695 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[75] - add new table,index:4
+2022-01-16 22:18:10.696 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #4 table
+2022-01-16 22:18:10.696 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #5 table
+2022-01-16 22:18:10.696 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #6 table
+2022-01-16 22:18:10.697 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #7 table
+2022-01-16 22:18:10.697 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[75] - add new table,index:8
+2022-01-16 22:18:10.697 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #8 table
+2022-01-16 22:18:10.697 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #9 table
+2022-01-16 22:18:10.698 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[81] - add last table,index:11
+2022-01-16 22:18:10.780 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:18:10.795 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_3627191869683852202.pdf
+2022-01-16 22:19:41.133 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:19:41.135 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:19:41.136 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:19:41.136 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:19:41.137 [                     main] ERROR com.caveup.barcode.helper.PdfHelper[89] - null
+2022-01-16 22:21:06.397 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:21:06.399 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:21:06.400 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:21:06.400 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:21:06.420 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:4
+2022-01-16 22:21:06.421 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #4 table
+2022-01-16 22:21:06.421 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #5 table
+2022-01-16 22:21:06.422 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #6 table
+2022-01-16 22:21:06.422 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #7 table
+2022-01-16 22:21:06.422 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:8
+2022-01-16 22:21:06.422 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #8 table
+2022-01-16 22:21:06.423 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #9 table
+2022-01-16 22:21:06.423 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last table,index:11
+2022-01-16 22:21:06.495 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:21:06.514 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_8561335056153861902.pdf
+2022-01-16 22:21:50.654 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:21:50.657 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:21:50.658 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:21:50.659 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:21:50.674 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:4
+2022-01-16 22:21:50.674 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #4 table
+2022-01-16 22:21:50.675 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #5 table
+2022-01-16 22:21:50.675 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #6 table
+2022-01-16 22:21:50.675 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #7 table
+2022-01-16 22:21:50.676 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:8
+2022-01-16 22:21:50.676 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #8 table
+2022-01-16 22:21:50.676 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #9 table
+2022-01-16 22:21:50.677 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last table,index:11
+2022-01-16 22:21:50.753 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:21:50.770 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_2748234061651003040.pdf
+2022-01-16 22:25:18.550 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:25:18.553 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:25:18.554 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:25:18.554 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:25:18.572 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:4
+2022-01-16 22:25:18.572 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #4 table
+2022-01-16 22:25:18.572 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #5 table
+2022-01-16 22:25:18.572 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #6 table
+2022-01-16 22:25:18.573 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #7 table
+2022-01-16 22:25:18.573 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:8
+2022-01-16 22:25:18.573 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #8 table
+2022-01-16 22:25:18.574 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #9 table
+2022-01-16 22:25:18.574 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last table,index:11
+2022-01-16 22:25:18.650 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:25:18.672 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_7889922221763662414.pdf
+2022-01-16 22:29:10.721 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:29:10.723 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:29:10.726 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:29:10.726 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:29:10.726 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #4 table
+2022-01-16 22:29:10.726 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #5 table
+2022-01-16 22:29:10.726 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #6 table
+2022-01-16 22:29:10.726 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #7 table
+2022-01-16 22:29:10.726 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #8 table
+2022-01-16 22:29:10.726 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #9 table
+2022-01-16 22:29:10.726 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last table,index:11
+2022-01-16 22:29:10.834 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:29:10.896 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_2190516112071439481.pdf
+2022-01-16 22:31:41.146 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #0 table
+2022-01-16 22:31:41.150 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #1 table
+2022-01-16 22:31:41.151 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #2 table
+2022-01-16 22:31:41.151 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #3 table
+2022-01-16 22:31:41.240 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:31:41.280 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:4
+2022-01-16 22:31:41.281 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #4 table
+2022-01-16 22:31:41.281 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #5 table
+2022-01-16 22:31:41.281 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #6 table
+2022-01-16 22:31:41.281 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[67] - process #7 table
+2022-01-16 22:31:41.281 [                     main] ERROR com.caveup.barcode.helper.PdfHelper[89] - Document was closed. It is impossible to execute action.
+2022-01-16 22:35:07.938 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:35:07.944 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:35:07.944 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:35:07.944 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:35:08.056 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:35:08.095 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:4
+2022-01-16 22:35:08.096 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #4 table
+2022-01-16 22:35:08.096 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #5 table
+2022-01-16 22:35:08.097 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #6 table
+2022-01-16 22:35:08.097 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #7 table
+2022-01-16 22:35:08.105 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:35:08.131 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:8
+2022-01-16 22:35:08.131 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #8 table
+2022-01-16 22:35:08.131 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #9 table
+2022-01-16 22:35:08.131 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last table,index:11
+2022-01-16 22:35:08.136 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:35:08.148 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_4987670469330214225.pdf
+2022-01-16 22:36:18.242 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:36:18.245 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:36:18.246 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:36:18.246 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:36:18.246 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #4 table
+2022-01-16 22:36:18.246 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #5 table
+2022-01-16 22:36:18.419 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:6
+2022-01-16 22:36:18.420 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #6 table
+2022-01-16 22:36:18.421 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #7 table
+2022-01-16 22:36:18.421 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #8 table
+2022-01-16 22:36:18.421 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #9 table
+2022-01-16 22:36:18.421 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last table,index:11
+2022-01-16 22:36:18.449 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_2482830185576956198.pdf
+2022-01-16 22:37:20.108 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:37:20.111 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:37:20.112 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:37:20.112 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:37:20.112 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #4 table
+2022-01-16 22:37:20.112 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #5 table
+2022-01-16 22:37:20.214 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:37:20.266 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:6
+2022-01-16 22:37:20.267 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #6 table
+2022-01-16 22:37:20.267 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #7 table
+2022-01-16 22:37:20.268 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #8 table
+2022-01-16 22:37:20.268 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #9 table
+2022-01-16 22:37:20.268 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last table,index:11
+2022-01-16 22:37:20.274 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:37:20.296 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_6876597332208398729.pdf
+2022-01-16 22:39:40.855 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #0 table
+2022-01-16 22:39:40.858 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #1 table
+2022-01-16 22:39:40.859 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #2 table
+2022-01-16 22:39:40.859 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #3 table
+2022-01-16 22:39:40.859 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #4 table
+2022-01-16 22:39:40.859 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #5 table
+2022-01-16 22:39:40.962 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:39:41.021 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[74] - add new table,index:6
+2022-01-16 22:39:41.022 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #6 table
+2022-01-16 22:39:41.022 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #7 table
+2022-01-16 22:39:41.022 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #8 table
+2022-01-16 22:39:41.022 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[69] - process #9 table
+2022-01-16 22:39:41.022 [                     main] INFO  com.caveup.barcode.helper.PdfHelper[80] - add last table,index:11
+2022-01-16 22:39:41.027 [                     main] WARN  com.itextpdf.layout.renderer.TableWidths[751] - Table width is more than expected due to min width of cell(s).
+2022-01-16 22:39:41.049 [                     main] INFO  com.caveup.barcode.helper.PdfHelperTest[66] - C:\Users\xw80329\AppData\Local\Temp\data_4067035479910345502.pdf
