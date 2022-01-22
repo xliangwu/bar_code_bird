@@ -33,7 +33,6 @@ public class CustomerController {
         return ApiResultHelper.success(customerRepository.listByPage(page, pageSize));
     }
 
-
     /**
      * 根据id查询
      */

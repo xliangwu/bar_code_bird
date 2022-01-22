@@ -5,9 +5,14 @@ import com.caveup.barcode.constants.PrintType;
 import com.caveup.barcode.entity.HtmlTable;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.core.io.ClassPathResource;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 
@@ -60,8 +65,26 @@ public class PdfHelperTest {
 
         Optional<HtmlTable> optional = JsoupHelper.parseTable(text);
         Assert.assertTrue(optional.isPresent());
-        Map<String, String> params = Maps.newHashMap();
+        Map<String, Object> params = Maps.newHashMap();
         Optional<String> outputOption = PdfHelper.generatePrintPdf(optional.get(), params, 0, 11, PrintType.P2_2);
+        Assert.assertTrue(outputOption.isPresent());
+        log.info(outputOption.get());
+    }
+
+    @Test
+    public void generate2PrintPdf() throws IOException {
+        File templateHtml = new ClassPathResource("data/template.html").getFile();
+        String text = FileUtils.readFileToString(templateHtml, "utf-8");
+
+        Optional<HtmlTable> optional = JsoupHelper.parseTable(text);
+        Assert.assertTrue(optional.isPresent());
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("selectedDate", new Date());
+        params.put("machineCode", "1000010");
+        params.put("productCode", "8888888");
+        params.put("serialNumber", "20210122002");
+        params.put("capacity", 1000);
+        Optional<String> outputOption = PdfHelper.generatePrintPdf(optional.get(), params, 0, 11, PrintType.P2_3);
         Assert.assertTrue(outputOption.isPresent());
         log.info(outputOption.get());
     }

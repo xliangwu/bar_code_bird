@@ -2,6 +2,7 @@ package com.caveup.barcode.entity;
 
 import com.google.common.collect.Lists;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
@@ -14,11 +15,24 @@ import java.util.List;
 public class HtmlTable {
 
     private List<TableRow> rows;
+
+    @Setter
     private Integer percentWidth;
+
+    @Setter
     private Integer paddingTop;
+
+    @Setter
     private Integer paddingBottom;
+
+    @Setter
     private Integer paddingLeft;
+
+    @Setter
     private Integer paddingRight;
+
+    @Setter
+    private Integer fontSize;
 
     public HtmlTable() {
         this.rows = Lists.newArrayList();

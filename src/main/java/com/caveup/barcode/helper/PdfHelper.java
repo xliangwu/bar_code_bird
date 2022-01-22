@@ -2,10 +2,11 @@ package com.caveup.barcode.helper;
 
 import com.caveup.barcode.constants.InterpolateType;
 import com.caveup.barcode.constants.PrintType;
-import com.caveup.barcode.entity.CssTextAlignment;
-import com.caveup.barcode.entity.HtmlTable;
-import com.caveup.barcode.entity.TableCell;
-import com.caveup.barcode.entity.TableRow;
+import com.caveup.barcode.entity.*;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -13,18 +14,15 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.borders.DashedBorder;
 import com.itextpdf.layout.borders.SolidBorder;
-import com.itextpdf.layout.element.AreaBreak;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,7 +44,7 @@ public class PdfHelper {
      * @param printType
      */
     public static Optional<String> generatePrintPdf(HtmlTable htmlTableTemplate,
-                                                    Map<String, String> params,
+                                                    Map<String, Object> params,
                                                     int startIndex,
                                                     int endIndex,
                                                     PrintType printType) {
@@ -117,16 +115,36 @@ public class PdfHelper {
     }
 
     private static Table createPdfTable(HtmlTable htmlTableTemplate,
-                                        Map<String, String> params,
-                                        int index) {
+                                        Map<String, Object> params,
+                                        int index) throws IOException {
         int maxCols = htmlTableTemplate.getRows().stream().mapToInt(TableRow::calculateCols).reduce(Integer::max).getAsInt();
         Table pdfTable = new Table(maxCols);
-
+        PdfFont font = PdfFontFactory.createFont("STSong-Light", "UniGB-UCS2-H", true);
+        pdfTable.setFont(font);
+        pdfTable.setFontSize(htmlTableTemplate.getFontSize());
+        log.info("total cols:{}", maxCols);
         for (TableRow row : htmlTableTemplate.getRows()) {
             for (TableCell cell : row.getCells()) {
-                Cell pdfCell = new Cell(cell.getRowSpan(), cell.getColSpan()).add(new Paragraph("33-" + index));
+                String content = interpolate(cell.getText(), cell.getInterpolate(), params);
+                log.info("rowSpan:{},colSpan:{},{} =>{}", cell.getRowSpan(), cell.getColSpan(), cell.getText(), content);
+                Cell pdfCell = new Cell(cell.getRowSpan(), cell.getColSpan());
+                int cellWidth = Math.max(cell.getWidth(), 6);
+                if (InterpolateType.QR_CODE == cell.getInterpolate().getType()) {
+                    int qrWith = Math.max(100, cellWidth - 6);
+                    byte[] contents = QrCodeHelper.createQrCodeData(content, qrWith, qrWith);
+                    if (null != contents) {
+                        ImageData imageData = ImageDataFactory.create(contents);
+                        Image qrCodeImg = new Image(imageData);
+                        pdfCell.add(qrCodeImg);
+                    }
+                } else {
+                    pdfCell.add(new Paragraph(content));
+                    pdfCell.setWidth(cell.getWidth());
+                }
                 pdfCell.setBorder(new SolidBorder(Border.SOLID));
                 pdfCell.setPadding(4);
+                pdfCell.setFontSize(cell.getFontSize());
+                pdfCell.setVerticalAlignment(VerticalAlignment.valueOf(ObjectsHelper.nvl(cell.getVerticalAlignment(), CssVerticalAlignment.MIDDLE).name()));
                 pdfCell.setTextAlignment(TextAlignment.valueOf(ObjectsHelper.nvl(cell.getAlignment(), CssTextAlignment.CENTER).name()));
                 pdfCell.setPaddings(ObjectsHelper.nvl(cell.getPaddingTop(), 6),
                         ObjectsHelper.nvl(cell.getPaddingRight(), 6),
@@ -139,14 +157,7 @@ public class PdfHelper {
         return pdfTable;
     }
 
-    private static String interpolate(InterpolateType type, String originText, Map<String, String> paramsMap) {
-        switch (type) {
-            case DATE:
-            case PRODUCT_CODE:
-            case CAPACITY:
-                return paramsMap.getOrDefault(type.getField(), StringUtils.EMPTY);
-            default:
-                return originText;
-        }
+    private static String interpolate(String originText, InterpolateEntity type, Map<String, Object> paramsMap) {
+        return type.getType().interpolate(originText, type.getFormat(), type.getParamKeys(), paramsMap);
     }
 }

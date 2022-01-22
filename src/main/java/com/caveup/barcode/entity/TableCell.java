@@ -1,6 +1,5 @@
 package com.caveup.barcode.entity;
 
-import com.caveup.barcode.constants.InterpolateType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,18 +17,20 @@ public class TableCell {
     private String text;
     private boolean bold;
     private int fontSize;
-    private InterpolateType interpolateType;
+    private InterpolateEntity interpolate;
     private CssTextAlignment alignment;
+    private CssVerticalAlignment verticalAlignment;
     private Integer paddingTop;
     private Integer paddingBottom;
     private Integer paddingLeft;
     private Integer paddingRight;
+    private int width;
 
     public TableCell(String text, int colSpan, int rowSpan) {
         this.text = text;
         this.colSpan = colSpan;
         this.rowSpan = rowSpan;
-        this.interpolateType = InterpolateType.TEXT_CODE;
+        this.interpolate = InterpolateEntity.TEXT;
     }
 
     public TableCell(String text) {
