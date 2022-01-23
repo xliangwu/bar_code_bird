@@ -34,7 +34,13 @@ public enum InterpolateType {
                 } else {
                     Object[] objs = new Object[keys.size()];
                     for (int i = 0; i < keys.size(); i++) {
-                        objs[i] = params.getOrDefault(keys.get(i), StringUtils.EMPTY);
+                        Object target = params.getOrDefault(keys.get(i), StringUtils.EMPTY);
+                        if (target instanceof Date) {
+                            SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+                            objs[i] = fmt.format((Date) target);
+                        } else {
+                            objs[i] = target;
+                        }
                     }
                     return String.format(format, objs);
                 }

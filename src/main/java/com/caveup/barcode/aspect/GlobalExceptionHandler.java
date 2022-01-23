@@ -6,6 +6,7 @@ import com.caveup.barcode.result.helper.ApiResultHelper;
 import com.caveup.barcode.result.model.ApiResultModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -39,6 +40,13 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ApiResultModel handleException(IllegalArgumentException e) {
         log.error(e.getMessage());
+        return ApiResultHelper.error(ApiStatusCode.PARAM_ERROR.getCode(), e.getMessage());
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    @ResponseBody
+    public ApiResultModel handleException(MissingServletRequestParameterException e) {
+        log.error(e.getMessage(), e);
         return ApiResultHelper.error(ApiStatusCode.PARAM_ERROR.getCode(), e.getMessage());
     }
 
