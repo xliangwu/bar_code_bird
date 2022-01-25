@@ -12,6 +12,7 @@ import com.caveup.barcode.model.CustomerStorageEntity;
 import com.caveup.barcode.service.impl.CustomerStorageRepositoryImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -49,7 +50,7 @@ public class CustomerStorageExcelLoader implements ExcelLoader<CustomerStorageEn
         try (FileInputStream inputStream = new FileInputStream(excelFile)) {
             excelReader = EasyExcel.read(inputStream, getClazz(), listener)
                     .ignoreEmptyRow(true)
-                    .headRowNumber(1)
+                    .headRowNumber(3)
                     .registerConverter(new TimestampStringConverter())
                     .build();
             ReadSheet readSheet = EasyExcel.readSheet(0).build();
@@ -65,7 +66,7 @@ public class CustomerStorageExcelLoader implements ExcelLoader<CustomerStorageEn
 
         Collection<CustomerStorageEntity> data = listener.getData();
         if (CollectionUtils.isNotEmpty(data)) {
-            List<CustomerStorageEntity> newData = data.stream().map(enhance).collect(Collectors.toList());
+            List<CustomerStorageEntity> newData = data.stream().filter(e -> StringUtils.isNoneBlank(e.getCol1())).map(enhance).collect(Collectors.toList());
             assert customerStorageRepository != null;
             Integer customerId = newData.get(0).getCustomerId();
             boolean ret = customerStorageRepository.remove(Wrappers.<CustomerStorageEntity>query().lambda().eq(CustomerStorageEntity::getCustomerId, customerId));

@@ -102,6 +102,7 @@ public class DataController extends AbstractController {
                     }
 
                     loader(dataSourceType, tempFile, customerId);
+                    return ApiResultHelper.success();
                 }
             } catch (Exception e) {
                 log.error(e.getMessage(), e);

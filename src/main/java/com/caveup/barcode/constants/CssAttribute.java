@@ -7,11 +7,15 @@ import lombok.Getter;
  */
 public enum CssAttribute {
 
+    /**
+     *
+     */
     WIDTH("width"),
 
     TEXT_ALIGN("text-align"),
     VERTICAL_ALIGN("vertical-align"),
     FONT_SIZE("font-size"),
+    FONT_WEIGHT("font-weight"),
     /**
      * css padding
      */

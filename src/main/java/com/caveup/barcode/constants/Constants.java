@@ -10,4 +10,6 @@ public class Constants {
     public static final int DEFAULT_PADDING = 2;
 
     public static final int DEFAULT_FONT_SIZE = 10;
+
+    public static final String FONT_WEIGHT_BOLD = "bold";
 }

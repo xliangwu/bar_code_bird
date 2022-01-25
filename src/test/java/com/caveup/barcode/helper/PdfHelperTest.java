@@ -88,4 +88,30 @@ public class PdfHelperTest {
         Assert.assertTrue(outputOption.isPresent());
         log.info(outputOption.get());
     }
+
+    @Test
+    public void generate3PrintPdf() throws IOException {
+        File templateHtml = new ClassPathResource("data/template1.html").getFile();
+        String text = FileUtils.readFileToString(templateHtml, "utf-8");
+
+        Optional<HtmlTable> optional = JsoupHelper.parseTable(text);
+        Assert.assertTrue(optional.isPresent());
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("selectedDate", new Date());
+        params.put("machineCode", "1000010");
+        params.put("productCode", "1015-01\n21好奇T7治愈之柔 NB13P 内袋 1015-01 60u");
+        params.put("serialNumber", "20210122002");
+        params.put("sapCode", "14121812");
+        params.put("capacity", "3449枚/卷");
+        params.put("specification", "(260*160*50)");
+        Optional<String> outputOption = PdfHelper.generatePrintPdf(optional.get(), params, 0, 11, PrintType.P2_2);
+        Assert.assertTrue(outputOption.isPresent());
+        log.info(outputOption.get());
+    }
+
+    @Test
+    public void splitTest() {
+        String a = "1015-01\n21好奇T7治愈之柔 NB13P 内袋 1015-01 60u";
+        log.info("{}=>{}", a.split("\n"));
+    }
 }

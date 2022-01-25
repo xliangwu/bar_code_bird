@@ -1,5 +1,6 @@
 package com.caveup.barcode.helper;
 
+import com.caveup.barcode.constants.Constants;
 import com.caveup.barcode.constants.InterpolateType;
 import com.caveup.barcode.constants.PrintType;
 import com.caveup.barcode.entity.*;
@@ -138,7 +139,12 @@ public class PdfHelper {
                         pdfCell.add(qrCodeImg);
                     }
                 } else {
-                    pdfCell.add(new Paragraph(content));
+                    boolean isBold = Constants.FONT_WEIGHT_BOLD.equals(cell.getFontWeight());
+                    Paragraph paragraph = new Paragraph(content);
+                    if (isBold) {
+                        paragraph.setBold();
+                    }
+                    pdfCell.add(paragraph);
                     pdfCell.setWidth(cell.getWidth());
                 }
                 pdfCell.setBorder(new SolidBorder(Border.SOLID));

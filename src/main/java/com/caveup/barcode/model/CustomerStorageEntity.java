@@ -33,29 +33,35 @@ public class CustomerStorageEntity extends Entity<Integer> {
 
     private Integer customerId;
 
-    @ExcelProperty("智审模型编码")
+    @ExcelProperty("接单卡号")
     @TableField("col_1")
     private String col1;
 
-    @ExcelProperty("智审模型名称")
+    @ExcelProperty("制造指示图号")
     @TableField("col_2")
     private String col2;
 
+    @ExcelProperty("SAP代码")
     @TableField("col_3")
     private String col3;
 
+    @ExcelProperty("品名码")
     @TableField("col_4")
     private String col4;
 
+    @ExcelProperty("产品名")
     @TableField("col_5")
     private String col5;
 
+    @ExcelProperty("规格")
     @TableField("col_6")
     private String col6;
 
+    @ExcelProperty("数量")
     @TableField("col_7")
     private String col7;
 
+    @ExcelProperty("纸箱编号")
     @TableField("col_8")
     private String col8;
 

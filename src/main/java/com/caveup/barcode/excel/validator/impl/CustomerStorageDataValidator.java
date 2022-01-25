@@ -34,7 +34,7 @@ public class CustomerStorageDataValidator implements ExcelValidator<CustomerStor
         try (FileInputStream inputStream = new FileInputStream(excelFile)) {
             excelReader = EasyExcel.read(inputStream, getClazz(), listener)
                     .ignoreEmptyRow(true)
-                    .headRowNumber(1)
+                    .headRowNumber(3)
                     .registerConverter(new TimestampStringConverter())
                     .build();
             ReadSheet readSheet = EasyExcel.readSheet(0).build();
