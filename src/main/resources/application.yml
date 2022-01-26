@@ -11,6 +11,9 @@ spring:
     allow-bean-definition-overriding: true
   autoconfigure:
     exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+  thymeleaf:
+    prefix: classpath:/static/
+    suffix: .html
 server:
   compression:
     enabled: true
