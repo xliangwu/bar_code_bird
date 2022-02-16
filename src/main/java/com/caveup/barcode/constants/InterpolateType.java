@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author xw80329
@@ -21,6 +22,7 @@ public enum InterpolateType {
      */
     TEXT_CODE("TEXT"),
 
+    JOINT_IMG("JOINT_IMG"),
     /**
      *
      */
@@ -64,7 +66,11 @@ public enum InterpolateType {
                 } else {
                     Object[] objs = new Object[keys.size()];
                     for (int i = 0; i < keys.size(); i++) {
-                        objs[i] = params.getOrDefault(keys.get(i), StringUtils.EMPTY);
+                        Object obj = params.getOrDefault(keys.get(i), StringUtils.EMPTY);
+                        if (Objects.isNull(obj)) {
+                            obj = StringUtils.EMPTY;
+                        }
+                        objs[i] = obj;
                     }
                     return String.format(format, objs);
                 }
@@ -105,7 +111,7 @@ public enum InterpolateType {
     }
 
     public String interpolate(String originText, String format, List<String> keys, Map<String, Object> params) {
-        return originText;
+        return Objects.toString(originText, StringUtils.EMPTY);
     }
 
     public static InterpolateType valueOfType(String text) {

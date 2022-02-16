@@ -5,15 +5,18 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
+  baseURL: process.env.VUE_APP_BASE_API // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 5000 // request timeout
+  // timeout: 5000 // request timeout
 })
 
 // request interceptor
 service.interceptors.request.use(
   config => {
-    // do something before request is sent
+    config.headers = {
+      'Cache-Control': 'no-cache',
+      Pragma: 'no-cache'
+    }
 
     if (store.getters.token) {
       // let each request carry token
@@ -25,7 +28,8 @@ service.interceptors.request.use(
   },
   error => {
     // do something with request error
-    console.log(error) // for debug
+    console.log(error)
+    // 对请求错误做些什么
     return Promise.reject(error)
   }
 )
@@ -33,20 +37,20 @@ service.interceptors.request.use(
 // response interceptor
 service.interceptors.response.use(
   /**
-   * If you want to get http information such as headers or status
-   * Please return  response => response
-  */
+     * If you want to get http information such as headers or status
+     * Please return  response => response
+     */
 
   /**
-   * Determine the request status by custom code
-   * Here is just an example
-   * You can also judge the status by HTTP Status Code
-   */
+     * Determine the request status by custom code
+     * Here is just an example
+     * You can also judge the status by HTTP Status Code
+     */
   response => {
     const res = response.data
 
-    // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 20000) {
+    // if the custom code is not 0, it is judged as an error.
+    if (res.code !== 0) {
       Message({
         message: res.message || 'Error',
         type: 'error',
@@ -72,11 +76,11 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log('err' + error) // for debug
+    console.log('err' + error)
     Message({
       message: error.message,
       type: 'error',
-      duration: 5 * 1000
+      duration: 3 * 1000
     })
     return Promise.reject(error)
   }

@@ -1,7 +1,31 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
-    <div class="dashboard-text">roles: <span v-for="role in roles" :key="role">{{ role }}</span></div>
+    <div class="dashboard-text">
+      <p>欢迎使用二维码定制打印系统!</p>
+      <div>
+        <span>操作说明:</span>
+        <ol>
+          <li>打印</li>
+          <ul>
+            <li>
+              <el-link type="primary" href="#/print/index">打印</el-link>
+            </li>
+            <li>
+              <el-link type="primary" href="#/zplPrint/index">斑马打印</el-link>
+            </li>
+          </ul>
+          <li>
+            <el-link type="primary" href="#/product/commodity">品项信息</el-link>
+          </li>
+          <li>
+            <el-link type="primary" href="#/product/template">配置模板</el-link>
+          </li>
+          <li>
+            <el-link type="primary" href="#/product/machine">机器管理</el-link>
+          </li>
+        </ol>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -11,10 +35,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Dashboard',
   computed: {
-    ...mapGetters([
-      'name',
-      'roles'
-    ])
+    ...mapGetters(['name', 'roles'])
   }
 }
 </script>

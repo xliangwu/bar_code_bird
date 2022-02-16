@@ -44,6 +44,8 @@ public enum ApiStatusCode {
     UNKNOWN_ERROR(999, "系统运行出错"),
 
     TEMPLATE_UPLOAD_FAIL(5500, "数据导入遇到问题，目前只支持产品指标"),
+    TEMPLATE_PREVIEW_FAIL(5501, "模板解析遇到问题"),
+    PRINT_FAIL(5502, "生成打印数据遇到问题"),
 
     /**
      * 参数校验

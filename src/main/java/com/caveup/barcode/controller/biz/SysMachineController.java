@@ -5,8 +5,12 @@ import com.caveup.barcode.model.SysMachineEntity;
 import com.caveup.barcode.result.helper.ApiResultHelper;
 import com.caveup.barcode.result.model.ApiResultModel;
 import com.caveup.barcode.service.SysMachineRepository;
+import com.caveup.barcode.vo.SysMachineVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * <p>
@@ -44,9 +48,13 @@ public class SysMachineController {
     /**
      * 新增
      */
-    @RequestMapping(method = RequestMethod.POST)
-    public ApiResultModel<?> insert(@RequestBody SysMachineEntity sysMachineEntity) {
-        return ApiResultHelper.success(sysMachineRepository.insert(sysMachineEntity));
+    @RequestMapping(method = RequestMethod.POST, value = "/save")
+    public ApiResultModel<?> insert(@RequestBody @Validated SysMachineVO vo) {
+        SysMachineEntity entity = new SysMachineEntity();
+        entity.setMachineCategory(vo.getMachineCategory());
+        entity.setCreatedTime(new Date());
+        entity.setMachineName(vo.getMachineName());
+        return ApiResultHelper.success(sysMachineRepository.insert(entity));
     }
 
     /**
@@ -61,7 +69,12 @@ public class SysMachineController {
      * 修改
      */
     @RequestMapping(method = RequestMethod.POST, value = "/update")
-    public ApiResultModel<?> updateById(@RequestBody SysMachineEntity sysMachineEntity) {
-        return ApiResultHelper.success(sysMachineRepository.update(sysMachineEntity));
+    public ApiResultModel<?> updateById(@RequestBody @Validated SysMachineVO vo) {
+        SysMachineEntity entity = new SysMachineEntity();
+        entity.setMachineCategory(vo.getMachineCategory());
+        entity.setId(vo.getId());
+        entity.setCreatedTime(new Date());
+        entity.setMachineName(vo.getMachineName());
+        return ApiResultHelper.success(sysMachineRepository.update(entity));
     }
 }

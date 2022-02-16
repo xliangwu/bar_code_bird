@@ -6,16 +6,19 @@ import com.caveup.barcode.constants.InterpolateType;
 import com.caveup.barcode.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.Base64Utils;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.StringTokenizer;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * @author xw80329
@@ -71,6 +74,56 @@ public class JsoupHelper {
             htmlTable.addRow(row);
         }
         return Optional.of(htmlTable);
+    }
+
+    public static Optional<String> interpolate(String template, Map<String, Object> params) throws IOException {
+        if (StringUtils.isBlank(template)) {
+            return Optional.empty();
+        }
+        Document document = Jsoup.parse(template);
+        Elements tables = document.getElementsByTag("table");
+        if (CollectionUtils.isEmpty(tables)) {
+            log.info("no table in given template:{}", template);
+            return Optional.empty();
+        }
+        Element tableEle = tables.get(0);
+        Elements trs = tableEle.getElementsByTag("tr");
+        for (Element tr : trs) {
+            Elements tds = tr.getElementsByTag("td");
+            if (CollectionUtils.isEmpty(tds)) {
+                tds = tr.getElementsByTag("th");
+            }
+
+            for (Element td : tds) {
+                String text = td.text();
+                InterpolateEntity interpolateEntity = parseInterpolate(text);
+                String interpolateText = interpolate(text, interpolateEntity, params);
+                if (InterpolateType.QR_CODE == interpolateEntity.getType()) {
+                    byte[] contents = QrCodeHelper.createQrCodeData(interpolateText, 180, 180);
+                    Element image = new Element("img");
+                    String imageSrc = Base64Utils.encodeToString(contents);
+                    image.attr("src", "data:image;base64," + imageSrc);
+                    td.text(StringUtils.EMPTY);
+                    td.appendChild(image);
+                } else if (InterpolateType.JOINT_IMG == interpolateEntity.getType()) {
+                    File jointImg = new ClassPathResource("jietou.png").getFile();
+                    byte[] contents = FileUtils.readFileToByteArray(jointImg);
+                    Element image = new Element("img");
+                    String imageSrc = Base64Utils.encodeToString(contents);
+                    image.attr("src", "data:image;base64," + imageSrc);
+                    image.attr("style", "height:64px");
+                    td.text(StringUtils.EMPTY);
+                    td.appendChild(image);
+                } else {
+                    td.text(Objects.toString(interpolateText, StringUtils.EMPTY));
+                }
+            }
+        }
+        return Optional.of(tableEle.outerHtml());
+    }
+
+    private static String interpolate(String originText, InterpolateEntity type, Map<String, Object> paramsMap) {
+        return type.getType().interpolate(originText, type.getFormat(), type.getParamKeys(), paramsMap);
     }
 
     /**

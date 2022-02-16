@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.caveup.barcode.entity.Entity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,13 +29,10 @@ public class TemplateEntity extends Entity<Integer> {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-
     private String title;
+    private String content;
 
-    private String type;
-
-    private String classType;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createdTime;
 
     @Override

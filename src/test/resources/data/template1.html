@@ -1,8 +1,8 @@
-<table style="width:100%;padding-left:25px;padding-top:25px;padding-right:25px;padding-bottom:25px;font-size: 10px">
+<table style="padding-left:25px;padding-top:25px;padding-right:25px;padding-bottom:25px;font-size: 10px">
     <thead>
     <tr>
-        <th style="text-align: center">供应商</th>
-        <th colspan="2" style="text-align: center">上海福助工业有限公司</th>
+        <td style="text-align: center">供应商</td>
+        <td colspan="2" style="text-align: center">上海福助工业有限公司</td>
     </tr>
     </thead>
     <tbody>
@@ -11,9 +11,9 @@
         <td colspan="2" style="text-align: left">$PARAM$$productCode$</td>
     </tr>
     <tr>
-        <td style="text-align: center">生产日期</td>
-        <td style="text-align: center">$DATE$yyyy-MM-dd$selectedDate$</td>
-        <td rowspan="5" style="text-align: center;padding-left:18px;padding-right:18px">
+        <td style="text-align: center;width:120px">生产日期</td>
+        <td style="text-align: center">$DATE$yyyy年MM月dd日$selectedDate$</td>
+        <td rowspan="5" style="text-align: center;padding-left:18px;padding-right:18px;">
             $QR_CODE$%s,%s$selectedDate,machineCode$
         </td>
     </tr>
@@ -23,11 +23,11 @@
     </tr>
     <tr>
         <td style="text-align: center">数  量</td>
-        <td style="text-align: center">$PARAM$$serialNumber$</td>
+        <td style="text-align: center">$PARAM$$capacity$</td>
     </tr>
     <tr>
         <td style="text-align: center">批  号</td>
-        <td style="text-align: center">$PARAM$$capacity$</td>
+        <td style="text-align: center">$PARAM$%s%03d$machineCode,index$</td>
     </tr>
     <tr>
         <td style="text-align: center;padding-left:16px;padding-right:16px">SAP代码</td>

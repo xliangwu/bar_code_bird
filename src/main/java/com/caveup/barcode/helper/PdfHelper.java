@@ -69,6 +69,7 @@ public class PdfHelper {
             boolean hasCells = false;
             int lastRow = (endIndex - startIndex) % 2 == 0 ? (endIndex - startIndex) / 2 : (endIndex - startIndex) / 2 + 1;
             for (int i = startIndex; i < endIndex; i++, index++) {
+                params.put("index", i);
                 boolean pageBottomRow = (index + 1) % tableCountOfOnePage == 0 || index % tableCountOfOnePage == 0;
                 boolean isLastRow = (lastRow == index / 2) || (lastRow == (index + 1) / 2);
                 Table table = createPdfTable(htmlTableTemplate, params, i);
@@ -148,14 +149,14 @@ public class PdfHelper {
                     pdfCell.setWidth(cell.getWidth());
                 }
                 pdfCell.setBorder(new SolidBorder(Border.SOLID));
-                pdfCell.setPadding(4);
+                pdfCell.setPadding(2);
                 pdfCell.setFontSize(cell.getFontSize());
                 pdfCell.setVerticalAlignment(VerticalAlignment.valueOf(ObjectsHelper.nvl(cell.getVerticalAlignment(), CssVerticalAlignment.MIDDLE).name()));
                 pdfCell.setTextAlignment(TextAlignment.valueOf(ObjectsHelper.nvl(cell.getAlignment(), CssTextAlignment.CENTER).name()));
-                pdfCell.setPaddings(ObjectsHelper.nvl(cell.getPaddingTop(), 6),
-                        ObjectsHelper.nvl(cell.getPaddingRight(), 6),
-                        ObjectsHelper.nvl(cell.getPaddingBottom(), 6),
-                        ObjectsHelper.nvl(cell.getPaddingLeft(), 6));
+                pdfCell.setPaddings(ObjectsHelper.nvl(cell.getPaddingTop(), 2),
+                        ObjectsHelper.nvl(cell.getPaddingRight(), 2),
+                        ObjectsHelper.nvl(cell.getPaddingBottom(), 2),
+                        ObjectsHelper.nvl(cell.getPaddingLeft(), 2));
                 pdfTable.addCell(pdfCell);
             }
         }

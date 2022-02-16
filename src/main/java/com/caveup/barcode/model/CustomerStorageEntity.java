@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.caveup.barcode.entity.Entity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -37,37 +38,37 @@ public class CustomerStorageEntity extends Entity<Integer> {
     @TableField("col_1")
     private String col1;
 
-    @ExcelProperty("制造指示图号")
+    @ExcelProperty("SAP代码")
     @TableField("col_2")
     private String col2;
 
-    @ExcelProperty("SAP代码")
+    @ExcelProperty("品名码")
     @TableField("col_3")
     private String col3;
 
-    @ExcelProperty("品名码")
+    @ExcelProperty("产品名")
     @TableField("col_4")
     private String col4;
 
-    @ExcelProperty("产品名")
+    @ExcelProperty("规格")
     @TableField("col_5")
     private String col5;
 
-    @ExcelProperty("规格")
+    @ExcelProperty("数量")
     @TableField("col_6")
     private String col6;
 
-    @ExcelProperty("数量")
+    @ExcelProperty("纸箱编号")
     @TableField("col_7")
     private String col7;
 
-    @ExcelProperty("纸箱编号")
     @TableField("col_8")
     private String col8;
 
     @TableField("col_9")
     private String col9;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createdTime;
 
     @Override

@@ -1,6 +1,7 @@
 package com.caveup.barcode.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.caveup.barcode.model.CustomerStorageEntity;
 
 /**
@@ -11,7 +12,7 @@ import com.caveup.barcode.model.CustomerStorageEntity;
  * @author xw80329
  * @since 2022-01-09
  */
-public interface CustomerStorageRepository {
+public interface CustomerStorageRepository extends IService<CustomerStorageEntity> {
 
     /**
      * 分页查询CustomerStorageEntity

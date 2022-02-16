@@ -11,7 +11,7 @@ public class IndexController {
 
     private static final String DEFAULT_INDEX_PAGE = "index";
 
-    @RequestMapping(value = {"/*", "/index"})
+    @RequestMapping(value = {"/", "/index"})
     public String greeting() {
         return DEFAULT_INDEX_PAGE;
     }

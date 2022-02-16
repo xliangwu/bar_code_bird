@@ -104,7 +104,7 @@ public class PdfHelperTest {
         params.put("sapCode", "14121812");
         params.put("capacity", "3449枚/卷");
         params.put("specification", "(260*160*50)");
-        Optional<String> outputOption = PdfHelper.generatePrintPdf(optional.get(), params, 0, 11, PrintType.P2_2);
+        Optional<String> outputOption = PdfHelper.generatePrintPdf(optional.get(), params, 0, 1000, PrintType.P2_2);
         Assert.assertTrue(outputOption.isPresent());
         log.info(outputOption.get());
     }

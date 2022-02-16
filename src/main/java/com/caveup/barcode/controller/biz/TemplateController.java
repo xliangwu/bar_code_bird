@@ -4,8 +4,12 @@ import com.caveup.barcode.model.TemplateEntity;
 import com.caveup.barcode.result.helper.ApiResultHelper;
 import com.caveup.barcode.result.model.ApiResultModel;
 import com.caveup.barcode.service.TemplateRepository;
+import com.caveup.barcode.vo.TemplateVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * <p>
@@ -44,9 +48,13 @@ public class TemplateController {
     /**
      * 新增
      */
-    @RequestMapping(method = RequestMethod.POST)
-    public ApiResultModel<?> insert(@RequestBody TemplateEntity templateEntity) {
-        return ApiResultHelper.success(templateRepository.insert(templateEntity));
+    @RequestMapping(method = RequestMethod.POST, value = "/save")
+    public ApiResultModel<?> insert(@RequestBody @Validated TemplateVO vo) {
+        TemplateEntity entity = new TemplateEntity();
+        entity.setTitle(vo.getTitle());
+        entity.setContent(vo.getContent());
+        entity.setCreatedTime(new Date());
+        return ApiResultHelper.success(templateRepository.insert(entity));
     }
 
     /**
@@ -61,7 +69,12 @@ public class TemplateController {
      * 修改
      */
     @RequestMapping(method = RequestMethod.POST, value = "/update")
-    public ApiResultModel<?> updateById(@RequestBody TemplateEntity templateEntity) {
-        return ApiResultHelper.success(templateRepository.update(templateEntity));
+    public ApiResultModel<?> updateById(@RequestBody @Validated TemplateVO vo) {
+        TemplateEntity entity = new TemplateEntity();
+        entity.setTitle(vo.getTitle());
+        entity.setContent(vo.getContent());
+        entity.setCreatedTime(new Date());
+        entity.setId(vo.getId());
+        return ApiResultHelper.success(templateRepository.update(entity));
     }
 }
