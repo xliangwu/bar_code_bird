@@ -45,6 +45,13 @@ public class ZplHelper {
         }
     }
 
+    /**
+     * @param zplCommands
+     * @param params
+     * @param index
+     * @return
+     * @link http://www.zebra-zh.com/supports/Zebra-GT820-ZPL.html
+     */
     public static String zplCommandInterpolate(List<String> zplCommands, Map<String, Object> params, int index) {
         StringBuilder zplCommand = new StringBuilder();
         SimpleDateFormat df = new SimpleDateFormat(("yyyy年MM月dd日"));

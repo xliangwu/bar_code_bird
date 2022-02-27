@@ -20,3 +20,7 @@
 - SpringBoot 2.6.2
 - Mybatis
 - vue3+
+
+# zpl
+- [ZPL指令](http://www.chongshang.com.cn/manual/zebra_Simsun_font.shtml)
+
