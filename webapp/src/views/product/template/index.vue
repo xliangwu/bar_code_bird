@@ -17,9 +17,16 @@
       <el-col :span="24">
         <el-table v-loading="listLoading" :data="list" element-loading-text="Loading" border fit highlight-current-row>
           <el-table-column label="模板名称" prop="title" />
+          <el-table-column label="模板类型" prop="type">
+            <template slot-scope="scope">
+              <span :style="{ paddingLeft: '4px' }">{{
+                options_labels[scope.row.type]
+              }}</span>
+            </template>
+          </el-table-column>
           <el-table-column label="模板样式" prop="content">
             <template>
-              <el-button type="text" size="small" icon="el-icon-view">预览</el-button>
+              <span>暂不支持预览</span>
             </template>
           </el-table-column>
           <el-table-column align="center" prop="createdTime" label="最后更新时间" width="240">
@@ -45,7 +52,7 @@
       </el-col>
     </el-row>
 
-    <el-dialog title="新增模板" :visible.sync="newDialogVisible" width="30%">
+    <el-dialog title="新增模板" :visible.sync="newDialogVisible" width="30%" :close-on-click-modal="false">
       <div>
         <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px">
           <el-form-item label="模板名称" prop="title">
@@ -62,11 +69,17 @@
       </span>
     </el-dialog>
 
-    <el-dialog title="修改模板" :visible.sync="editDialogVisible" width="30%">
+    <el-dialog title="修改模板" :visible.sync="editDialogVisible" width="30%" :close-on-click-modal="false">
       <div>
         <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px">
           <el-form-item label="模板名称" prop="title">
             <el-input v-model="ruleForm.title" />
+          </el-form-item>
+          <el-form-item label="模板类型" prop="type">
+            <el-select v-model="ruleForm.type" placeholder="选择模板类型" value-key="id">
+              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+              </el-option>
+            </el-select>
           </el-form-item>
           <el-form-item label="模板样式" prop="content">
             <el-input v-model="ruleForm.content" type="textarea" :rows="4" />
@@ -86,8 +99,8 @@ import {
   getList,
   deleteTemplate,
   saveTemplate,
-  updateTemplate
-} from '@/api/template'
+  updateTemplate,
+} from "@/api/template";
 
 export default {
   data() {
@@ -97,139 +110,158 @@ export default {
       total: 0,
       pageIndex: 0,
       pageSize: 10,
-      keyword: '',
-      keywordOption: '1',
+      keyword: "",
+      keywordOption: "1",
       newDialogVisible: false,
       editDialogVisible: false,
       ruleForm: {
-        title: '',
-        content: '',
-        id: -1
+        title: "",
+        content: "",
+        type: "",
+        id: -1,
       },
+      options: [
+        {
+          value: "common",
+          label: "普通打印机",
+        },
+        {
+          value: "zebra",
+          label: "斑马打印机",
+        },
+      ],
+      options_labels: { common: "普通打印机", zebra: "斑马打印机" },
+
       rules: {
         title: [
-          { required: true, message: '请输入模板名称', trigger: 'blur' },
+          { required: true, message: "请输入模板名称", trigger: "blur" },
           {
             min: 3,
             max: 24,
-            message: '长度在 3 到 24 个字符',
-            trigger: 'blur'
-          }
+            message: "长度在 3 到 24 个字符",
+            trigger: "blur",
+          },
         ],
         content: [
-          { required: true, message: '请输入模板内容', trigger: 'blur' },
+          { required: true, message: "请输入模板内容", trigger: "blur" },
+        ],
+        content: [
+          { required: true, message: "请输入模板内容", trigger: "blur" },
           {
             min: 1,
             max: 8192,
-            message: '长度在 1 到 8192 个字符',
-            trigger: 'blur'
-          }
-        ]
-      }
-    }
+            message: "长度在 1 到 8192 个字符",
+            trigger: "blur",
+          },
+        ],
+      },
+    };
   },
   created() {
-    this.fetchData()
+    this.fetchData();
   },
   methods: {
     fetchData() {
-      this.listLoading = true
-      var param = { page: this.pageIndex, pageSize: this.pageSize }
+      this.listLoading = true;
+      var param = { page: this.pageIndex, pageSize: this.pageSize };
       getList(param).then((response) => {
-        this.list = response.data.records
-        this.listLoading = false
-        this.total = response.data.total
-      })
+        this.list = response.data.records;
+        this.listLoading = false;
+        this.total = response.data.total;
+      });
     },
 
     pageSizeChange(val) {
-      this.pageSize = val
-      console.log('pageSize:' + this.pageSize)
-      this.fetchData()
+      this.pageSize = val;
+      console.log("pageSize:" + this.pageSize);
+      this.fetchData();
     },
 
     pageChange(val) {
-      this.pageIndex = val
-      console.log('pageIndex:' + this.pageIndex)
-      this.fetchData()
+      this.pageIndex = val;
+      console.log("pageIndex:" + this.pageIndex);
+      this.fetchData();
     },
 
     handleDelete(item) {
       if (this.list.length === 1) {
-        this.pageIndex = 1
+        this.pageIndex = 1;
       }
 
-      var id = item.id
+      var id = item.id;
       deleteTemplate(id).then((response) => {
-        this.fetchData()
-      })
+        this.fetchData();
+      });
     },
 
     handleSearch() {
-      console.log('search')
+      console.log("search");
     },
 
     openNewDialog() {
-      this.newDialogVisible = true
-      this.ruleForm.title = null
-      this.ruleForm.content = null
+      this.newDialogVisible = true;
+      this.ruleForm.title = null;
+      this.ruleForm.content = null;
     },
 
     saveNewRecord(formName) {
-      this.newDialogVisible = false
+      this.newDialogVisible = false;
       var record = {
         title: this.ruleForm.title,
-        content: this.ruleForm.content
-      }
+        content: this.ruleForm.content,
+        type: this.ruleForm.type,
+      };
 
       this.$refs[formName].validate((valid) => {
         if (valid) {
           saveTemplate(record).then((response) => {
-            this.fetchData()
-          })
+            this.fetchData();
+          });
         } else {
-          this.newDialogVisible = true
-          return false
+          this.newDialogVisible = true;
+          return false;
         }
-      })
+      });
     },
 
     updateRecord(formName) {
-      this.editDialogVisible = false
+      this.editDialogVisible = false;
       var record = {
         title: this.ruleForm.title,
         content: this.ruleForm.content,
-        id: this.ruleForm.id
-      }
+        type: this.ruleForm.type,
+        id: this.ruleForm.id,
+      };
 
       this.$refs[formName].validate((valid) => {
         if (valid) {
           updateTemplate(record).then((response) => {
-            this.fetchData()
-          })
+            this.fetchData();
+          });
         } else {
-          this.editDialogVisible = true
-          return false
+          this.editDialogVisible = true;
+          return false;
         }
-      })
+      });
     },
 
     openEditDialog(item) {
-      this.editDialogVisible = true
-      this.ruleForm.title = item.title
-      this.ruleForm.content = item.content
-      this.ruleForm.id = item.id
+      this.editDialogVisible = true;
+      this.ruleForm.title = item.title;
+      this.ruleForm.type = item.type;
+      this.ruleForm.content = item.content;
+      this.ruleForm.id = item.id;
     },
 
     handleClose(done) {
-      this.$confirm('确认关闭？')
+      this.$confirm("确认关闭？")
         .then((_) => {
-          done()
+          done();
         })
-        .catch((_) => {})
-    }
-  }
-}
+        .catch((_) => {});
+    },
+  },
+};
 </script>
 
 <style>

@@ -54,6 +54,7 @@ public class TemplateController {
         entity.setTitle(vo.getTitle());
         entity.setContent(vo.getContent());
         entity.setCreatedTime(new Date());
+        entity.setType(vo.getType());
         return ApiResultHelper.success(templateRepository.insert(entity));
     }
 
@@ -73,6 +74,7 @@ public class TemplateController {
         TemplateEntity entity = new TemplateEntity();
         entity.setTitle(vo.getTitle());
         entity.setContent(vo.getContent());
+        entity.setType(vo.getType());
         entity.setCreatedTime(new Date());
         entity.setId(vo.getId());
         return ApiResultHelper.success(templateRepository.update(entity));

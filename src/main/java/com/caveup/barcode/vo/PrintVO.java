@@ -23,4 +23,5 @@ public class PrintVO {
     private String sapCode;
     private String productCode;
     private String productName;
+    private String printer;
 }

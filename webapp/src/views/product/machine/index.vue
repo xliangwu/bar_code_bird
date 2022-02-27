@@ -41,7 +41,7 @@
       </el-col>
     </el-row>
 
-    <el-dialog title="新增机器" :visible.sync="newDialogVisible" width="30%">
+    <el-dialog title="新增机器" :visible.sync="newDialogVisible" width="30%" :close-on-click-modal="false">
       <div>
         <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px">
           <el-form-item label="机器编号" prop="machineName">
@@ -58,7 +58,7 @@
       </span>
     </el-dialog>
 
-    <el-dialog title="修改" :visible.sync="editDialogVisible" width="30%">
+    <el-dialog title="修改" :visible.sync="editDialogVisible" width="30%" :close-on-click-modal="false">
       <div>
         <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px">
           <el-form-item label="机器编号" prop="machineName">
@@ -82,8 +82,8 @@ import {
   getList,
   deleteMachine,
   saveMachine,
-  updateMachine
-} from '@/api/machine'
+  updateMachine,
+} from "@/api/machine";
 
 export default {
   data() {
@@ -93,137 +93,137 @@ export default {
       total: 0,
       pageIndex: 0,
       pageSize: 10,
-      keyword: '',
-      keywordOption: '1',
+      keyword: "",
+      keywordOption: "1",
       newDialogVisible: false,
       editDialogVisible: false,
       ruleForm: {
-        machineName: '',
-        machineCategory: '',
-        id: -1
+        machineName: "",
+        machineCategory: "",
+        id: -1,
       },
       rules: {
         machineName: [
-          { required: true, message: '请输入机器编号', trigger: 'blur' },
+          { required: true, message: "请输入机器编号", trigger: "blur" },
           {
             min: 3,
             max: 24,
-            message: '长度在 3 到 24 个字符',
-            trigger: 'blur'
-          }
+            message: "长度在 3 到 24 个字符",
+            trigger: "blur",
+          },
         ],
         machineCategory: [
-          { required: true, message: '请输入机器分类', trigger: 'blur' },
+          { required: true, message: "请输入机器分类", trigger: "blur" },
           {
             min: 3,
             max: 24,
-            message: '长度在 3 到 24 个字符',
-            trigger: 'blur'
-          }
-        ]
-      }
-    }
+            message: "长度在 3 到 24 个字符",
+            trigger: "blur",
+          },
+        ],
+      },
+    };
   },
   created() {
-    this.fetchData()
+    this.fetchData();
   },
   methods: {
     fetchData() {
-      this.listLoading = true
-      var param = { page: this.pageIndex, pageSize: this.pageSize }
+      this.listLoading = true;
+      var param = { page: this.pageIndex, pageSize: this.pageSize };
       getList(param).then((response) => {
-        this.list = response.data.records
-        this.listLoading = false
-        this.total = response.data.total
-      })
+        this.list = response.data.records;
+        this.listLoading = false;
+        this.total = response.data.total;
+      });
     },
 
     pageSizeChange(val) {
-      this.pageSize = val
-      console.log('pageSize:' + this.pageSize)
-      this.fetchData()
+      this.pageSize = val;
+      console.log("pageSize:" + this.pageSize);
+      this.fetchData();
     },
 
     pageChange(val) {
-      this.pageIndex = val
-      console.log('pageIndex:' + this.pageIndex)
-      this.fetchData()
+      this.pageIndex = val;
+      console.log("pageIndex:" + this.pageIndex);
+      this.fetchData();
     },
 
     handleDelete(item) {
       if (this.list.length === 1) {
-        this.pageIndex = 1
+        this.pageIndex = 1;
       }
 
-      var id = item.id
+      var id = item.id;
       deleteMachine(id).then((response) => {
-        this.fetchData()
-      })
+        this.fetchData();
+      });
     },
 
     handleSearch() {
-      console.log('search')
+      console.log("search");
     },
 
     openNewDialog() {
-      this.newDialogVisible = true
+      this.newDialogVisible = true;
     },
 
     saveNewRecord(formName) {
-      this.newDialogVisible = false
+      this.newDialogVisible = false;
       var record = {
         machineName: this.ruleForm.machineName,
-        machineCategory: this.ruleForm.machineCategory
-      }
+        machineCategory: this.ruleForm.machineCategory,
+      };
 
       this.$refs[formName].validate((valid) => {
         if (valid) {
           saveMachine(record).then((response) => {
-            this.fetchData()
-          })
+            this.fetchData();
+          });
         } else {
-          this.newDialogVisible = true
-          return false
+          this.newDialogVisible = true;
+          return false;
         }
-      })
+      });
     },
 
     updateRecord(formName) {
-      this.editDialogVisible = false
+      this.editDialogVisible = false;
       var record = {
         machineName: this.ruleForm.machineName,
         machineCategory: this.ruleForm.machineCategory,
-        id: this.ruleForm.id
-      }
+        id: this.ruleForm.id,
+      };
 
       this.$refs[formName].validate((valid) => {
         if (valid) {
           updateMachine(record).then((response) => {
-            this.fetchData()
-          })
+            this.fetchData();
+          });
         } else {
-          this.editDialogVisible = true
-          return false
+          this.editDialogVisible = true;
+          return false;
         }
-      })
+      });
     },
 
     openEditDialog(item) {
-      this.editDialogVisible = true
-      this.ruleForm.machineName = item.machineName
-      this.ruleForm.machineCategory = item.machineCategory
-      this.ruleForm.id = item.id
+      this.editDialogVisible = true;
+      this.ruleForm.machineName = item.machineName;
+      this.ruleForm.machineCategory = item.machineCategory;
+      this.ruleForm.id = item.id;
     },
 
     handleClose(done) {
-      this.$confirm('确认关闭？')
+      this.$confirm("确认关闭？")
         .then((_) => {
-          done()
+          done();
         })
-        .catch((_) => {})
-    }
-  }
-}
+        .catch((_) => {});
+    },
+  },
+};
 </script>
 
 <style>

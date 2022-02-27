@@ -31,80 +31,80 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [{
-  path: '/login',
-  component: () =>
-    import ('@/views/login/index'),
-  hidden: true
-},
-{
-  path: '/404',
-  component: () =>
-    import ('@/views/404'),
-  hidden: true
-},
-{
-  path: '/',
-  component: Layout,
-  redirect: '/dashboard',
-  children: [{
-    path: 'dashboard',
-    name: 'Dashboard',
-    component: () =>
-      import ('@/views/dashboard/index'),
-    meta: { title: 'Dashboard', icon: 'dashboard' }
-  }]
-},
-{
-  path: '/print',
-  component: Layout,
-  children: [{
-    path: 'index',
-    name: 'Print',
-    component: () =>
-      import ('@/views/print/common/index'),
-    meta: { title: '打印', icon: 'el-icon-printer' }
-  }]
-},
-{
-  path: '/zplPrint',
-  component: Layout,
-  children: [{
-    path: 'index',
-    name: 'Print',
-    component: () =>
-      import ('@/views/print/zpl/index'),
-    meta: { title: '斑马打印', icon: 'el-icon-takeaway-box' }
-  }]
-},
-{
-  path: '/product',
-  component: Layout,
-  redirect: '/product/commodity',
-  name: 'product',
-  meta: { title: '产品', icon: 'el-icon-s-help' },
-  children: [{
-    path: 'commodity',
-    name: 'Commodity',
-    component: () =>
-      import ('@/views/product/commodity/index'),
-    meta: { title: '品项信息', icon: 'table' }
-  },
-  {
-    path: 'template',
-    name: 'Template',
-    component: () =>
-      import ('@/views/product/template/index'),
-    meta: { title: '配置模板', icon: 'el-icon-collection' }
-  },
-  {
-    path: 'machine',
-    name: 'Machine',
-    component: () =>
-      import ('@/views/product/machine/index'),
-    meta: { title: '机器管理', icon: 'el-icon-setting' }
-  }
-  ]
-}
+        path: '/login',
+        component: () =>
+            import ('@/views/login/index'),
+        hidden: true
+    },
+    {
+        path: '/404',
+        component: () =>
+            import ('@/views/404'),
+        hidden: true
+    },
+    {
+        path: '/',
+        component: Layout,
+        redirect: '/dashboard',
+        children: [{
+            path: 'dashboard',
+            name: 'Dashboard',
+            component: () =>
+                import ('@/views/dashboard/index'),
+            meta: { title: 'Dashboard', icon: 'dashboard' }
+        }]
+    },
+    {
+        path: '/print',
+        component: Layout,
+        children: [{
+            path: 'index',
+            name: 'Print',
+            component: () =>
+                import ('@/views/print/common/index'),
+            meta: { title: '打印', icon: 'el-icon-printer' }
+        }]
+    },
+    {
+        path: '/zplPrint',
+        component: Layout,
+        children: [{
+            path: 'index',
+            name: 'zplPrint',
+            component: () =>
+                import ('@/views/print/zpl/index'),
+            meta: { title: '斑马打印', icon: 'el-icon-takeaway-box' }
+        }]
+    },
+    {
+        path: '/product',
+        component: Layout,
+        redirect: '/product/commodity',
+        name: 'product',
+        meta: { title: '产品', icon: 'el-icon-s-help' },
+        children: [{
+                path: 'commodity',
+                name: 'Commodity',
+                component: () =>
+                    import ('@/views/product/commodity/index'),
+                meta: { title: '品项信息', icon: 'table' }
+            },
+            {
+                path: 'template',
+                name: 'Template',
+                component: () =>
+                    import ('@/views/product/template/index'),
+                meta: { title: '配置模板', icon: 'el-icon-collection' }
+            },
+            {
+                path: 'machine',
+                name: 'Machine',
+                component: () =>
+                    import ('@/views/product/machine/index'),
+                meta: { title: '机器管理', icon: 'el-icon-setting' }
+            }
+        ]
+    }
 ]
 
 /**
@@ -112,22 +112,22 @@ export const constantRoutes = [{
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+    // 404 page must be placed at the end !!!
+    { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({
-  // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
+    // mode: 'history', // require service support
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes
 })
 
 const router = createRouter()
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+    const newRouter = createRouter()
+    router.matcher = newRouter.matcher // reset router
 }
 
 export default router

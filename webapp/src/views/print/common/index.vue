@@ -29,8 +29,8 @@
         <el-input v-model="form.sapCode" style="width: 35%;" disabled />
       </el-form-item>
       <el-form-item label="日期" prop="selectedDate">
-        <el-col :span="12">
-          <el-date-picker v-model="form.selectedDate" type="date" format="yyyy年MM月dd日" value-format="yyyyMMdd" placeholder="选择日期" style="width: 30%;" />
+        <el-col :span="24">
+          <el-date-picker v-model="form.selectedDate" type="date" format="yyyy年MM月dd日" value-format="yyyyMMdd" placeholder="选择日期" style="width: 35%;" />
         </el-col>
       </el-form-item>
       <el-form-item label="箱容量">
@@ -55,63 +55,62 @@
       </el-form-item>
     </el-form>
 
-    <el-dialog title="预览" :visible.sync="previewDialogVisible" :before-close="beforeClosePreviewDialog" :center="true" style="padding:0px 8px">
+    <el-dialog title="预览" :visible.sync="previewDialogVisible" :close-on-click-modal="false" :before-close="beforeClosePreviewDialog" :center="true" style="padding:0px 8px">
       <div class="previewContainer" v-html="templateHtml" />
     </el-dialog>
   </div>
 </template>
 
 <script>
-import { loadMetaData, preview, print } from '@/api/print'
-import printJS from 'print-js'
+import { loadMetaData, preview, print } from "@/api/print";
+import printJS from "print-js";
 
 export default {
   data() {
     return {
       form: {
-        name: '上海福助工业有限公司',
-        orderNo: '',
-        machineName: '',
+        name: "上海福助工业有限公司",
+        orderNo: "",
+        machineName: "",
         selectedDate: new Date(),
         startIndex: 1,
         printCount: 1,
-        capacity: '',
-        productCode: '',
-        productName: '',
-        sapCode: '',
-        specification: '',
-        templateId: null
+        capacity: "",
+        productCode: "",
+        productName: "",
+        sapCode: "",
+        specification: "",
+        templateId: null,
       },
-      templateHtml: '',
-      templateContent: '',
+      templateHtml: "",
+      templateContent: "",
       rules: {
         machineName: [
-          { required: true, message: '请输入机器编号', trigger: 'blur' }
+          { required: true, message: "请输入机器编号", trigger: "blur" },
         ],
         orderNo: [
-          { required: true, message: '请选择接单卡号', trigger: 'change' }
+          { required: true, message: "请选择接单卡号", trigger: "change" },
         ],
         templateId: [
-          { required: true, message: '请选择模板', trigger: 'change' }
+          { required: true, message: "请选择模板", trigger: "change" },
         ],
         selectedDate: [
           {
-            type: 'date',
             required: true,
-            message: '请选择日期',
-            trigger: 'change'
-          }
-        ]
+            message: "请选择日期",
+            trigger: "change",
+          },
+        ],
       },
       commodities: [],
       machines: [],
       templates: [],
-      previewDialogVisible: false
-    }
+      previewDialogVisible: false,
+    };
   },
 
   created() {
-    this.loadMetaData()
+    this.loadMetaData();
   },
 
   methods: {
@@ -128,23 +127,23 @@ export default {
             capacity: this.form.capacity,
             sapCode: this.form.sapCode,
             productCode: this.form.productCode,
-            productName: this.form.productName
-          }
+            productName: this.form.productName,
+          };
 
           print(parmas).then((response) => {
-            var pdfBase64 = response.data
+            var pdfBase64 = response.data;
             printJS({
               printable: pdfBase64,
-              type: 'pdf',
+              type: "pdf",
               showModal: true,
               base64: true,
-              modalMessage: '正在生成待打印的内容'
-            })
-          })
+              modalMessage: "正在生成待打印的内容",
+            });
+          });
         } else {
-          return false
+          return false;
         }
-      })
+      });
     },
 
     onPreview(formName) {
@@ -160,45 +159,46 @@ export default {
             capacity: this.form.capacity,
             sapCode: this.form.sapCode,
             productCode: this.form.productCode,
-            productName: this.form.productName
-          }
+            productName: this.form.productName,
+          };
           preview(parmas).then((response) => {
-            this.previewDialogVisible = true
-            this.templateHtml = response.data
-          })
+            this.previewDialogVisible = true;
+            this.templateHtml = response.data;
+          });
         } else {
-          return false
+          return false;
         }
-      })
+      });
     },
 
     beforeClosePreviewDialog() {
-      console.log('call before close dialog')
-      this.previewDialogVisible = false
+      console.log("call before close dialog");
+      this.previewDialogVisible = false;
     },
 
     changeTemplate(item) {
-      this.templateContent = item.content
+      this.templateContent = item.content;
     },
 
     orderOptionChange(item) {
-      this.form.capacity = item.col6
-      this.form.productName = item.col4
-      this.form.productCode = item.col3
-      this.form.sapCode = item.col2
-      this.form.specification = item.col5
+      this.form.capacity = item.col6;
+      this.form.productName = item.col4;
+      this.form.productCode = item.col3;
+      this.form.sapCode = item.col2;
+      this.form.specification = item.col5;
     },
     loadMetaData() {
-      this.listLoading = true
-      loadMetaData().then((response) => {
-        console.log(response.data.machines.length)
-        this.commodities = response.data.commodities
-        this.machines = response.data.machines
-        this.templates = response.data.templates
-      })
-    }
-  }
-}
+      this.listLoading = true;
+      var param = { type: "common" };
+      loadMetaData(param).then((response) => {
+        console.log(response.data.machines.length);
+        this.commodities = response.data.commodities;
+        this.machines = response.data.machines;
+        this.templates = response.data.templates;
+      });
+    },
+  },
+};
 </script>
 
 <style scope lang="scss">

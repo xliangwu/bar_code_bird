@@ -1,5 +1,6 @@
 package com.caveup.barcode.controller.biz;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.caveup.barcode.constants.PrintType;
 import com.caveup.barcode.controller.AbstractController;
 import com.caveup.barcode.entity.HtmlTable;
@@ -52,10 +53,12 @@ public class PrintController extends AbstractController {
     private CustomerStorageRepository customerStorageRepository;
 
     @GetMapping("/loadMetaData")
-    public ApiResultModel<?> loadMetaData() {
+    public ApiResultModel<?> loadMetaData(@RequestParam String type) {
         List<SysMachineEntity> machines = sysMachineRepository.list();
         List<CustomerStorageEntity> commodities = customerStorageRepository.list();
-        List<TemplateEntity> templates = templateRepository.list();
+        QueryWrapper<TemplateEntity> wrapper = new QueryWrapper<>();
+        wrapper.eq("type", Objects.toString(type, "common"));
+        List<TemplateEntity> templates = templateRepository.list(wrapper);
 
         MetaData metaData = new MetaData();
         metaData.setMachines(machines);
@@ -95,7 +98,7 @@ public class PrintController extends AbstractController {
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
-        return ApiResultHelper.error(ApiStatusCode.PRINT_FAIL);
+        return ApiResultHelper.error(ApiStatusCode.PRINT_DATA_FAIL);
     }
 
     @PostMapping("/preview")

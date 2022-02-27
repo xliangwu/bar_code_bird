@@ -20,6 +20,9 @@ public class TemplateVO {
     @NotBlank
     private String content;
 
+    @NotBlank
+    private String type;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createdTime;
 }
