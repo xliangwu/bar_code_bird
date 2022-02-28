@@ -58,6 +58,12 @@
           <el-form-item label="模板名称" prop="title">
             <el-input v-model="ruleForm.title" />
           </el-form-item>
+          <el-form-item label="模板类型" prop="type">
+            <el-select v-model="ruleForm.type" placeholder="选择模板类型" value-key="id">
+              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
           <el-form-item label="模板样式" prop="content">
             <el-input v-model="ruleForm.content" type="textarea" :rows="4" />
           </el-form-item>

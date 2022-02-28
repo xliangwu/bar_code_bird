@@ -10,6 +10,7 @@ import com.google.common.collect.Maps;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +32,8 @@ import java.util.Optional;
 @RestController
 public class ZplPrintController extends AbstractController {
 
+    @Value("${app.previewZpl:false}")
+    private Boolean previewZpl;
 
     @PostMapping("/print")
     public ApiResultModel<?> print(@RequestBody @Validated PrintVO vo) {
@@ -100,11 +103,13 @@ public class ZplPrintController extends AbstractController {
         try {
             Optional<List<String>> zipCommandList = ZplHelper.generateZplCommand(templateContent, params, 1, 2);
             Map<String, Object> result = Maps.newHashMap();
-            if (zipCommandList.isPresent()) {
+            if (zipCommandList.isPresent() && previewZpl) {
                 String zplCommand = zipCommandList.get().get(0);
                 log.info("zpl command:\n{}", zplCommand);
                 String imgBase64 = ZplHelper.downloadLabelary(zplCommand);
                 result.put("previewImg", imgBase64);
+            } else {
+                result.put("previewImg", null);
             }
 
             result.put("printers", listPrinters());

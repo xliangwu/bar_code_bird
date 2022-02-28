@@ -23,4 +23,5 @@
 
 # zpl
 - [ZPL指令](http://www.chongshang.com.cn/manual/zebra_Simsun_font.shtml)
+- [斑马GT820条码打印机直接打印汉字的方法](http://www.zebra-zh.com/supports/Zebra-GT820-ZPL.html)
 

@@ -60,7 +60,7 @@
               <el-option v-for="item in printers" :key="item" :label="item" :value="item" />
             </el-select>
           </el-form-item>
-          <el-form-item label="缩略图" :v-if="showPreviewImg">
+          <el-form-item label="缩略图" v-show="false">
             <el-image :src="previewImg" style="width:400px"></el-image>
           </el-form-item>
           <el-form-item>
