@@ -23,6 +23,7 @@ public enum InterpolateType {
     TEXT_CODE("TEXT"),
 
     JOINT_IMG("JOINT_IMG"),
+
     /**
      *
      */

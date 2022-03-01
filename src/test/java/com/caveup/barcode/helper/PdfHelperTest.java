@@ -20,6 +20,13 @@ import java.util.Optional;
 public class PdfHelperTest {
 
     @Test
+    public void aTest() {
+        String a = "1015-01\n21好奇T7治愈之柔 NB13P 内袋 1015-" +
+                "01 60u";
+        System.out.println(a.split("\n"));
+    }
+
+    @Test
     public void generatePrintPdf() {
 
         String text = "<style type=\"text/css\">\n" +

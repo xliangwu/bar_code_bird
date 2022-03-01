@@ -59,6 +59,7 @@ public class QrCodeHelper {
         if (output.isPresent()) {
             File file = new File(output.get());
             byte[] contents = FileUtils.readFileToByteArray(file);
+            log.info("qr code image:{}", file.getAbsolutePath());
             FileUtils.deleteQuietly(file);
             return contents;
         }

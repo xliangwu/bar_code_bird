@@ -22,6 +22,8 @@ import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -34,6 +36,23 @@ import java.util.Optional;
 @Slf4j
 public class PdfHelper {
 
+    private static byte[] JOIN_IMG_CONTENT = null;
+
+    static {
+        try (ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+             BufferedInputStream input = new BufferedInputStream(PdfHelper.class.getClassLoader().getResourceAsStream("jietou.png"))) {
+
+            int nRead;
+            byte[] data = new byte[4096];
+            while ((nRead = input.read(data, 0, data.length)) != -1) {
+                buffer.write(data, 0, nRead);
+            }
+            buffer.flush();
+            JOIN_IMG_CONTENT = buffer.toByteArray();
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+        }
+    }
 
     /**
      * 生成 pdf 待打印的文档
@@ -74,9 +93,9 @@ public class PdfHelper {
                 boolean isLastRow = (lastRow == index / 2) || (lastRow == (index + 1) / 2);
                 Table table = createPdfTable(htmlTableTemplate, params, i);
                 Cell pdfCell = new Cell().add(table);
-                pdfCell.setPaddings(ObjectsHelper.nvl(htmlTableTemplate.getPaddingTop(), 32),
+                pdfCell.setPaddings(ObjectsHelper.nvl(htmlTableTemplate.getPaddingTop(), 16),
                         ObjectsHelper.nvl(htmlTableTemplate.getPaddingRight(), 8),
-                        ObjectsHelper.nvl(htmlTableTemplate.getPaddingBottom(), 32),
+                        ObjectsHelper.nvl(htmlTableTemplate.getPaddingBottom(), 16),
                         ObjectsHelper.nvl(htmlTableTemplate.getPaddingLeft(), 25));
                 pdfCell.setBorder(Border.NO_BORDER);
                 pdfCell.setBorderBottom(pageBottomRow || isLastRow ? Border.NO_BORDER : new DashedBorder(1));
@@ -119,6 +138,7 @@ public class PdfHelper {
     private static Table createPdfTable(HtmlTable htmlTableTemplate,
                                         Map<String, Object> params,
                                         int index) throws IOException {
+        params.put("index", index);
         int maxCols = htmlTableTemplate.getRows().stream().mapToInt(TableRow::calculateCols).reduce(Integer::max).getAsInt();
         Table pdfTable = new Table(maxCols);
         PdfFont font = PdfFontFactory.createFont("STSong-Light", "UniGB-UCS2-H", true);
@@ -132,20 +152,34 @@ public class PdfHelper {
                 Cell pdfCell = new Cell(cell.getRowSpan(), cell.getColSpan());
                 int cellWidth = Math.max(cell.getWidth(), 6);
                 if (InterpolateType.QR_CODE == cell.getInterpolate().getType()) {
-                    int qrWith = Math.max(100, cellWidth - 6);
+                    int qrWith = Math.max(70, cellWidth - 6);
                     byte[] contents = QrCodeHelper.createQrCodeData(content, qrWith, qrWith);
                     if (null != contents) {
                         ImageData imageData = ImageDataFactory.create(contents);
                         Image qrCodeImg = new Image(imageData);
+                        qrCodeImg.setAutoScale(true);
+                        pdfCell.add(qrCodeImg);
+                    }
+                } else if (InterpolateType.JOINT_IMG == cell.getInterpolate().getType()) {
+                    if (null != JOIN_IMG_CONTENT) {
+                        ImageData imageData = ImageDataFactory.create(JOIN_IMG_CONTENT);
+                        Image qrCodeImg = new Image(imageData);
+                        qrCodeImg.setAutoScale(true);
+                        qrCodeImg.setMaxWidth(260);
                         pdfCell.add(qrCodeImg);
                     }
                 } else {
                     boolean isBold = Constants.FONT_WEIGHT_BOLD.equals(cell.getFontWeight());
-                    Paragraph paragraph = new Paragraph(content);
-                    if (isBold) {
-                        paragraph.setBold();
+                    String[] lines = content.split(Constants.PDF_NEW_LINE);
+                    int j = 0;
+                    for (String line : lines) {
+                        Paragraph paragraph = new Paragraph(line);
+                        if (isBold || (j == 0 && lines.length > 1)) {
+                            paragraph.setBold();
+                        }
+                        pdfCell.add(paragraph);
+                        j++;
                     }
-                    pdfCell.add(paragraph);
                     pdfCell.setWidth(cell.getWidth());
                 }
                 pdfCell.setBorder(new SolidBorder(Border.SOLID));

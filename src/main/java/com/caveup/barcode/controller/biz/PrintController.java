@@ -83,7 +83,7 @@ public class PrintController extends AbstractController {
         try {
             Optional<HtmlTable> optional = JsoupHelper.parseTable(templateContent);
             if (optional.isPresent()) {
-                int startIndex = Math.min(vo.getStartIndex(), 1);
+                int startIndex = Math.max(vo.getStartIndex(), 1);
                 int endIndex = startIndex + vo.getPrintCount();
                 Optional<String> outputOption = PdfHelper.generatePrintPdf(optional.get(), params, startIndex, endIndex, PrintType.P2_2);
                 if (outputOption.isPresent()) {
