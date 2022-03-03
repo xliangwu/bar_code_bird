@@ -5,14 +5,12 @@
         <el-input v-model="form.name" style="width: 35%;" disabled />
       </el-form-item>
       <el-form-item label="模板" prop="templateId">
-        <el-select v-model="form.templateId" placeholder="选择模板" :filterable="true" value-key="id" @change="changeTemplate">
+        <el-select v-model="form.templateId" style="width: 25%;" placeholder="选择模板" :filterable="true" value-key="id" @change="changeTemplate">
           <el-option v-for="item in templates" :key="item.id" :label="item.title" :value="item" />
         </el-select>
       </el-form-item>
       <el-form-item label="机器编号" prop="machineName">
-        <el-select v-model="form.machineName" placeholder="选择机器编号" value-key="id">
-          <el-option v-for="item in machines" :key="item.id" :label="item.machineName" :value="item.machineName" />
-        </el-select>
+        <el-cascader v-model="form.machineName" style="width: 25%;" :options="machines" :props="{ expandTrigger: 'hover' }"></el-cascader>
       </el-form-item>
       <el-form-item label="接单卡号" prop="orderNo">
         <el-select v-model="form.orderNo" placeholder="选择接单卡号" :filterable="true" value-key="id" @change="orderOptionChange">
@@ -34,7 +32,12 @@
         </el-col>
       </el-form-item>
       <el-form-item label="箱容量">
-        <el-input v-model="form.capacity" style="width: 35%;" />
+        <el-input v-model="form.capacity" style="width: 35%;">
+          <el-select v-model="form.capacityLabel" style="width:100px" slot="prepend" placeholder="请选择">
+            <el-option label="枚/卷" value="枚/卷"></el-option>
+            <el-option label="枚/箱" value="枚/箱"></el-option>
+          </el-select>
+        </el-input>
       </el-form-item>
 
       <el-form-item label="起始页数">
@@ -60,7 +63,7 @@
               <el-option v-for="item in printers" :key="item" :label="item" :value="item" />
             </el-select>
           </el-form-item>
-          <el-form-item label="缩略图" v-show="false">
+          <el-form-item label="缩略图" v-show="showPreviewImg">
             <el-image :src="previewImg" style="width:400px"></el-image>
           </el-form-item>
           <el-form-item>
@@ -91,7 +94,7 @@ export default {
       form: {
         name: "上海福助工业有限公司",
         orderNo: "",
-        machineName: "",
+        machineName: [],
         selectedDate: new Date(),
         startIndex: 1,
         printCount: 1,
@@ -101,6 +104,7 @@ export default {
         sapCode: "",
         specification: "",
         templateId: null,
+        capacityLabel: "枚/卷",
       },
       printForm: {
         printer: null,
@@ -149,11 +153,13 @@ export default {
           var parmas = {
             templateContent: this.templateContent,
             specification: this.form.specification,
-            machineCode: this.form.machineName,
+            machineCode: this.form.machineName[1],
             selectedDate: this.form.selectedDate,
             startIndex: this.form.startIndex,
             printCount: this.form.printCount,
-            capacity: this.form.capacity,
+            capacity: this.form.capacity
+              ? this.form.capacity + " " + this.form.capacityLabel
+              : "",
             sapCode: this.form.sapCode,
             productCode: this.form.productCode,
             productName: this.form.productName,
@@ -179,11 +185,13 @@ export default {
           var parmas = {
             templateContent: this.templateContent,
             specification: this.form.specification,
-            machineCode: this.form.machineName,
+            machineCode: this.form.machineName[1],
             selectedDate: this.form.selectedDate,
             startIndex: this.form.startIndex,
             printCount: this.form.printCount,
-            capacity: this.form.capacity,
+            capacity: this.form.capacity
+              ? this.form.capacity + " " + this.form.capacityLabel
+              : "",
             sapCode: this.form.sapCode,
             productCode: this.form.productCode,
             productName: this.form.productName,

@@ -93,10 +93,10 @@ public class PdfHelper {
                 boolean isLastRow = (lastRow == index / 2) || (lastRow == (index + 1) / 2);
                 Table table = createPdfTable(htmlTableTemplate, params, i);
                 Cell pdfCell = new Cell().add(table);
-                pdfCell.setPaddings(ObjectsHelper.nvl(htmlTableTemplate.getPaddingTop(), 16),
+                pdfCell.setPaddings(ObjectsHelper.nvl(htmlTableTemplate.getPaddingTop(), 8),
                         ObjectsHelper.nvl(htmlTableTemplate.getPaddingRight(), 8),
-                        ObjectsHelper.nvl(htmlTableTemplate.getPaddingBottom(), 16),
-                        ObjectsHelper.nvl(htmlTableTemplate.getPaddingLeft(), 25));
+                        ObjectsHelper.nvl(htmlTableTemplate.getPaddingBottom(), 8),
+                        ObjectsHelper.nvl(htmlTableTemplate.getPaddingLeft(), 8));
                 pdfCell.setBorder(Border.NO_BORDER);
                 pdfCell.setBorderBottom(pageBottomRow || isLastRow ? Border.NO_BORDER : new DashedBorder(1));
                 pdfCell.setBorderRight(index % 2 == 0 ? Border.NO_BORDER : new DashedBorder(1));
@@ -143,21 +143,37 @@ public class PdfHelper {
         Table pdfTable = new Table(maxCols);
         PdfFont font = PdfFontFactory.createFont("STSong-Light", "UniGB-UCS2-H", true);
         pdfTable.setFont(font);
+        pdfTable.setAutoLayout();
         pdfTable.setFontSize(htmlTableTemplate.getFontSize());
         log.info("total cols:{}", maxCols);
+        String qrText = null;
         for (TableRow row : htmlTableTemplate.getRows()) {
             for (TableCell cell : row.getCells()) {
                 String content = interpolate(cell.getText(), cell.getInterpolate(), params);
                 log.info("rowSpan:{},colSpan:{},{} =>{}", cell.getRowSpan(), cell.getColSpan(), cell.getText(), content);
                 Cell pdfCell = new Cell(cell.getRowSpan(), cell.getColSpan());
                 int cellWidth = Math.max(cell.getWidth(), 6);
+                pdfCell.setBorder(new SolidBorder(Border.SOLID));
+                pdfCell.setFontSize(cell.getFontSize());
+                pdfCell.setVerticalAlignment(VerticalAlignment.valueOf(ObjectsHelper.nvl(cell.getVerticalAlignment(), CssVerticalAlignment.MIDDLE).name()));
+                pdfCell.setTextAlignment(TextAlignment.valueOf(ObjectsHelper.nvl(cell.getAlignment(), CssTextAlignment.CENTER).name()));
+                pdfCell.setPaddings(ObjectsHelper.nvl(cell.getPaddingTop(), 1),
+                        ObjectsHelper.nvl(cell.getPaddingRight(), 1),
+                        ObjectsHelper.nvl(cell.getPaddingBottom(), 1),
+                        ObjectsHelper.nvl(cell.getPaddingLeft(), 1));
+
                 if (InterpolateType.QR_CODE == cell.getInterpolate().getType()) {
                     int qrWith = Math.max(70, cellWidth - 6);
+                    qrText = content;
                     byte[] contents = QrCodeHelper.createQrCodeData(content, qrWith, qrWith);
                     if (null != contents) {
                         ImageData imageData = ImageDataFactory.create(contents);
                         Image qrCodeImg = new Image(imageData);
-                        qrCodeImg.setAutoScale(true);
+                        qrCodeImg.setMinWidth(75);
+                        pdfCell.setWidth(qrWith);
+                        pdfCell.setVerticalAlignment(VerticalAlignment.MIDDLE);
+                        pdfCell.setHorizontalAlignment(HorizontalAlignment.CENTER);
+                        pdfCell.setTextAlignment(TextAlignment.CENTER);
                         pdfCell.add(qrCodeImg);
                     }
                 } else if (InterpolateType.JOINT_IMG == cell.getInterpolate().getType()) {
@@ -175,6 +191,7 @@ public class PdfHelper {
                     for (String line : lines) {
                         Paragraph paragraph = new Paragraph(line);
                         if (isBold || (j == 0 && lines.length > 1)) {
+                            paragraph.setFontSize(18);
                             paragraph.setBold();
                         }
                         pdfCell.add(paragraph);
@@ -182,19 +199,23 @@ public class PdfHelper {
                     }
                     pdfCell.setWidth(cell.getWidth());
                 }
-                pdfCell.setBorder(new SolidBorder(Border.SOLID));
-                pdfCell.setPadding(2);
-                pdfCell.setFontSize(cell.getFontSize());
-                pdfCell.setVerticalAlignment(VerticalAlignment.valueOf(ObjectsHelper.nvl(cell.getVerticalAlignment(), CssVerticalAlignment.MIDDLE).name()));
-                pdfCell.setTextAlignment(TextAlignment.valueOf(ObjectsHelper.nvl(cell.getAlignment(), CssTextAlignment.CENTER).name()));
-                pdfCell.setPaddings(ObjectsHelper.nvl(cell.getPaddingTop(), 2),
-                        ObjectsHelper.nvl(cell.getPaddingRight(), 2),
-                        ObjectsHelper.nvl(cell.getPaddingBottom(), 2),
-                        ObjectsHelper.nvl(cell.getPaddingLeft(), 2));
                 pdfTable.addCell(pdfCell);
             }
         }
 
+        //last
+        if (null != qrText) {
+            Cell lastCell = new Cell(1, maxCols);
+            lastCell.setTextAlignment(TextAlignment.RIGHT);
+            lastCell.setPaddingRight(4);
+            lastCell.setPaddingTop(0);
+            lastCell.add(new Paragraph(qrText));
+            lastCell.setBorderBottom(Border.NO_BORDER);
+            lastCell.setBorderRight(Border.NO_BORDER);
+            lastCell.setBorderLeft(Border.NO_BORDER);
+            lastCell.setFontSize(8);
+            pdfTable.addCell(lastCell);
+        }
         return pdfTable;
     }
 

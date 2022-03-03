@@ -1,7 +1,7 @@
 #Defualt Profile is dev, should be overwrite by: -Dspring.profiles.active=***
 spring:
   profiles:
-    active: local
+    active: prod
   servlet:
     multipart:
       max-request-size: 1024MB

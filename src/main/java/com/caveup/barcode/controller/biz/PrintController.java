@@ -17,9 +17,11 @@ import com.caveup.barcode.service.SysMachineRepository;
 import com.caveup.barcode.service.TemplateRepository;
 import com.caveup.barcode.vo.MetaData;
 import com.caveup.barcode.vo.PrintVO;
+import com.caveup.barcode.vo.TreeNode;
 import com.google.common.collect.Maps;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.compress.utils.Lists;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Base64Utils;
@@ -33,6 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author xw80329
@@ -59,9 +62,9 @@ public class PrintController extends AbstractController {
         QueryWrapper<TemplateEntity> wrapper = new QueryWrapper<>();
         wrapper.eq("type", Objects.toString(type, "common"));
         List<TemplateEntity> templates = templateRepository.list(wrapper);
-
+        List<TreeNode> machineOptions = convertToTreeOption(machines);
         MetaData metaData = new MetaData();
-        metaData.setMachines(machines);
+        metaData.setMachines(machineOptions);
         metaData.setCommodities(commodities);
         metaData.setTemplates(templates);
         return ApiResultHelper.success(metaData);
@@ -79,13 +82,14 @@ public class PrintController extends AbstractController {
         params.put("capacity", Objects.toString(vo.getCapacity(), StringUtils.EMPTY));
         params.put("specification", vo.getSpecification());
 
+        PrintType printType = null != vo.getPrintType() && vo.getPrintType() == 0 ? PrintType.P2_2 : PrintType.P2_3;
         String templateContent = vo.getTemplateContent();
         try {
             Optional<HtmlTable> optional = JsoupHelper.parseTable(templateContent);
             if (optional.isPresent()) {
                 int startIndex = Math.max(vo.getStartIndex(), 1);
                 int endIndex = startIndex + vo.getPrintCount();
-                Optional<String> outputOption = PdfHelper.generatePrintPdf(optional.get(), params, startIndex, endIndex, PrintType.P2_2);
+                Optional<String> outputOption = PdfHelper.generatePrintPdf(optional.get(), params, startIndex, endIndex, printType);
                 if (outputOption.isPresent()) {
                     log.info("output =>{}", outputOption.get());
                     File output = new File(outputOption.get());
@@ -124,5 +128,25 @@ public class PrintController extends AbstractController {
             log.error(e.getMessage(), e);
         }
         return ApiResultHelper.error(ApiStatusCode.TEMPLATE_PREVIEW_FAIL);
+    }
+
+    private List<TreeNode> convertToTreeOption(List<SysMachineEntity> src) {
+        List<TreeNode> nodes = Lists.newArrayList();
+        Map<String, List<SysMachineEntity>> categoryMap = src.stream().collect(Collectors.groupingBy(SysMachineEntity::getMachineCategory));
+        for (Map.Entry<String, List<SysMachineEntity>> entry : categoryMap.entrySet()) {
+            TreeNode node = new TreeNode();
+            node.setLabel(entry.getKey());
+            node.setValue(entry.getKey());
+            List<TreeNode> children = entry.getValue().stream().map(e -> {
+                TreeNode item = new TreeNode();
+                item.setLabel(e.getMachineName());
+                item.setValue(e.getMachineName());
+                return item;
+            }).collect(Collectors.toList());
+            node.setChildren(children);
+            nodes.add(node);
+        }
+
+        return nodes;
     }
 }

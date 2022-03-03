@@ -5,17 +5,15 @@
         <el-input v-model="form.name" style="width: 35%;" disabled />
       </el-form-item>
       <el-form-item label="模板" prop="templateId">
-        <el-select v-model="form.templateId" placeholder="选择模板" :filterable="true" value-key="id" @change="changeTemplate">
+        <el-select v-model="form.templateId" style="width: 25%;" placeholder="选择模板" :filterable="true" value-key="id" @change="changeTemplate">
           <el-option v-for="item in templates" :key="item.id" :label="item.title" :value="item" />
         </el-select>
       </el-form-item>
       <el-form-item label="机器编号" prop="machineName">
-        <el-select v-model="form.machineName" placeholder="选择机器编号" value-key="id">
-          <el-option v-for="item in machines" :key="item.id" :label="item.machineName" :value="item.machineName" />
-        </el-select>
+        <el-cascader v-model="form.machineName" style="width: 25%;" :options="machines" :props="{ expandTrigger: 'hover' }"></el-cascader>
       </el-form-item>
       <el-form-item label="接单卡号" prop="orderNo">
-        <el-select v-model="form.orderNo" placeholder="选择接单卡号" :filterable="true" value-key="id" @change="orderOptionChange">
+        <el-select v-model="form.orderNo" style="width: 25%;" placeholder="选择接单卡号" :filterable="true" value-key="id" @change="orderOptionChange">
           <el-option v-for="item in commodities" :key="item.id" :label="item.col1" :value="item" />
         </el-select>
       </el-form-item>
@@ -34,16 +32,25 @@
         </el-col>
       </el-form-item>
       <el-form-item label="箱容量">
-        <el-input v-model="form.capacity" style="width: 35%;" />
+        <el-input v-model="form.capacity" style="width: 35%;" class="input-with-select">
+          <el-select v-model="form.capacityLabel" style="width:100px;padding-left:6px" slot="prepend" placeholder="请选择">
+            <el-option label="枚/卷" value="枚/卷"></el-option>
+            <el-option label="枚/箱" value="枚/箱"></el-option>
+          </el-select>
+        </el-input>
       </el-form-item>
 
       <el-form-item label="起始页数">
-        <el-input-number v-model="form.startIndex" :step="1" size="medium" style="width:150px" :min="1" :max="5000" />
+        <el-input-number v-model="form.startIndex" :step="1" size="medium" style="width:10%" :min="1" :max="5000" />
       </el-form-item>
       <el-form-item label="打印份数">
-        <el-input-number v-model="form.printCount" :step="1" size="medium" style="width:150px" :min="1" :max="5000" />
+        <el-input-number v-model="form.printCount" :step="1" size="medium" style="width:10%" :min="1" :max="5000" />
       </el-form-item>
-
+      <el-form-item label="打印布局">
+        <el-select v-model="form.printType" style="width: 10%;" placeholder="选择机器编号" value-key="value">
+          <el-option v-for="item in printTypeOptions" :key="item.id" :label="item.label" :value="item.value" />
+        </el-select>
+      </el-form-item>
       <el-form-item>
         <el-col :span="2">
           <el-button icon="el-icon-view" @click="onPreview('form')">预览</el-button>
@@ -71,7 +78,7 @@ export default {
       form: {
         name: "上海福助工业有限公司",
         orderNo: "",
-        machineName: "",
+        machineName: [],
         selectedDate: new Date(),
         startIndex: 1,
         printCount: 1,
@@ -81,6 +88,8 @@ export default {
         sapCode: "",
         specification: "",
         templateId: null,
+        printType: 0,
+        capacityLabel: "枚/卷",
       },
       templateHtml: "",
       templateContent: "",
@@ -102,6 +111,18 @@ export default {
           },
         ],
       },
+      printTypeOptions: [
+        {
+          label: "每页4个(2x2)",
+          value: 0,
+          id: 0,
+        },
+        {
+          label: "每页6个(2x3)",
+          value: 1,
+          id: 1,
+        },
+      ],
       commodities: [],
       machines: [],
       templates: [],
@@ -120,14 +141,17 @@ export default {
           var parmas = {
             templateContent: this.templateContent,
             specification: this.form.specification,
-            machineCode: this.form.machineName,
+            machineCode: this.form.machineName[1],
             selectedDate: this.form.selectedDate,
             startIndex: this.form.startIndex,
             printCount: this.form.printCount,
-            capacity: this.form.capacity,
+            capacity: this.form.capacity
+              ? this.form.capacity + " " + this.form.capacityLabel
+              : "",
             sapCode: this.form.sapCode,
             productCode: this.form.productCode,
             productName: this.form.productName,
+            printType: this.form.printType,
           };
 
           print(parmas).then((response) => {
@@ -152,11 +176,13 @@ export default {
           var parmas = {
             templateContent: this.templateContent,
             specification: this.form.specification,
-            machineCode: this.form.machineName,
+            machineCode: this.form.machineName[1],
             selectedDate: this.form.selectedDate,
             startIndex: this.form.startIndex,
             printCount: this.form.printCount,
-            capacity: this.form.capacity,
+            capacity: this.form.capacity
+              ? this.form.capacity + " " + this.form.capacityLabel
+              : "",
             sapCode: this.form.sapCode,
             productCode: this.form.productCode,
             productName: this.form.productName,
@@ -181,7 +207,10 @@ export default {
     },
 
     orderOptionChange(item) {
-      this.form.capacity = item.col6;
+      var excelData = item.col6 == null ? "" : item.col6;
+      this.form.capacity = excelData
+        .replace(/枚\/卷/i, "")
+        .replace(/枚\/箱/i, "");
       this.form.productName = item.col4;
       this.form.productCode = item.col3;
       this.form.sapCode = item.col2;
