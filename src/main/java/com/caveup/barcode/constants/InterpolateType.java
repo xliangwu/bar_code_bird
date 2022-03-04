@@ -38,6 +38,11 @@ public enum InterpolateType {
                     Object[] objs = new Object[keys.size()];
                     for (int i = 0; i < keys.size(); i++) {
                         Object target = params.getOrDefault(keys.get(i), StringUtils.EMPTY);
+                        if ("capacity".equals(keys.get(i))) {
+                            String capacity = String.valueOf(target);
+                            capacity = capacity.replace("枚/箱", "").replace("枚/卷", "");
+                            target = capacity;
+                        }
                         if (target instanceof Date) {
                             SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
                             objs[i] = fmt.format((Date) target);

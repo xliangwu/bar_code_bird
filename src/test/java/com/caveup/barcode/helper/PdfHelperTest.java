@@ -91,7 +91,7 @@ public class PdfHelperTest {
         params.put("productCode", "8888888");
         params.put("serialNumber", "20210122002");
         params.put("specification", "5000 枚");
-        params.put("capacity", 1000);
+        params.put("capacity", "1000 枚/箱");
         params.put("sapCode", "14121812");
         Optional<String> outputOption = PdfHelper.generatePrintPdf(optional.get(), params, 0, 7, PrintType.P2_3);
         Assert.assertTrue(outputOption.isPresent());
