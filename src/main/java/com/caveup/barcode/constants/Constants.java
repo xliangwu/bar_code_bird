@@ -7,7 +7,7 @@ public class Constants {
 
     public static final String EXPRESS_SEP = "$";
 
-    public static final int DEFAULT_PADDING = 2;
+    public static final int DEFAULT_PADDING = 1;
 
     public static final int DEFAULT_FONT_SIZE = 10;
 

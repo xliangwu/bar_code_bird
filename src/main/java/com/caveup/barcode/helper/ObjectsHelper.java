@@ -19,4 +19,9 @@ public class ObjectsHelper {
         }
         return value;
     }
+
+
+    public static Integer max(Integer value, Integer defaultVal) {
+        return Math.max(value, defaultVal);
+    }
 }

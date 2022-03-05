@@ -43,7 +43,7 @@
       <el-form-item label="起始页数">
         <el-input-number v-model="form.startIndex" :step="1" size="medium" style="width:150px" :min="1" :max="5000" />
       </el-form-item>
-      <el-form-item label="打印份数">
+      <el-form-item label="结束页数" prop="printCount">
         <el-input-number v-model="form.printCount" :step="1" size="medium" style="width:150px" :min="1" :max="5000" />
       </el-form-item>
 
@@ -90,12 +90,20 @@ import { Message } from "element-ui";
 
 export default {
   data() {
+    var validatePrintCount = (rule, value, callback) => {
+      if (value === "" || value < this.form.startIndex) {
+        callback(new Error("结束页数需要大于起始页数"));
+      } else {
+        callback();
+      }
+    };
+    var today = new Date().toISOString().split("T")[0].split("-").join("");
     return {
       form: {
         name: "上海福助工业有限公司",
         orderNo: "",
         machineName: [],
-        selectedDate: new Date(),
+        selectedDate: today,
         startIndex: 1,
         printCount: 1,
         capacity: "",
@@ -126,6 +134,10 @@ export default {
         ],
         printer: [
           { required: true, message: "请选择斑马打印机", trigger: "change" },
+        ],
+        printCount: [
+          { required: true, message: "请输入结束页数", trigger: "change" },
+          { validator: validatePrintCount, trigger: "change" },
         ],
         selectedDate: [
           {

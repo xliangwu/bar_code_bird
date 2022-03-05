@@ -1,5 +1,7 @@
 package com.caveup.barcode.constants;
 
+import lombok.Getter;
+
 /**
  * @author xw80329
  */
@@ -9,10 +11,30 @@ public enum PrintType {
     /**
      * 2 * 2
      */
-    P2_2,
+    P2_2(10, 16, 2, 3),
+
 
     /**
      * 2 *3
      */
-    P2_3
+    P2_3(8, 2, 2, 5);
+
+    @Getter
+    private int fontSize;
+
+    @Getter
+    private int outTablePaddingTop;
+
+    @Getter
+    private int qrCodePadding;
+
+    @Getter
+    private int pageBottomIndex;
+
+    private PrintType(int fontSize, int padding, int qrCodePadding, int pageBottomIndex) {
+        this.fontSize = fontSize;
+        this.outTablePaddingTop = padding;
+        this.qrCodePadding = qrCodePadding;
+        this.pageBottomIndex = pageBottomIndex;
+    }
 }

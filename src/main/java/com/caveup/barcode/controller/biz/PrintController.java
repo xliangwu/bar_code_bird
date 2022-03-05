@@ -31,6 +31,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -72,8 +74,10 @@ public class PrintController extends AbstractController {
 
     @PostMapping("/print")
     public ApiResultModel<?> print(@RequestBody @Validated PrintVO vo, HttpServletResponse response) {
+        DateFormat df = new SimpleDateFormat("MMdd");
         Map<String, Object> params = Maps.newHashMap();
         params.put("selectedDate", vo.getSelectedDate());
+        params.put("shortDate", df.format(vo.getSelectedDate()));
         params.put("machineCode", vo.getMachineCode());
         params.put("productCode", vo.getProductCode());
         params.put("serialNumber", vo.getMachineCode());
@@ -88,7 +92,7 @@ public class PrintController extends AbstractController {
             Optional<HtmlTable> optional = JsoupHelper.parseTable(templateContent);
             if (optional.isPresent()) {
                 int startIndex = Math.max(vo.getStartIndex(), 1);
-                int endIndex = startIndex + vo.getPrintCount();
+                int endIndex = vo.getPrintCount() + 1;
                 Optional<String> outputOption = PdfHelper.generatePrintPdf(optional.get(), params, startIndex, endIndex, printType);
                 if (outputOption.isPresent()) {
                     log.info("output =>{}", outputOption.get());
@@ -107,8 +111,10 @@ public class PrintController extends AbstractController {
 
     @PostMapping("/preview")
     public ApiResultModel<?> preview(@RequestBody @Validated PrintVO vo) {
+        DateFormat df = new SimpleDateFormat("MMdd");
         Map<String, Object> params = Maps.newHashMap();
         params.put("selectedDate", vo.getSelectedDate());
+        params.put("shortDate", df.format(vo.getSelectedDate()));
         params.put("machineCode", vo.getMachineCode());
         params.put("productCode", vo.getProductCode());
         params.put("serialNumber", vo.getMachineCode());
@@ -149,4 +155,5 @@ public class PrintController extends AbstractController {
 
         return nodes;
     }
+
 }

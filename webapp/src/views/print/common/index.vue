@@ -43,7 +43,7 @@
       <el-form-item label="起始页数">
         <el-input-number v-model="form.startIndex" :step="1" size="medium" style="width:10%" :min="1" :max="5000" />
       </el-form-item>
-      <el-form-item label="打印份数">
+      <el-form-item label="结束页数" prop="printCount">
         <el-input-number v-model="form.printCount" :step="1" size="medium" style="width:10%" :min="1" :max="5000" />
       </el-form-item>
       <el-form-item label="打印布局">
@@ -52,9 +52,6 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-col :span="2">
-          <el-button icon="el-icon-view" @click="onPreview('form')">预览</el-button>
-        </el-col>
         <el-col :span="2" />
         <el-col :span="2">
           <el-button icon="el-icon-printer" type="primary" @click="printPdf('form')">打印</el-button>
@@ -74,12 +71,20 @@ import printJS from "print-js";
 
 export default {
   data() {
+    var validatePrintCount = (rule, value, callback) => {
+      if (value === "" || value < this.form.startIndex) {
+        callback(new Error("结束页数需要大于起始页数"));
+      } else {
+        callback();
+      }
+    };
+    var today = new Date().toISOString().split("T")[0].split("-").join("");
     return {
       form: {
         name: "上海福助工业有限公司",
         orderNo: "",
         machineName: [],
-        selectedDate: new Date(),
+        selectedDate: today,
         startIndex: 1,
         printCount: 1,
         capacity: "",
@@ -102,6 +107,10 @@ export default {
         ],
         templateId: [
           { required: true, message: "请选择模板", trigger: "change" },
+        ],
+        printCount: [
+          { required: true, message: "请输入结束页数", trigger: "change" },
+          { validator: validatePrintCount, trigger: "change" },
         ],
         selectedDate: [
           {
@@ -220,7 +229,6 @@ export default {
       this.listLoading = true;
       var param = { type: "common" };
       loadMetaData(param).then((response) => {
-        console.log(response.data.machines.length);
         this.commodities = response.data.commodities;
         this.machines = response.data.machines;
         this.templates = response.data.templates;
