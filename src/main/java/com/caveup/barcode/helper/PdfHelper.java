@@ -6,7 +6,6 @@ import com.caveup.barcode.constants.PrintType;
 import com.caveup.barcode.entity.*;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -170,9 +169,10 @@ public class PdfHelper {
                         ObjectsHelper.nvl(cell.getPaddingLeft(), 2));
 
                 if (InterpolateType.QR_CODE == cell.getInterpolate().getType()) {
-                    int rowHeight = printType == PrintType.P2_2 ? cell.getRowSpan() * 22 : cell.getRowSpan() * 15;
+                    int cellHeight = cell.getRowSpan() >= 5 ? 15 : 17;
+                    int rowHeight = printType == PrintType.P2_2 ? cell.getRowSpan() * 22 : cell.getRowSpan() * cellHeight;
                     qrText = content;
-                    int qrHeight = rowHeight-4;
+                    int qrHeight = rowHeight - 4;
                     byte[] contents = QrCodeHelper.createQrCodeData(content, qrHeight, qrHeight);
                     if (null != contents) {
                         log.info("qr row height:{},img height:{}", rowHeight, qrHeight);
@@ -180,14 +180,14 @@ public class PdfHelper {
                         Image qrCodeImg = new Image(imageData);
                         qrCodeImg.setMarginTop(printType.getQrCodePadding());
                         qrCodeImg.setMarginBottom(printType.getQrCodePadding());
-                        qrCodeImg.scaleToFit(qrHeight,qrHeight);
+                        qrCodeImg.scaleToFit(qrHeight, qrHeight);
                         pdfCell.add(qrCodeImg);
                         pdfCell.setVerticalAlignment(VerticalAlignment.BOTTOM);
                         pdfCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
                         pdfCell.setTextAlignment(TextAlignment.CENTER);
                         pdfCell.setHeight(rowHeight);
 //                        pdfCell.setBackgroundColor(new DeviceRgb(255, 0, 0));
-                        pdfCell.setWidth(rowHeight+10);
+                        pdfCell.setWidth(rowHeight + 10);
                     }
                 } else if (InterpolateType.JOINT_IMG == cell.getInterpolate().getType()) {
                     if (null != JOIN_IMG_CONTENT) {

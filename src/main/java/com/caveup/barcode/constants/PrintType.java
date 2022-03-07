@@ -17,7 +17,7 @@ public enum PrintType {
     /**
      * 2 *3
      */
-    P2_3(8, 2, 2, 5);
+    P2_3(8, 3, 2, 5);
 
     @Getter
     private int fontSize;
@@ -31,9 +31,9 @@ public enum PrintType {
     @Getter
     private int pageBottomIndex;
 
-    private PrintType(int fontSize, int padding, int qrCodePadding, int pageBottomIndex) {
+    private PrintType(int fontSize, int outTablePaddingTop, int qrCodePadding, int pageBottomIndex) {
         this.fontSize = fontSize;
-        this.outTablePaddingTop = padding;
+        this.outTablePaddingTop = outTablePaddingTop;
         this.qrCodePadding = qrCodePadding;
         this.pageBottomIndex = pageBottomIndex;
     }
