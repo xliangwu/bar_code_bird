@@ -4,6 +4,7 @@ import com.caveup.barcode.constants.Constants;
 import com.caveup.barcode.constants.InterpolateType;
 import com.caveup.barcode.constants.PrintType;
 import com.caveup.barcode.entity.*;
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
@@ -36,9 +37,12 @@ import java.util.Optional;
 @Slf4j
 public class PdfHelper {
 
+    public static final String C_WINDOWS_FONTS_SIMHEI_TTF = "C:/Windows/Fonts/simhei.ttf";
+
     private static byte[] JOIN_IMG_CONTENT = null;
     private static final int A4_WIDTH = 595;
     private static final int A4_HEIGHT = 842;
+    private static boolean simheiFontExist = false;
 
     static {
         try (ByteArrayOutputStream buffer = new ByteArrayOutputStream();
@@ -51,6 +55,8 @@ public class PdfHelper {
             }
             buffer.flush();
             JOIN_IMG_CONTENT = buffer.toByteArray();
+            simheiFontExist = new File(C_WINDOWS_FONTS_SIMHEI_TTF).exists();
+
         } catch (Exception ex) {
             log.error(ex.getMessage());
         }
@@ -85,6 +91,11 @@ public class PdfHelper {
 
             Document document = new Document(pdfDoc);
             document.setHorizontalAlignment(HorizontalAlignment.CENTER);
+            PdfFont font = simheiFontExist ? PdfFontFactory.createFont(C_WINDOWS_FONTS_SIMHEI_TTF, PdfEncodings.IDENTITY_H, true)
+                    : PdfFontFactory.createFont("STSong-Light", "UniGB-UCS2-H", true);
+            document.setFont(font);
+            document.setBottomMargin(2);
+            document.setTopMargin(4);
             Table pdfTable = createPageTable(colsOfRow);
             int index = 1;
             boolean hasCells = false;
@@ -145,8 +156,6 @@ public class PdfHelper {
         params.put("index", index);
         int maxCols = htmlTableTemplate.getRows().stream().mapToInt(TableRow::calculateCols).reduce(Integer::max).getAsInt();
         Table pdfTable = new Table(maxCols);
-        PdfFont font = PdfFontFactory.createFont("STSong-Light", "UniGB-UCS2-H", true);
-        pdfTable.setFont(font);
         pdfTable.setAutoLayout();
         //每行只有2列
         pdfTable.setWidth(A4_HEIGHT / 2 - 60);
@@ -186,17 +195,38 @@ public class PdfHelper {
                         pdfCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
                         pdfCell.setTextAlignment(TextAlignment.CENTER);
                         pdfCell.setHeight(rowHeight);
-//                        pdfCell.setBackgroundColor(new DeviceRgb(255, 0, 0));
                         pdfCell.setWidth(rowHeight + 10);
                     }
                 } else if (InterpolateType.JOINT_IMG == cell.getInterpolate().getType()) {
                     if (null != JOIN_IMG_CONTENT) {
+                        Paragraph paragraph = new Paragraph("接头位置");
+                        paragraph.setWidth(60);
+                        Cell paragraphCell = new Cell(1, 1);
+                        paragraphCell.setTextAlignment(TextAlignment.RIGHT);
+                        paragraphCell.setPaddings(0, 0, 0, 0);
+                        paragraphCell.setMargins(0, 0, 0, 0);
+                        paragraphCell.setBorder(Border.NO_BORDER);
+                        paragraphCell.add(paragraph);
                         ImageData imageData = ImageDataFactory.create(JOIN_IMG_CONTENT);
-                        Image qrCodeImg = new Image(imageData);
-                        qrCodeImg.setHeight(24);
-                        qrCodeImg.setWidth(new UnitValue(2, 100));
+                        Image joinImg = new Image(imageData);
+                        joinImg.setHeight(18);
+                        joinImg.setWidth(160);
+                        joinImg.setMaxWidth(160);
+                        Cell joinCell = new Cell(1, 1);
+                        joinCell.setPaddings(0, 0, 0, 4);
+                        joinCell.setMargins(0, 0, 0, 0);
+                        joinCell.setBorder(Border.NO_BORDER);
+                        joinCell.add(joinImg);
+
+                        Table table = new Table(2);
+                        table.addCell(paragraphCell);
+                        table.addCell(joinCell);
+                        table.setBorder(Border.NO_BORDER);
+                        table.setPaddings(2, 0, 0, 0);
+                        table.setMaxWidth(240);
+                        table.setWidth(240);
                         pdfCell.setWidth(cell.getWidth());
-                        pdfCell.add(qrCodeImg);
+                        pdfCell.add(table);
                     }
                 } else {
                     boolean isBold = Constants.FONT_WEIGHT_BOLD.equals(cell.getFontWeight());
