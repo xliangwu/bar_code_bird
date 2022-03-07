@@ -40,7 +40,7 @@ public enum InterpolateType {
                         Object target = params.getOrDefault(keys.get(i), StringUtils.EMPTY);
                         if ("capacity".equals(keys.get(i))) {
                             String capacity = String.valueOf(target);
-                            capacity = capacity.replace("枚/箱", "").replace("枚/卷", "");
+                            capacity = capacity.replace("枚/箱", "").replace("枚/卷", "").trim();
                             target = capacity;
                         }
                         if (target instanceof Date) {
