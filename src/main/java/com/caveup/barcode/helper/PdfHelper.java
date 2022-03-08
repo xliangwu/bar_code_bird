@@ -83,10 +83,12 @@ public class PdfHelper {
 
             int tableCountOfOnePage = 4;
             int colsOfRow = 2;
+            int tableHeight = A4_WIDTH / 2 - 8;
             pdfDoc.setDefaultPageSize(PageSize.A4.rotate());
             if (printType == PrintType.P2_3) {
                 tableCountOfOnePage = 6;
                 colsOfRow = 2;
+                tableHeight = A4_WIDTH / 3 - 8;
             }
 
             Document document = new Document(pdfDoc);
@@ -107,11 +109,15 @@ public class PdfHelper {
                 boolean isLastRow = lastRowIndex == ((index - 1) / colsOfRow + 1);
                 Table table = createPdfTable(htmlTableTemplate, params, i, printType);
                 Cell pdfCell = new Cell().add(table);
-                pdfCell.setPaddings(ObjectsHelper.max(htmlTableTemplate.getPaddingTop(), printType.getOutTablePaddingTop()),
+                int paddingTop = ObjectsHelper.max(htmlTableTemplate.getPaddingTop(), printType.getOutTablePaddingTop());
+                int paddingBottom = ObjectsHelper.max(htmlTableTemplate.getPaddingBottom(), printType.getOutTablePaddingTop());
+                pdfCell.setPaddings(paddingTop,
                         ObjectsHelper.max(htmlTableTemplate.getPaddingRight(), 8),
-                        ObjectsHelper.max(htmlTableTemplate.getPaddingBottom(), printType.getOutTablePaddingTop()),
+                        paddingBottom,
                         ObjectsHelper.max(htmlTableTemplate.getPaddingLeft(), 8));
                 pdfCell.setBorder(Border.NO_BORDER);
+                pdfCell.setHeight(tableHeight - paddingBottom - paddingTop);
+                pdfCell.setMaxHeight(tableHeight - paddingBottom - paddingTop);
                 pdfCell.setBorderBottom(pageBottomRow || isLastRow ? Border.NO_BORDER : new DashedBorder(1));
                 //最右边且不是最后一个
                 pdfCell.setBorderRight(index % colsOfRow == 0 || index == endIndex - 1 ? Border.NO_BORDER : new DashedBorder(1));
@@ -156,11 +162,12 @@ public class PdfHelper {
         params.put("index", index);
         int maxCols = htmlTableTemplate.getRows().stream().mapToInt(TableRow::calculateCols).reduce(Integer::max).getAsInt();
         Table pdfTable = new Table(maxCols);
-        pdfTable.setAutoLayout();
+//        pdfTable.setAutoLayout();
         //每行只有2列
         pdfTable.setWidth(A4_HEIGHT / 2 - 60);
         pdfTable.setFontSize(printType.getFontSize());
         pdfTable.setMarginTop(2);
+        pdfTable.setHeight(new UnitValue(2, 100));
         log.info("total cols:{}", maxCols);
         String qrText = null;
         for (TableRow row : htmlTableTemplate.getRows()) {
@@ -179,9 +186,9 @@ public class PdfHelper {
 
                 if (InterpolateType.QR_CODE == cell.getInterpolate().getType()) {
                     int cellHeight = cell.getRowSpan() >= 5 ? 15 : 17;
-                    int rowHeight = printType == PrintType.P2_2 ? cell.getRowSpan() * 22 : cell.getRowSpan() * cellHeight;
+                    int rowHeight = printType == PrintType.P2_2 ? cell.getRowSpan() * 24 : cell.getRowSpan() * cellHeight;
                     qrText = content;
-                    int qrHeight = rowHeight - 4;
+                    int qrHeight = rowHeight - 2;
                     byte[] contents = QrCodeHelper.createQrCodeData(content, qrHeight, qrHeight);
                     if (null != contents) {
                         log.info("qr row height:{},img height:{}", rowHeight, qrHeight);
@@ -191,11 +198,12 @@ public class PdfHelper {
                         qrCodeImg.setMarginBottom(printType.getQrCodePadding());
                         qrCodeImg.scaleToFit(qrHeight, qrHeight);
                         pdfCell.add(qrCodeImg);
-                        pdfCell.setVerticalAlignment(VerticalAlignment.BOTTOM);
-                        pdfCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
-                        pdfCell.setTextAlignment(TextAlignment.CENTER);
                         pdfCell.setHeight(rowHeight);
-                        pdfCell.setWidth(rowHeight + 10);
+                        pdfCell.setMaxWidth(rowHeight + 16);
+                        pdfCell.setWidth(rowHeight + 16);
+                        pdfCell.setVerticalAlignment(VerticalAlignment.MIDDLE);
+                        pdfCell.setHorizontalAlignment(HorizontalAlignment.CENTER);
+                        pdfCell.setTextAlignment(TextAlignment.CENTER);
                     }
                 } else if (InterpolateType.JOINT_IMG == cell.getInterpolate().getType()) {
                     if (null != JOIN_IMG_CONTENT) {

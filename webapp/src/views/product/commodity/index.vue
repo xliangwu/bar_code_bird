@@ -1,11 +1,14 @@
 <template>
   <div class="app-container">
-    <el-row :gutter="20" :style="{ textAlign: 'left', padding: '6px' }">
-      <el-col :span="3">
-        <el-button type="primary" icon="el-icon-download" @click="downloadTemplate">下载模板</el-button>
+    <el-row :gutter="20" :style="{ textAlign: 'left', padding: '12px' }">
+      <el-col :span="2">
+        <el-button type="primary" icon="el-icon-download" round @click="downloadTemplate">下载模板</el-button>
+      </el-col>
+      <el-col :span="2.5">
+        <el-button type="success" icon="el-icon-download" round @click="exportData">下载全部数据</el-button>
       </el-col>
       <el-col :span="2">
-        <el-button type="primary" icon="el-icon-upload" @click="openUploadDialog">数据上传</el-button>
+        <el-button type="danger" icon="el-icon-upload" round @click="openUploadDialog">数据上传</el-button>
       </el-col>
       <el-col v-show="false" :span="10">
         <el-input v-model="keyword" placeholder="请输入内容" class="input-with-select" @keyup.enter.native="handleSearch">
@@ -56,7 +59,12 @@
 </template>
 
 <script>
-import { getList, downloadTemplate, uploadTemplate } from "@/api/commodity";
+import {
+  getList,
+  downloadTemplate,
+  uploadTemplate,
+  exportData,
+} from "@/api/commodity";
 import { Message } from "element-ui";
 
 export default {
@@ -108,6 +116,31 @@ export default {
           return;
         }
         var fileName = "模板";
+        const blob = new Blob([response.data]);
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+          navigator.msSaveBlob(blob, fileName);
+        } else {
+          const binaryData = [];
+          binaryData.push(blob);
+          const u = window.URL.createObjectURL(new Blob(binaryData));
+          const aLink = document.createElement("a");
+          aLink.style.display = "none";
+          aLink.href = u;
+          aLink.setAttribute("download", fileName + ".xlsx");
+          document.body.appendChild(aLink);
+          aLink.click();
+          document.body.removeChild(aLink);
+          window.URL.revokeObjectURL(u);
+        }
+      });
+    },
+
+    exportData() {
+      exportData("s1").then((response) => {
+        if (!response) {
+          return;
+        }
+        var fileName = "产品信息表";
         const blob = new Blob([response.data]);
         if (window.navigator && window.navigator.msSaveOrOpenBlob) {
           navigator.msSaveBlob(blob, fileName);

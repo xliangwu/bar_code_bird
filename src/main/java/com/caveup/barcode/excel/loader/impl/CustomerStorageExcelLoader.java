@@ -50,7 +50,7 @@ public class CustomerStorageExcelLoader implements ExcelLoader<CustomerStorageEn
         try (FileInputStream inputStream = new FileInputStream(excelFile)) {
             excelReader = EasyExcel.read(inputStream, getClazz(), listener)
                     .ignoreEmptyRow(true)
-                    .headRowNumber(3)
+                    .headRowNumber(1)
                     .registerConverter(new TimestampStringConverter())
                     .build();
             ReadSheet readSheet = EasyExcel.readSheet(0).build();
