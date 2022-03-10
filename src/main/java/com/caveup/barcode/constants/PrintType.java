@@ -11,13 +11,13 @@ public enum PrintType {
     /**
      * 2 * 2
      */
-    P2_2(11, 16, 0, 3),
+    P2_2(12, 6, 0, 3),
 
 
     /**
      * 2 *3
      */
-    P2_3(9, 3, 0, 5);
+    P2_3(9, 2, 0, 5);
 
     @Getter
     private int fontSize;

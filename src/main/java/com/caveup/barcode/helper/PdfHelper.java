@@ -83,12 +83,12 @@ public class PdfHelper {
 
             int tableCountOfOnePage = 4;
             int colsOfRow = 2;
-            int tableHeight = A4_WIDTH / 2 - 8;
+            int tableHeight = A4_WIDTH / 2 - 4;
             pdfDoc.setDefaultPageSize(PageSize.A4.rotate());
             if (printType == PrintType.P2_3) {
                 tableCountOfOnePage = 6;
                 colsOfRow = 2;
-                tableHeight = A4_WIDTH / 3 - 8;
+                tableHeight = A4_WIDTH / 3 - 2;
             }
 
             Document document = new Document(pdfDoc);
@@ -166,6 +166,13 @@ public class PdfHelper {
         //每行只有2列
         pdfTable.setWidth(A4_HEIGHT / 2 - 60);
         pdfTable.setFontSize(printType.getFontSize());
+        if (printType == PrintType.P2_2 && Constants.DEFAULT_FONT_SIZE != htmlTableTemplate.getF1FontSize()) {
+            pdfTable.setFontSize(htmlTableTemplate.getF1FontSize());
+        }
+        if (printType == PrintType.P2_3 && Constants.DEFAULT_FONT_SIZE != htmlTableTemplate.getF1FontSize()) {
+            pdfTable.setFontSize(htmlTableTemplate.getF2FontSize());
+        }
+
         pdfTable.setMarginTop(2);
         pdfTable.setHeight(new UnitValue(2, 100));
         log.info("total cols:{}", maxCols);
@@ -176,16 +183,17 @@ public class PdfHelper {
                 log.info("rowSpan:{},colSpan:{},{} =>{}", cell.getRowSpan(), cell.getColSpan(), cell.getText(), content);
                 Cell pdfCell = new Cell(cell.getRowSpan(), cell.getColSpan());
                 int cellWidth = Math.max(cell.getWidth(), 6);
-                pdfCell.setBorder(new SolidBorder(Border.SOLID));
+                pdfCell.setBorder(new SolidBorder(1.3f));
                 pdfCell.setVerticalAlignment(VerticalAlignment.valueOf(ObjectsHelper.nvl(cell.getVerticalAlignment(), CssVerticalAlignment.MIDDLE).name()));
                 pdfCell.setTextAlignment(TextAlignment.valueOf(ObjectsHelper.nvl(cell.getAlignment(), CssTextAlignment.CENTER).name()));
-                pdfCell.setPaddings(ObjectsHelper.nvl(cell.getPaddingTop(), 1),
+                pdfCell.setPaddings(ObjectsHelper.nvl(cell.getPaddingTop(), 0),
                         ObjectsHelper.nvl(cell.getPaddingRight(), 2),
-                        ObjectsHelper.nvl(cell.getPaddingBottom(), 1),
+                        ObjectsHelper.nvl(cell.getPaddingBottom(), 0),
                         ObjectsHelper.nvl(cell.getPaddingLeft(), 2));
+                pdfCell.setMargins(0.0f, 0, 0, 0);
 
                 if (InterpolateType.QR_CODE == cell.getInterpolate().getType()) {
-                    int cellHeight = cell.getRowSpan() >= 5 ? 15 : 17;
+                    int cellHeight = cell.getRowSpan() >= 5 ? 20 : 18;
                     int rowHeight = printType == PrintType.P2_2 ? cell.getRowSpan() * 24 : cell.getRowSpan() * cellHeight;
                     qrText = content;
                     int qrHeight = rowHeight - 2;
@@ -208,7 +216,7 @@ public class PdfHelper {
                 } else if (InterpolateType.JOINT_IMG == cell.getInterpolate().getType()) {
                     if (null != JOIN_IMG_CONTENT) {
                         Paragraph paragraph = new Paragraph("接头位置");
-                        paragraph.setWidth(60);
+                        paragraph.setWidth(70);
                         Cell paragraphCell = new Cell(1, 1);
                         paragraphCell.setTextAlignment(TextAlignment.RIGHT);
                         paragraphCell.setPaddings(0, 0, 0, 0);
@@ -217,9 +225,9 @@ public class PdfHelper {
                         paragraphCell.add(paragraph);
                         ImageData imageData = ImageDataFactory.create(JOIN_IMG_CONTENT);
                         Image joinImg = new Image(imageData);
-                        joinImg.setHeight(18);
-                        joinImg.setWidth(160);
-                        joinImg.setMaxWidth(160);
+                        joinImg.setHeight(16);
+                        joinImg.setWidth(140);
+                        joinImg.setMaxWidth(140);
                         Cell joinCell = new Cell(1, 1);
                         joinCell.setPaddings(0, 0, 0, 4);
                         joinCell.setMargins(0, 0, 0, 0);
@@ -240,16 +248,44 @@ public class PdfHelper {
                     boolean isBold = Constants.FONT_WEIGHT_BOLD.equals(cell.getFontWeight());
                     String[] lines = content.split(Constants.PDF_NEW_LINE);
                     int j = 0;
+                    int fontSize = printType.getFontSize();
+                    if (printType == PrintType.P2_2 && Constants.DEFAULT_FONT_SIZE != cell.getFontSize()) {
+                        fontSize = cell.getFontSize();
+                    } else if (printType == PrintType.P2_3) {
+                        fontSize = htmlTableTemplate.getF2FontSize();
+                    }
+
                     for (String line : lines) {
                         Paragraph paragraph = new Paragraph(line);
+                        paragraph.setFontSize(fontSize);
+                        paragraph.setMarginTop(0.0f);
+                        paragraph.setMarginBottom(0.0f);
+                        paragraph.setPaddings(0.0f, 0.0f, 0.0f, 0.0f);
                         if (isBold || (j == 0 && lines.length > 1)) {
-                            paragraph.setFontSize(printType.getFontSize() + 2);
+                            log.info("header font size:{}", fontSize);
+                            if (printType == PrintType.P2_2 && Constants.DEFAULT_FONT_SIZE != cell.getParagraphHeaderFontSize()) {
+                                paragraph.setFontSize(cell.getParagraphHeaderFontSize());
+                            } else {
+                                paragraph.setFontSize(fontSize + 8);
+                            }
                             paragraph.setBold();
+                        }
+
+                        if (printType == PrintType.P2_2) {
+                            paragraph.setMultipliedLeading(1.0f);
+                        } else {
+                            paragraph.setMultipliedLeading(0.8f);
                         }
                         pdfCell.add(paragraph);
                         j++;
                     }
                     pdfCell.setWidth(cellWidth);
+
+                    if (Constants.DEFAULT_FONT_SIZE != cell.getHeight()) {
+                        pdfCell.setHeight(cell.getHeight());
+                        pdfCell.setMaxHeight(cell.getHeight());
+                        log.info("set customer height:{}", cell.getHeight());
+                    }
                 }
                 log.info("cell width:{},height:{}", pdfCell.getWidth(), pdfCell.getHeight());
                 pdfTable.addCell(pdfCell);
@@ -262,11 +298,12 @@ public class PdfHelper {
             lastCell.setTextAlignment(TextAlignment.RIGHT);
             lastCell.setPaddingRight(4);
             lastCell.setPaddingTop(0);
+            lastCell.setMargins(0.0f, 0.0f, 0.0f, 0.0f);
             lastCell.add(new Paragraph(qrText));
             lastCell.setBorderBottom(Border.NO_BORDER);
             lastCell.setBorderRight(Border.NO_BORDER);
             lastCell.setBorderLeft(Border.NO_BORDER);
-            lastCell.setFontSize(8);
+            lastCell.setFontSize(printType.getFontSize() - 1);
             pdfTable.addCell(lastCell);
         }
         return pdfTable;

@@ -34,6 +34,12 @@ public class HtmlTable {
     @Setter
     private Integer fontSize;
 
+    @Setter
+    private Integer f1FontSize;
+
+    @Setter
+    private Integer f2FontSize;
+
     public HtmlTable() {
         this.rows = Lists.newArrayList();
     }

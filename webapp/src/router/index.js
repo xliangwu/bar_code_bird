@@ -102,6 +102,13 @@ export const constantRoutes = [{
                 component: () =>
                     import ('@/views/product/machine/index'),
                 meta: { title: '机器管理', icon: 'el-icon-setting' }
+            },
+            {
+                path: 'log',
+                name: 'Log',
+                component: () =>
+                    import ('@/views/product/log/index'),
+                meta: { title: '系统日志', icon: 'el-icon-wallet' }
             }
         ]
     }

@@ -17,6 +17,7 @@ public class TableCell {
     private String text;
     private boolean bold;
     private int fontSize;
+    private int paragraphHeaderFontSize;
     private InterpolateEntity interpolate;
     private CssTextAlignment alignment;
     private CssVerticalAlignment verticalAlignment;
@@ -25,6 +26,7 @@ public class TableCell {
     private Integer paddingLeft;
     private Integer paddingRight;
     private int width;
+    private int height;
     private String fontWeight;
 
     public TableCell(String text, int colSpan, int rowSpan) {

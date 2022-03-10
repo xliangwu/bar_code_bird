@@ -29,6 +29,7 @@
           <el-table-column label="规格" prop="col5" />
           <el-table-column label="数量" prop="col6" />
           <el-table-column label="纸箱编号" prop="col7" />
+           <el-table-column label="最新更新地址" prop="col8" />
           <el-table-column align="center" prop="createdTime" label="最后更新时间" width="240">
             <template slot-scope="scope">
               <i class="el-icon-time" />

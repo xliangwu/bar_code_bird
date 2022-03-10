@@ -45,6 +45,8 @@ public class JsoupHelper {
         htmlTable.setPaddingLeft(parseCssAttribute(tableEle, CssAttribute.PADDING_LEFT, Constants.DEFAULT_PADDING));
         htmlTable.setPercentWidth(parseCssAttribute(tableEle, CssAttribute.WIDTH, 100));
         htmlTable.setFontSize(parseCssAttribute(tableEle, CssAttribute.FONT_SIZE, Constants.DEFAULT_FONT_SIZE));
+        htmlTable.setF1FontSize(parseCssAttribute(tableEle, CssAttribute.F1_HEADER_FONT_SIZE, Constants.DEFAULT_FONT_SIZE));
+        htmlTable.setF2FontSize(parseCssAttribute(tableEle, CssAttribute.F2_HEADER_FONT_SIZE, Constants.DEFAULT_FONT_SIZE));
 
         Elements trs = tableEle.getElementsByTag("tr");
         for (Element tr : trs) {
@@ -65,7 +67,9 @@ public class JsoupHelper {
                 cell.setPaddingBottom(parseCssAttribute(td, CssAttribute.PADDING_BOTTOM, Constants.DEFAULT_PADDING));
                 cell.setPaddingLeft(parseCssAttribute(td, CssAttribute.PADDING_LEFT, Constants.DEFAULT_PADDING));
                 cell.setFontSize(parseCssAttribute(td, CssAttribute.FONT_SIZE, Constants.DEFAULT_FONT_SIZE));
+                cell.setParagraphHeaderFontSize(parseCssAttribute(td, CssAttribute.PARAGRAPH_HEADER_FONT_SIZE, Constants.DEFAULT_FONT_SIZE));
                 cell.setWidth(parseCssAttribute(td, CssAttribute.WIDTH, -1));
+                cell.setHeight(parseCssAttribute(td, CssAttribute.HEIGHT, -1));
                 cell.setFontWeight(parseCssAttribute(td, CssAttribute.FONT_WEIGHT, ""));
                 cell.setAlignment(CssTextAlignment.valueOf(parseCssAttribute(td, CssAttribute.TEXT_ALIGN, CssTextAlignment.LEFT.name()).toUpperCase()));
                 cell.setVerticalAlignment(CssVerticalAlignment.valueOf(parseCssAttribute(td, CssAttribute.VERTICAL_ALIGN, CssVerticalAlignment.MIDDLE.name()).toUpperCase()));
@@ -170,7 +174,7 @@ public class JsoupHelper {
         while (st.hasMoreTokens()) {
             String property = st.nextToken();
             String[] fields = property.split(":");
-            if (fields.length >= 2 && property.contains(cssAttribute.getCssName())) {
+            if (fields.length >= 2 && fields[0].trim().equals(cssAttribute.getCssName())) {
                 String val = fields[1];
                 return Integer.parseInt(StringUtils.trim(val)
                         .replace("px", "")
@@ -186,7 +190,7 @@ public class JsoupHelper {
         while (st.hasMoreTokens()) {
             String property = st.nextToken();
             String[] fields = property.split(":");
-            if (fields.length >= 2 && property.contains(cssAttribute.getCssName())) {
+            if (fields.length >= 2 && fields[0].trim().equals(cssAttribute.getCssName())) {
                 return StringUtils.trim(fields[1]);
             }
         }

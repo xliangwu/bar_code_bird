@@ -31,3 +31,4 @@ mybatis-plus:
 cors_allowed_origins: null
 app:
   previewZpl: false
+  dataFolder: data

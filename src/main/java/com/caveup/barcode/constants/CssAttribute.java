@@ -12,9 +12,13 @@ public enum CssAttribute {
      */
     WIDTH("width"),
 
+    HEIGHT("height"),
     TEXT_ALIGN("text-align"),
     VERTICAL_ALIGN("vertical-align"),
     FONT_SIZE("font-size"),
+    PARAGRAPH_HEADER_FONT_SIZE("header-font-size"),
+    F1_HEADER_FONT_SIZE("f1-font-size"),
+    F2_HEADER_FONT_SIZE("f2-font-size"),
     FONT_WEIGHT("font-weight"),
     /**
      * css padding
