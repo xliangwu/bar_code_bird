@@ -67,7 +67,8 @@ public class JsoupHelper {
                 cell.setPaddingBottom(parseCssAttribute(td, CssAttribute.PADDING_BOTTOM, Constants.DEFAULT_PADDING));
                 cell.setPaddingLeft(parseCssAttribute(td, CssAttribute.PADDING_LEFT, Constants.DEFAULT_PADDING));
                 cell.setFontSize(parseCssAttribute(td, CssAttribute.FONT_SIZE, Constants.DEFAULT_FONT_SIZE));
-                cell.setParagraphHeaderFontSize(parseCssAttribute(td, CssAttribute.PARAGRAPH_HEADER_FONT_SIZE, Constants.DEFAULT_FONT_SIZE));
+                cell.setP1HeaderFontSize(parseCssAttribute(td, CssAttribute.P1_HEADER_FONT_SIZE, Constants.DEFAULT_FONT_SIZE));
+                cell.setP2HeaderFontSize(parseCssAttribute(td, CssAttribute.P2_HEADER_FONT_SIZE, Constants.DEFAULT_FONT_SIZE));
                 cell.setWidth(parseCssAttribute(td, CssAttribute.WIDTH, -1));
                 cell.setHeight(parseCssAttribute(td, CssAttribute.HEIGHT, -1));
                 cell.setFontWeight(parseCssAttribute(td, CssAttribute.FONT_WEIGHT, ""));

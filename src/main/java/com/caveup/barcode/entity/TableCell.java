@@ -17,7 +17,8 @@ public class TableCell {
     private String text;
     private boolean bold;
     private int fontSize;
-    private int paragraphHeaderFontSize;
+    private int p1HeaderFontSize;
+    private int p2HeaderFontSize;
     private InterpolateEntity interpolate;
     private CssTextAlignment alignment;
     private CssVerticalAlignment verticalAlignment;

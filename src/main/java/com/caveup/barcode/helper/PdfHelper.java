@@ -14,7 +14,6 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
-import com.itextpdf.layout.borders.DashedBorder;
 import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.HorizontalAlignment;
@@ -22,6 +21,7 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -29,6 +29,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author xw80329
@@ -38,6 +40,7 @@ import java.util.Optional;
 public class PdfHelper {
 
     public static final String C_WINDOWS_FONTS_SIMHEI_TTF = "C:/Windows/Fonts/simhei.ttf";
+    private static final String PRODUCT_CODE = "productCode";
 
     private static byte[] JOIN_IMG_CONTENT = null;
     private static final int A4_WIDTH = 595;
@@ -118,9 +121,9 @@ public class PdfHelper {
                 pdfCell.setBorder(Border.NO_BORDER);
                 pdfCell.setHeight(tableHeight - paddingBottom - paddingTop);
                 pdfCell.setMaxHeight(tableHeight - paddingBottom - paddingTop);
-                pdfCell.setBorderBottom(pageBottomRow || isLastRow ? Border.NO_BORDER : new DashedBorder(1));
+//                pdfCell.setBorderBottom(pageBottomRow || isLastRow ? Border.NO_BORDER : new DashedBorder(1));
                 //最右边且不是最后一个
-                pdfCell.setBorderRight(index % colsOfRow == 0 || index == endIndex - 1 ? Border.NO_BORDER : new DashedBorder(1));
+//                pdfCell.setBorderRight(index % colsOfRow == 0 || index == endIndex - 1 ? Border.NO_BORDER : new DashedBorder(1));
                 pdfCell.setHorizontalAlignment(HorizontalAlignment.CENTER);
                 pdfCell.setVerticalAlignment(VerticalAlignment.MIDDLE);
                 pdfTable.addCell(pdfCell);
@@ -162,7 +165,8 @@ public class PdfHelper {
         params.put("index", index);
         int maxCols = htmlTableTemplate.getRows().stream().mapToInt(TableRow::calculateCols).reduce(Integer::max).getAsInt();
         Table pdfTable = new Table(maxCols);
-//        pdfTable.setAutoLayout();
+        pdfTable.setAutoLayout();
+        boolean productCodeEmpty = StringUtils.isBlank((String) params.get(PRODUCT_CODE));
         //每行只有2列
         pdfTable.setWidth(A4_HEIGHT / 2 - 60);
         pdfTable.setFontSize(printType.getFontSize());
@@ -248,27 +252,33 @@ public class PdfHelper {
                     boolean isBold = Constants.FONT_WEIGHT_BOLD.equals(cell.getFontWeight());
                     String[] lines = content.split(Constants.PDF_NEW_LINE);
                     int j = 0;
-                    int fontSize = printType.getFontSize();
-                    if (printType == PrintType.P2_2 && Constants.DEFAULT_FONT_SIZE != cell.getFontSize()) {
-                        fontSize = cell.getFontSize();
-                    } else if (printType == PrintType.P2_3) {
-                        fontSize = htmlTableTemplate.getF2FontSize();
-                    }
 
-                    for (String line : lines) {
+                    java.util.List<String> newLines = Stream.of(lines).filter(StringUtils::isNoneBlank).collect(Collectors.toList());
+                    for (String line : newLines) {
                         Paragraph paragraph = new Paragraph(line);
-                        paragraph.setFontSize(fontSize);
+
+                        if (Constants.DEFAULT_FONT_SIZE != cell.getFontSize()) {
+                            paragraph.setFontSize(cell.getFontSize());
+                        }
+
                         paragraph.setMarginTop(0.0f);
                         paragraph.setMarginBottom(0.0f);
                         paragraph.setPaddings(0.0f, 0.0f, 0.0f, 0.0f);
-                        if (isBold || (j == 0 && lines.length > 1)) {
-                            log.info("header font size:{}", fontSize);
-                            if (printType == PrintType.P2_2 && Constants.DEFAULT_FONT_SIZE != cell.getParagraphHeaderFontSize()) {
-                                paragraph.setFontSize(cell.getParagraphHeaderFontSize());
-                            } else {
-                                paragraph.setFontSize(fontSize + 8);
+                        boolean headerLine = j == 0 && newLines.size() > 1;
+                        if (headerLine || newLines.size() == 1) {
+                            log.info("default header font size:{}", cell.getFontSize());
+                            /**
+                             * 只有第一行 且 2x2格式
+                             */
+                            if (headerLine && printType == PrintType.P2_2 && Constants.DEFAULT_FONT_SIZE != cell.getP1HeaderFontSize()) {
+                                paragraph.setFontSize(cell.getP1HeaderFontSize());
+                            } else if (Constants.DEFAULT_FONT_SIZE != cell.getP2HeaderFontSize()) {
+                                paragraph.setFontSize(cell.getP2HeaderFontSize());
                             }
-                            paragraph.setBold();
+
+                            if (isBold) {
+                                paragraph.setBold();
+                            }
                         }
 
                         if (printType == PrintType.P2_2) {
@@ -282,8 +292,9 @@ public class PdfHelper {
                     pdfCell.setWidth(cellWidth);
 
                     if (Constants.DEFAULT_FONT_SIZE != cell.getHeight()) {
-                        pdfCell.setHeight(cell.getHeight());
-                        pdfCell.setMaxHeight(cell.getHeight());
+                        int bufferHeight = productCodeEmpty && printType == PrintType.P2_2 ? 4 : 0;
+                        pdfCell.setHeight(cell.getHeight() + bufferHeight);
+                        pdfCell.setMaxHeight(cell.getHeight() + bufferHeight);
                         log.info("set customer height:{}", cell.getHeight());
                     }
                 }
