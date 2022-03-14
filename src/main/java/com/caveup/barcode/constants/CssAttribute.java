@@ -16,6 +16,7 @@ public enum CssAttribute {
     TEXT_ALIGN("text-align"),
     VERTICAL_ALIGN("vertical-align"),
     FONT_SIZE("font-size"),
+    P2_FONT_SIZE("p2-font-size"),
     P1_HEADER_FONT_SIZE("p1-header-font-size"),
     P2_HEADER_FONT_SIZE("p2-header-font-size"),
     F1_HEADER_FONT_SIZE("f1-font-size"),

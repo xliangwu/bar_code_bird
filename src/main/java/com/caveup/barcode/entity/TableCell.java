@@ -17,6 +17,7 @@ public class TableCell {
     private String text;
     private boolean bold;
     private int fontSize;
+    private int p2FontSize;
     private int p1HeaderFontSize;
     private int p2HeaderFontSize;
     private InterpolateEntity interpolate;

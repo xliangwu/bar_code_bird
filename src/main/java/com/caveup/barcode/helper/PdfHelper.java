@@ -257,8 +257,12 @@ public class PdfHelper {
                     for (String line : newLines) {
                         Paragraph paragraph = new Paragraph(line);
 
-                        if (Constants.DEFAULT_FONT_SIZE != cell.getFontSize()) {
+                        if (printType == PrintType.P2_2 && Constants.DEFAULT_FONT_SIZE != cell.getFontSize()) {
                             paragraph.setFontSize(cell.getFontSize());
+                        }
+
+                        if (printType == PrintType.P2_3 && Constants.DEFAULT_FONT_SIZE != cell.getP2FontSize()) {
+                            paragraph.setFontSize(cell.getP2FontSize());
                         }
 
                         paragraph.setMarginTop(0.0f);
