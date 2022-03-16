@@ -82,6 +82,8 @@ public class PrintController extends AbstractController {
         params.put("productCode", vo.getProductCode());
         params.put("serialNumber", vo.getMachineCode());
         params.put("productName", vo.getProductName());
+        params.put("p1CodeFontSize", vo.getP1CodeFontSize());
+        params.put("p2CodeFontSize", vo.getP2CodeFontSize());
         params.put("sapCode", vo.getSapCode());
         params.put("capacity", Objects.toString(vo.getCapacity(), StringUtils.EMPTY));
         params.put("specification", vo.getSpecification());
@@ -89,7 +91,7 @@ public class PrintController extends AbstractController {
         PrintType printType = null != vo.getPrintType() && vo.getPrintType() == 0 ? PrintType.P2_2 : PrintType.P2_3;
         String templateContent = vo.getTemplateContent();
         try {
-            Optional<HtmlTable> optional = JsoupHelper.parseTable(templateContent);
+            Optional<HtmlTable> optional = JsoupHelper.parseTable(templateContent, params);
             if (optional.isPresent()) {
                 int startIndex = Math.max(vo.getStartIndex(), 1);
                 int endIndex = vo.getPrintCount() + 1;

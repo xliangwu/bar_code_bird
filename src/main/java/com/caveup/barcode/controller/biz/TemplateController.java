@@ -54,6 +54,8 @@ public class TemplateController {
         entity.setTitle(vo.getTitle());
         entity.setContent(vo.getContent());
         entity.setCreatedTime(new Date());
+        entity.setP1CodeFontSize(Integer.parseInt(vo.getP1CodeFontSize()));
+        entity.setP2CodeFontSize(Integer.parseInt(vo.getP2CodeFontSize()));
         entity.setType(vo.getType());
         return ApiResultHelper.success(templateRepository.insert(entity));
     }
@@ -75,6 +77,8 @@ public class TemplateController {
         entity.setTitle(vo.getTitle());
         entity.setContent(vo.getContent());
         entity.setType(vo.getType());
+        entity.setP1CodeFontSize(Integer.parseInt(vo.getP1CodeFontSize()));
+        entity.setP2CodeFontSize(Integer.parseInt(vo.getP2CodeFontSize()));
         entity.setCreatedTime(new Date());
         entity.setId(vo.getId());
         return ApiResultHelper.success(templateRepository.update(entity));

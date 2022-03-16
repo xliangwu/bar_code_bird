@@ -25,4 +25,6 @@ public class PrintVO {
     private String productName;
     private String printer;
     private Integer printType;
+    private Integer p1CodeFontSize;
+    private Integer p2CodeFontSize;
 }

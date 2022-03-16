@@ -4,6 +4,7 @@ import com.caveup.barcode.constants.Constants;
 import com.caveup.barcode.constants.CssAttribute;
 import com.caveup.barcode.constants.InterpolateType;
 import com.caveup.barcode.entity.*;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
 import org.apache.commons.io.FileUtils;
@@ -27,6 +28,10 @@ import java.util.*;
 public class JsoupHelper {
 
     public static Optional<HtmlTable> parseTable(String template) {
+        return parseTable(template, Maps.newHashMap());
+    }
+
+    public static Optional<HtmlTable> parseTable(String template, Map<String, Object> params) {
         if (StringUtils.isBlank(template)) {
             return Optional.empty();
         }
@@ -75,6 +80,16 @@ public class JsoupHelper {
                 cell.setFontWeight(parseCssAttribute(td, CssAttribute.FONT_WEIGHT, ""));
                 cell.setAlignment(CssTextAlignment.valueOf(parseCssAttribute(td, CssAttribute.TEXT_ALIGN, CssTextAlignment.LEFT.name()).toUpperCase()));
                 cell.setVerticalAlignment(CssVerticalAlignment.valueOf(parseCssAttribute(td, CssAttribute.VERTICAL_ALIGN, CssVerticalAlignment.MIDDLE.name()).toUpperCase()));
+
+                /**
+                 * 覆盖逻辑，bad design
+                 */
+                if (StringUtils.isNoneBlank(text) && text.contains("sapCode")) {
+                    int p1CodeFontSize = params.containsKey("p1CodeFontSize") ? (Integer) params.get("p1CodeFontSize") : -1;
+                    int p2CodeFontSize = params.containsKey("p2CodeFontSize") ? (Integer) params.get("p2CodeFontSize") : -1;
+                    cell.setFontSize(p1CodeFontSize);
+                    cell.setP2FontSize(p2CodeFontSize);
+                }
                 row.addCell(cell);
             }
             htmlTable.addRow(row);

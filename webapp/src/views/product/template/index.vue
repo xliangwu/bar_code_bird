@@ -29,6 +29,8 @@
               <span>暂不支持预览</span>
             </template>
           </el-table-column>
+          <el-table-column label="Code字体大小(2x2)" prop="p1CodeFontSize" />
+          <el-table-column label="Code字体大小(2x3)" prop="p2CodeFontSize" />
           <el-table-column align="center" prop="createdTime" label="最后更新时间" width="240">
             <template slot-scope="scope">
               <i class="el-icon-time" />
@@ -52,9 +54,9 @@
       </el-col>
     </el-row>
 
-    <el-dialog title="新增模板" :visible.sync="newDialogVisible" width="30%" :close-on-click-modal="false">
+    <el-dialog title="新增模板" :visible.sync="newDialogVisible" width="35%" :close-on-click-modal="false">
       <div>
-        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px">
+        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="150px">
           <el-form-item label="模板名称" prop="title">
             <el-input v-model="ruleForm.title" />
           </el-form-item>
@@ -63,6 +65,12 @@
               <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
               </el-option>
             </el-select>
+          </el-form-item>
+          <el-form-item label="Code字体大小(2x2)" prop="p1CodeFontSize">
+            <el-input v-model="ruleForm.p1CodeFontSize" type="input" />
+          </el-form-item>
+          <el-form-item label="Code字体大小(2x3)" prop="p2CodeFontSize">
+            <el-input v-model="ruleForm.p2CodeFontSize" type="input" />
           </el-form-item>
           <el-form-item label="模板样式" prop="content">
             <el-input v-model="ruleForm.content" type="textarea" :rows="4" />
@@ -75,9 +83,9 @@
       </span>
     </el-dialog>
 
-    <el-dialog title="修改模板" :visible.sync="editDialogVisible" width="30%" :close-on-click-modal="false">
+    <el-dialog title="修改模板" :visible.sync="editDialogVisible" width="35%" :close-on-click-modal="false">
       <div>
-        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px">
+        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="150px">
           <el-form-item label="模板名称" prop="title">
             <el-input v-model="ruleForm.title" />
           </el-form-item>
@@ -86,6 +94,12 @@
               <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
               </el-option>
             </el-select>
+          </el-form-item>
+          <el-form-item label="Code字体大小(2x2)" prop="p1CodeFontSize">
+            <el-input v-model="ruleForm.p1CodeFontSize" type="input" />
+          </el-form-item>
+          <el-form-item label="Code字体大小(2x3)" prop="p2CodeFontSize">
+            <el-input v-model="ruleForm.p2CodeFontSize" type="input" />
           </el-form-item>
           <el-form-item label="模板样式" prop="content">
             <el-input v-model="ruleForm.content" type="textarea" :rows="4" />
@@ -124,6 +138,8 @@ export default {
         title: "",
         content: "",
         type: "",
+        p1CodeFontSize: 16,
+        p2CodeFontSize: 15,
         id: -1,
       },
       options: [
@@ -150,6 +166,12 @@ export default {
         ],
         content: [
           { required: true, message: "请输入模板内容", trigger: "blur" },
+        ],
+        p1CodeFontSize: [
+          { required: true, message: "请输入字体大小", trigger: "blur" },
+        ],
+        p2CodeFontSize: [
+          { required: true, message: "请输入字体大小", trigger: "blur" },
         ],
         content: [
           { required: true, message: "请输入模板内容", trigger: "blur" },
@@ -208,6 +230,8 @@ export default {
       this.newDialogVisible = true;
       this.ruleForm.title = null;
       this.ruleForm.content = null;
+      this.p2CodeFontSize = 12;
+      this.p1CodeFontSize = 12;
     },
 
     saveNewRecord(formName) {
@@ -216,6 +240,8 @@ export default {
         title: this.ruleForm.title,
         content: this.ruleForm.content,
         type: this.ruleForm.type,
+        p2CodeFontSize: this.ruleForm.p2CodeFontSize,
+        p1CodeFontSize: this.ruleForm.p1CodeFontSize,
       };
 
       this.$refs[formName].validate((valid) => {
@@ -236,6 +262,8 @@ export default {
         title: this.ruleForm.title,
         content: this.ruleForm.content,
         type: this.ruleForm.type,
+        p2CodeFontSize: this.ruleForm.p2CodeFontSize,
+        p1CodeFontSize: this.ruleForm.p1CodeFontSize,
         id: this.ruleForm.id,
       };
 
@@ -257,6 +285,8 @@ export default {
       this.ruleForm.type = item.type;
       this.ruleForm.content = item.content;
       this.ruleForm.id = item.id;
+      this.ruleForm.p1CodeFontSize = item.p1CodeFontSize;
+      this.ruleForm.p2CodeFontSize = item.p2CodeFontSize;
     },
 
     handleClose(done) {

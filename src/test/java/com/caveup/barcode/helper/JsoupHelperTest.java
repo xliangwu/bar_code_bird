@@ -65,7 +65,7 @@ public class JsoupHelperTest {
                 "</tbody>\n" +
                 "</table>";
 
-        Optional<HtmlTable> optional = JsoupHelper.parseTable(text);
+        Optional<HtmlTable> optional = JsoupHelper.parseTable(text, Maps.newHashMap());
         Assert.assertNotNull(optional);
         Assert.assertTrue(optional.isPresent());
         log.info("table:{}", optional.get());
@@ -104,7 +104,7 @@ public class JsoupHelperTest {
                 "</tbody>\n" +
                 "</table>";
 
-        Optional<HtmlTable> optional = JsoupHelper.parseTable(text);
+        Optional<HtmlTable> optional = JsoupHelper.parseTable(text, Maps.newHashMap());
         Assert.assertNotNull(optional);
         Assert.assertTrue(optional.isPresent());
         log.info("table:{}", optional.get());

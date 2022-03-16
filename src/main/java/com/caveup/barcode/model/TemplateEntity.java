@@ -32,6 +32,8 @@ public class TemplateEntity extends Entity<Integer> {
     private String title;
     private String content;
     private String type;
+    private Integer p1CodeFontSize;
+    private Integer p2CodeFontSize;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createdTime;

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -22,6 +23,12 @@ public class TemplateVO {
 
     @NotBlank
     private String type;
+
+    @NotNull
+    private String p1CodeFontSize;
+
+    @NotNull
+    private String p2CodeFontSize;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createdTime;

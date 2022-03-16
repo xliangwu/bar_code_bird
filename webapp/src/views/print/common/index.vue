@@ -98,6 +98,8 @@ export default {
       },
       templateHtml: "",
       templateContent: "",
+      p1CodeFontSize: -1,
+      p2CodeFontSize: -1,
       rules: {
         machineName: [
           { required: true, message: "请输入机器编号", trigger: "blur" },
@@ -161,6 +163,8 @@ export default {
             productCode: this.form.productCode,
             productName: this.form.productName,
             printType: this.form.printType,
+            p1CodeFontSize: this.p1CodeFontSize,
+            p2CodeFontSize: this.p2CodeFontSize,
           };
 
           print(parmas).then((response) => {
@@ -195,6 +199,8 @@ export default {
             sapCode: this.form.sapCode,
             productCode: this.form.productCode,
             productName: this.form.productName,
+            p1CodeFontSize: this.p1CodeFontSize,
+            p2CodeFontSize: this.p2CodeFontSize,
           };
           preview(parmas).then((response) => {
             this.previewDialogVisible = true;
@@ -213,6 +219,13 @@ export default {
 
     changeTemplate(item) {
       this.templateContent = item.content;
+      this.p1CodeFontSize = item.p1CodeFontSize;
+      this.p2CodeFontSize = item.p2CodeFontSize;
+      if (item.title.indexOf("卷") != -1) {
+        this.form.capacityLabel = "枚/卷";
+      } else if (item.title.indexOf("箱") != -1) {
+        this.form.capacityLabel = "枚/箱";
+      }
     },
 
     orderOptionChange(item) {

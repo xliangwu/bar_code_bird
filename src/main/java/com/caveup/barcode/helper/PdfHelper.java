@@ -197,8 +197,9 @@ public class PdfHelper {
                 pdfCell.setMargins(0.0f, 0, 0, 0);
 
                 if (InterpolateType.QR_CODE == cell.getInterpolate().getType()) {
-                    int cellHeight = cell.getRowSpan() >= 5 ? 20 : 18;
-                    int rowHeight = printType == PrintType.P2_2 ? cell.getRowSpan() * 24 : cell.getRowSpan() * cellHeight;
+                    int p2CellHeight = cell.getRowSpan() >= 5 ? 20 : 18;
+                    int p1CellHeight = cell.getRowSpan() >= 5 ? 24 : 26;
+                    int rowHeight = printType == PrintType.P2_2 ? cell.getRowSpan() * p1CellHeight : cell.getRowSpan() * p2CellHeight;
                     qrText = content;
                     int qrHeight = rowHeight - 2;
                     byte[] contents = QrCodeHelper.createQrCodeData(content, qrHeight, qrHeight);
@@ -236,6 +237,7 @@ public class PdfHelper {
                         joinCell.setPaddings(0, 0, 0, 4);
                         joinCell.setMargins(0, 0, 0, 0);
                         joinCell.setBorder(Border.NO_BORDER);
+                        joinCell.setVerticalAlignment(VerticalAlignment.MIDDLE);
                         joinCell.add(joinImg);
 
                         Table table = new Table(2);
