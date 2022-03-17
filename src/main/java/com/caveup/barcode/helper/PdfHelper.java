@@ -101,6 +101,8 @@ public class PdfHelper {
             document.setFont(font);
             document.setBottomMargin(2);
             document.setTopMargin(4);
+            document.setLeftMargin(10);
+            document.setRightMargin(10);
             Table pdfTable = createPageTable(colsOfRow);
             int index = 1;
             boolean hasCells = false;
@@ -124,7 +126,7 @@ public class PdfHelper {
 //                pdfCell.setBorderBottom(pageBottomRow || isLastRow ? Border.NO_BORDER : new DashedBorder(1));
                 //最右边且不是最后一个
 //                pdfCell.setBorderRight(index % colsOfRow == 0 || index == endIndex - 1 ? Border.NO_BORDER : new DashedBorder(1));
-                pdfCell.setHorizontalAlignment(HorizontalAlignment.CENTER);
+                pdfCell.setHorizontalAlignment(HorizontalAlignment.LEFT);
                 pdfCell.setVerticalAlignment(VerticalAlignment.MIDDLE);
                 pdfTable.addCell(pdfCell);
                 hasCells = true;

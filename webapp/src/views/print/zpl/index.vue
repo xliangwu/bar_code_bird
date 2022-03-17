@@ -20,8 +20,14 @@
       <el-form-item label="品名">
         <el-input v-model="form.productCode" style="width: 35%;" disabled />
       </el-form-item>
+      <el-form-item label="产品名">
+        <el-input v-model="form.productName" style="width: 35%;" disabled />
+      </el-form-item>
       <el-form-item label="规格">
         <el-input v-model="form.specification" style="width: 35%;" disabled />
+      </el-form-item>
+      <el-form-item label="纸箱编号">
+        <el-input v-model="form.boxCode" style="width: 35%;" disabled />
       </el-form-item>
       <el-form-item label="SAP代码">
         <el-input v-model="form.sapCode" style="width: 35%;" disabled />
@@ -110,6 +116,7 @@ export default {
         productCode: "",
         productName: "",
         sapCode: "",
+        boxCode: "",
         specification: "",
         templateId: null,
         capacityLabel: "枚/卷",
@@ -236,6 +243,7 @@ export default {
       this.form.productCode = item.col3;
       this.form.sapCode = item.col2;
       this.form.specification = item.col5;
+      this.form.boxCode = item.col7;
     },
     loadMetaData() {
       this.listLoading = true;
