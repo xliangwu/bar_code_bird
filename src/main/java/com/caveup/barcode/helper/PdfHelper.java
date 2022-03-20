@@ -116,16 +116,22 @@ public class PdfHelper {
                 Cell pdfCell = new Cell().add(table);
                 int paddingTop = ObjectsHelper.max(htmlTableTemplate.getPaddingTop(), printType.getOutTablePaddingTop());
                 int paddingBottom = ObjectsHelper.max(htmlTableTemplate.getPaddingBottom(), printType.getOutTablePaddingTop());
+                int paddingRight = ObjectsHelper.max(htmlTableTemplate.getPaddingRight(), 8);
+                int paddingLeft = ObjectsHelper.max(htmlTableTemplate.getPaddingLeft(), 8);
                 pdfCell.setPaddings(paddingTop,
-                        ObjectsHelper.max(htmlTableTemplate.getPaddingRight(), 8),
+                        paddingRight,
                         paddingBottom,
-                        ObjectsHelper.max(htmlTableTemplate.getPaddingLeft(), 8));
+                        8);
                 pdfCell.setBorder(Border.NO_BORDER);
                 pdfCell.setHeight(tableHeight - paddingBottom - paddingTop);
                 pdfCell.setMaxHeight(tableHeight - paddingBottom - paddingTop);
 //                pdfCell.setBorderBottom(pageBottomRow || isLastRow ? Border.NO_BORDER : new DashedBorder(1));
                 //最右边且不是最后一个
 //                pdfCell.setBorderRight(index % colsOfRow == 0 || index == endIndex - 1 ? Border.NO_BORDER : new DashedBorder(1));
+                if (index % 2 == 0) {
+                    pdfCell.setPaddingLeft(paddingLeft);
+                }
+
                 pdfCell.setHorizontalAlignment(HorizontalAlignment.LEFT);
                 pdfCell.setVerticalAlignment(VerticalAlignment.MIDDLE);
                 pdfTable.addCell(pdfCell);
