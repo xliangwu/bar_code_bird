@@ -101,8 +101,8 @@ public class PdfHelper {
             document.setFont(font);
             document.setBottomMargin(2);
             document.setTopMargin(4);
-            document.setLeftMargin(10);
-            document.setRightMargin(10);
+            document.setLeftMargin(32);
+            document.setRightMargin(32);
             Table pdfTable = createPageTable(colsOfRow);
             int index = 1;
             boolean hasCells = false;
@@ -121,7 +121,7 @@ public class PdfHelper {
                 pdfCell.setPaddings(paddingTop,
                         paddingRight,
                         paddingBottom,
-                        8);
+                        0);
                 pdfCell.setBorder(Border.NO_BORDER);
                 pdfCell.setHeight(tableHeight - paddingBottom - paddingTop);
                 pdfCell.setMaxHeight(tableHeight - paddingBottom - paddingTop);
@@ -176,7 +176,7 @@ public class PdfHelper {
         pdfTable.setAutoLayout();
         boolean productCodeEmpty = StringUtils.isBlank((String) params.get(PRODUCT_CODE));
         //每行只有2列
-        pdfTable.setWidth(A4_HEIGHT / 2 - 60);
+        pdfTable.setWidth(A4_HEIGHT / 2 - 66);
         pdfTable.setFontSize(printType.getFontSize());
         if (printType == PrintType.P2_2 && Constants.DEFAULT_FONT_SIZE != htmlTableTemplate.getF1FontSize()) {
             pdfTable.setFontSize(htmlTableTemplate.getF1FontSize());
@@ -229,7 +229,7 @@ public class PdfHelper {
                 } else if (InterpolateType.JOINT_IMG == cell.getInterpolate().getType()) {
                     if (null != JOIN_IMG_CONTENT) {
                         Paragraph paragraph = new Paragraph("接头位置");
-                        paragraph.setWidth(70);
+                        paragraph.setWidth(60);
                         Cell paragraphCell = new Cell(1, 1);
                         paragraphCell.setTextAlignment(TextAlignment.RIGHT);
                         paragraphCell.setPaddings(0, 0, 0, 0);
@@ -239,8 +239,8 @@ public class PdfHelper {
                         ImageData imageData = ImageDataFactory.create(JOIN_IMG_CONTENT);
                         Image joinImg = new Image(imageData);
                         joinImg.setHeight(16);
-                        joinImg.setWidth(140);
-                        joinImg.setMaxWidth(140);
+                        joinImg.setWidth(136);
+                        joinImg.setMaxWidth(136);
                         Cell joinCell = new Cell(1, 1);
                         joinCell.setPaddings(0, 0, 0, 4);
                         joinCell.setMargins(0, 0, 0, 0);
