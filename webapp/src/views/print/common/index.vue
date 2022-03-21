@@ -47,13 +47,13 @@
       </el-form-item>
 
       <el-form-item label="起始页数">
-        <el-input-number v-model="form.startIndex" :step="1" size="medium" style="width:10%" :min="1" :max="5000" />
+        <el-input-number v-model="form.startIndex" :step="1" size="medium" style="width:150px" :min="1" :max="5000" />
       </el-form-item>
       <el-form-item label="结束页数" prop="printCount">
-        <el-input-number v-model="form.printCount" :step="1" size="medium" style="width:10%" :min="1" :max="5000" />
+        <el-input-number v-model="form.printCount" :step="1" size="medium" style="width:150px" :min="1" :max="5000" />
       </el-form-item>
       <el-form-item label="打印布局">
-        <el-select v-model="form.printType" style="width: 10%;" placeholder="选择机器编号" value-key="value">
+        <el-select v-model="form.printType" style="width: 150px;" placeholder="选择机器编号" value-key="value">
           <el-option v-for="item in printTypeOptions" :key="item.id" :label="item.label" :value="item.value" />
         </el-select>
       </el-form-item>
