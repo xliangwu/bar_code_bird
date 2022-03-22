@@ -7,6 +7,7 @@ import com.caveup.barcode.entity.*;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -176,7 +177,7 @@ public class PdfHelper {
         pdfTable.setAutoLayout();
         boolean productCodeEmpty = StringUtils.isBlank((String) params.get(PRODUCT_CODE));
         //每行只有2列
-        pdfTable.setWidth(A4_HEIGHT / 2 - 66);
+        pdfTable.setWidth(A4_HEIGHT / 2 - 62);
         pdfTable.setFontSize(printType.getFontSize());
         if (printType == PrintType.P2_2 && Constants.DEFAULT_FONT_SIZE != htmlTableTemplate.getF1FontSize()) {
             pdfTable.setFontSize(htmlTableTemplate.getF1FontSize());
@@ -239,12 +240,14 @@ public class PdfHelper {
                         ImageData imageData = ImageDataFactory.create(JOIN_IMG_CONTENT);
                         Image joinImg = new Image(imageData);
                         joinImg.setHeight(16);
-                        joinImg.setWidth(136);
-                        joinImg.setMaxWidth(136);
+                        joinImg.setWidth(new UnitValue(2,100));
+                        joinImg.setMaxWidth(new UnitValue(2,100));
                         Cell joinCell = new Cell(1, 1);
                         joinCell.setPaddings(0, 0, 0, 4);
                         joinCell.setMargins(0, 0, 0, 0);
                         joinCell.setBorder(Border.NO_BORDER);
+                        joinCell.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+                        joinCell.setTextAlignment(TextAlignment.RIGHT);
                         joinCell.setVerticalAlignment(VerticalAlignment.MIDDLE);
                         joinCell.add(joinImg);
 
@@ -253,9 +256,8 @@ public class PdfHelper {
                         table.addCell(joinCell);
                         table.setBorder(Border.NO_BORDER);
                         table.setPaddings(2, 0, 0, 0);
-                        table.setMaxWidth(240);
-                        table.setWidth(240);
-                        pdfCell.setWidth(cell.getWidth());
+                        table.setMaxWidth(new UnitValue(2,100));
+                        table.setWidth(new UnitValue(2,100));
                         pdfCell.add(table);
                     }
                 } else {
