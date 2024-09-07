@@ -27,4 +27,5 @@ public class PrintVO {
     private Integer printType;
     private Integer p1CodeFontSize;
     private Integer p2CodeFontSize;
+    private String orderCode;
 }

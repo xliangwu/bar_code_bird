@@ -60,6 +60,7 @@ public class ZplPrintController extends AbstractController {
         params.put("productName", vo.getProductName());
         params.put("companyName", "上海福助工业有限公司");
         params.put("sapCode", vo.getSapCode());
+        params.put("orderCode", vo.getOrderCode());
         params.put("capacity", Objects.toString(vo.getCapacity(), StringUtils.EMPTY));
         params.put("specification", vo.getSpecification());
 
@@ -94,6 +95,7 @@ public class ZplPrintController extends AbstractController {
         params.put("serialNumber", vo.getMachineCode());
         params.put("productName", vo.getProductName());
         params.put("sapCode", vo.getSapCode());
+        params.put("orderCode", vo.getOrderCode());
         params.put("capacity", Objects.toString(vo.getCapacity(), StringUtils.EMPTY));
         params.put("index", 1);
         params.put("specification", vo.getSpecification());

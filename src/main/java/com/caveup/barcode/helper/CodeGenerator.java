@@ -34,7 +34,7 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/bym_tool?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai");
+        dsc.setUrl("jdbc:mysql://localhost:3306/merchant?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("123456");
@@ -44,7 +44,7 @@ public class CodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.bimyu.pgs");
+        pc.setParent("com.bimyu.park");
         pc.setEntity("model");
         pc.setService("service");
         pc.setMapper("mapper");
@@ -65,7 +65,7 @@ public class CodeGenerator {
         strategy.setRestControllerStyle(false);
 
         // 此处输入需要生产的表名
-        strategy.setInclude("pgs_car_recognize".split(","));
+        strategy.setInclude("pios_park_config,pios_park_box_config".split(","));
         //strategy.setSuperEntityClass(LogCreation.class);
         strategy.setTablePrefix("pgs_");
         mpg.setStrategy(strategy);

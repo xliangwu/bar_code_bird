@@ -85,6 +85,7 @@ public class PrintController extends AbstractController {
         params.put("p1CodeFontSize", vo.getP1CodeFontSize());
         params.put("p2CodeFontSize", vo.getP2CodeFontSize());
         params.put("sapCode", vo.getSapCode());
+        params.put("orderCode", vo.getOrderCode());
         params.put("capacity", Objects.toString(vo.getCapacity(), StringUtils.EMPTY));
         params.put("specification", vo.getSpecification());
 
@@ -122,6 +123,7 @@ public class PrintController extends AbstractController {
         params.put("serialNumber", vo.getMachineCode());
         params.put("productName", vo.getProductName());
         params.put("sapCode", vo.getSapCode());
+        params.put("orderCode", vo.getOrderCode());
         params.put("capacity", Objects.toString(vo.getCapacity(), StringUtils.EMPTY));
         params.put("index", 1);
         params.put("specification", vo.getSpecification());

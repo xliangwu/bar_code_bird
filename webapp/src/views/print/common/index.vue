@@ -5,15 +5,22 @@
         <el-input v-model="form.name" style="width: 35%;" disabled />
       </el-form-item>
       <el-form-item label="模板" prop="templateId">
-        <el-select v-model="form.templateId" style="width: 25%;" placeholder="选择模板" :filterable="true" value-key="id" @change="changeTemplate">
+        <el-select v-model="form.templateId" style="width: 25%;" placeholder="选择模板" :filterable="true" value-key="id"
+          @change="changeTemplate">
           <el-option v-for="item in templates" :key="item.id" :label="item.title" :value="item" />
         </el-select>
       </el-form-item>
+      <el-form-item label="订单号" v-if="enableOrderCode">
+        <el-input v-model="form.orderCode" style="width: 35%;" />
+      </el-form-item>
+
       <el-form-item label="机器编号" prop="machineName">
-        <el-cascader v-model="form.machineName" style="width: 25%;" :options="machines" :props="{ expandTrigger: 'hover' }"></el-cascader>
+        <el-cascader v-model="form.machineName" style="width: 25%;" :options="machines"
+          :props="{ expandTrigger: 'hover' }"></el-cascader>
       </el-form-item>
       <el-form-item label="接单卡号" prop="orderNo">
-        <el-select v-model="form.orderNo" style="width: 25%;" placeholder="选择接单卡号" :filterable="true" value-key="id" @change="orderOptionChange">
+        <el-select v-model="form.orderNo" style="width: 25%;" placeholder="选择接单卡号" :filterable="true" value-key="id"
+          @change="orderOptionChange">
           <el-option v-for="item in commodities" :key="item.id" :label="item.col1" :value="item" />
         </el-select>
       </el-form-item>
@@ -34,7 +41,8 @@
       </el-form-item>
       <el-form-item label="日期" prop="selectedDate">
         <el-col :span="24">
-          <el-date-picker v-model="form.selectedDate" type="date" format="yyyy年MM月dd日" value-format="yyyyMMdd" placeholder="选择日期" style="width: 35%;" />
+          <el-date-picker v-model="form.selectedDate" type="date" format="yyyy年MM月dd日" value-format="yyyyMMdd"
+            placeholder="选择日期" style="width: 35%;" />
         </el-col>
       </el-form-item>
       <el-form-item label="箱容量">
@@ -65,7 +73,8 @@
       </el-form-item>
     </el-form>
 
-    <el-dialog title="预览" :visible.sync="previewDialogVisible" :close-on-click-modal="false" :before-close="beforeClosePreviewDialog" :center="true" style="padding:0px 8px">
+    <el-dialog title="预览" :visible.sync="previewDialogVisible" :close-on-click-modal="false"
+      :before-close="beforeClosePreviewDialog" :center="true" style="padding:0px 8px">
       <div class="previewContainer" v-html="templateHtml" />
     </el-dialog>
   </div>
@@ -85,6 +94,7 @@ export default {
       }
     };
     var today = new Date().toISOString().split("T")[0].split("-").join("");
+    console.log('today:' + today);
     return {
       form: {
         name: "上海福助工业有限公司",
@@ -96,17 +106,19 @@ export default {
         capacity: "",
         productCode: "",
         productName: "",
-        boxCode:'',
+        boxCode: '',
         sapCode: "",
         specification: "",
         templateId: null,
         printType: 0,
+        orderCode: "",
         capacityLabel: "枚/卷",
       },
       templateHtml: "",
       templateContent: "",
       p1CodeFontSize: -1,
       p2CodeFontSize: -1,
+      enableOrderCode: false,
       rules: {
         machineName: [
           { required: true, message: "请输入机器编号", trigger: "blur" },
@@ -149,6 +161,7 @@ export default {
   },
 
   created() {
+    console.log('created');
     this.loadMetaData();
   },
 
@@ -172,6 +185,7 @@ export default {
             printType: this.form.printType,
             p1CodeFontSize: this.p1CodeFontSize,
             p2CodeFontSize: this.p2CodeFontSize,
+            orderCode: this.form.orderCode,
           };
 
           print(parmas).then((response) => {
@@ -228,6 +242,7 @@ export default {
       this.templateContent = item.content;
       this.p1CodeFontSize = item.p1CodeFontSize;
       this.p2CodeFontSize = item.p2CodeFontSize;
+      this.enableOrderCode = item.enableOrderCode;
       if (item.title.indexOf("卷") != -1) {
         this.form.capacityLabel = "枚/卷";
       } else if (item.title.indexOf("箱") != -1) {
@@ -270,6 +285,7 @@ export default {
   color: #303133;
   text-align: center;
   margin: 0px auto;
+
   table {
     border-collapse: collapse;
     table-layout: fixed;
@@ -290,4 +306,3 @@ export default {
   }
 }
 </style>
-

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
 
@@ -41,5 +42,9 @@ public class TemplateEntity extends Entity<Integer> {
     @Override
     public Integer getPrimaryKey() {
         return this.id;
+    }
+
+    public boolean getEnableOrderCode() {
+        return StringUtils.isNotBlank(content) && content.contains("orderCode");
     }
 }

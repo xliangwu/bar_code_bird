@@ -5,15 +5,22 @@
         <el-input v-model="form.name" style="width: 35%;" disabled />
       </el-form-item>
       <el-form-item label="模板" prop="templateId">
-        <el-select v-model="form.templateId" style="width: 25%;" placeholder="选择模板" :filterable="true" value-key="id" @change="changeTemplate">
+        <el-select v-model="form.templateId" style="width: 25%;" placeholder="选择模板" :filterable="true" value-key="id"
+          @change="changeTemplate">
           <el-option v-for="item in templates" :key="item.id" :label="item.title" :value="item" />
         </el-select>
       </el-form-item>
+      <el-form-item label="订单号" v-if="enableOrderCode">
+        <el-input v-model="form.orderCode" style="width: 35%;" />
+      </el-form-item>
+
       <el-form-item label="机器编号" prop="machineName">
-        <el-cascader v-model="form.machineName" style="width: 25%;" :options="machines" :props="{ expandTrigger: 'hover' }"></el-cascader>
+        <el-cascader v-model="form.machineName" style="width: 25%;" :options="machines"
+          :props="{ expandTrigger: 'hover' }"></el-cascader>
       </el-form-item>
       <el-form-item label="接单卡号" prop="orderNo">
-        <el-select v-model="form.orderNo" placeholder="选择接单卡号" :filterable="true" value-key="id" @change="orderOptionChange">
+        <el-select v-model="form.orderNo" placeholder="选择接单卡号" :filterable="true" value-key="id"
+          @change="orderOptionChange">
           <el-option v-for="item in commodities" :key="item.id" :label="item.col1" :value="item" />
         </el-select>
       </el-form-item>
@@ -34,7 +41,8 @@
       </el-form-item>
       <el-form-item label="日期" prop="selectedDate">
         <el-col :span="24">
-          <el-date-picker v-model="form.selectedDate" type="date" format="yyyy年MM月dd日" value-format="yyyyMMdd" placeholder="选择日期" style="width: 35%;" />
+          <el-date-picker v-model="form.selectedDate" type="date" format="yyyy年MM月dd日" value-format="yyyyMMdd"
+            placeholder="选择日期" style="width: 35%;" />
         </el-col>
       </el-form-item>
       <el-form-item label="箱容量">
@@ -61,7 +69,8 @@
       </el-form-item>
     </el-form>
 
-    <el-dialog title="打印" :visible.sync="previewDialogVisible" :before-close="beforeClosePreviewDialog" :close-on-click-modal="false" width="600px" :center="true" style="padding:0px 8px;">
+    <el-dialog title="打印" :visible.sync="previewDialogVisible" :before-close="beforeClosePreviewDialog"
+      :close-on-click-modal="false" width="600px" :center="true" style="padding:0px 8px;">
       <span>
         <el-form ref="printForm" :model="printForm" :rules="rules" label-width="120px">
           <el-form-item label="斑马打印机" prop="printer">
@@ -119,6 +128,7 @@ export default {
         boxCode: "",
         specification: "",
         templateId: null,
+        orderCode: "",
         capacityLabel: "枚/卷",
       },
       printForm: {
@@ -128,6 +138,7 @@ export default {
       templateContent: "",
       previewImg: null,
       showPreviewImg: false,
+      enableOrderCode: false,
       printers: [],
       rules: {
         machineName: [
@@ -183,6 +194,7 @@ export default {
             productCode: this.form.productCode,
             productName: this.form.productName,
             printer: this.printForm.printer,
+            orderCode: this.form.orderCode,
           };
 
           zplPrint(parmas).then((response) => {
@@ -235,6 +247,7 @@ export default {
 
     changeTemplate(item) {
       this.templateContent = item.content;
+      this.enableOrderCode = item.enableOrderCode;
     },
 
     orderOptionChange(item) {
@@ -270,6 +283,7 @@ export default {
   color: #303133;
   text-align: center;
   margin: 0px auto;
+
   table {
     border-collapse: collapse;
     table-layout: fixed;
@@ -290,4 +304,3 @@ export default {
   }
 }
 </style>
-
